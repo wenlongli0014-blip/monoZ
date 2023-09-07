@@ -35,7 +35,11 @@ double PhotonWeight::PhotonSF(Photon const &photon) const {
     
   for (auto &photonTable : photonTable_) {
 
-    int photonEtaBin = photonTable->GetXaxis()->FindFixBin(eta);
+    int photonEtaBin;
+    if (photonTable->GetYaxis()->GetXmin() >= 0) {
+        eta = fabs(eta);
+    }
+    photonEtaBin = photonTable->GetXaxis()->FindFixBin(eta);
     int photonPtBin = photonTable->GetYaxis()->FindFixBin(pt);
     if (pt > photonTable->GetYaxis()->GetXmax()) 
       photonPtBin = photonTable->GetNbinsY();

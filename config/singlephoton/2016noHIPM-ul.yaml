@@ -340,6 +340,7 @@ photon_efficiency:
   # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018?rev=73
   photon:
   - PhotonSF/egammaEffi.txt_EGM2D_Pho_Tight_UL16_postVFP.root:EGamma_SF2D
+  - TriggerSF/singlePhoton_trigger_SFs/photonTriggerSF_2016postVFP.root:h2_scale_factors
 
 photon_triggers:
   triggers:
