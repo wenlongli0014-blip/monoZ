@@ -131,6 +131,39 @@
   cross_section: 5.257
   # ew_correction: WZ
 
+- name: WZTo2Q2L
+  is_sim: true
+  cross_section: 6.565
+  # ew_correction: WZ
+
+- name: ZZTo2L2Nu
+  is_sim: true
+  cross_section: 0.9738
+
+- name: ZZTo4L
+  is_sim: true
+  cross_section: 1.325  # XSDB, for RunIIAutumn18MiniAOD-102X
+
+- name: ZZTo2Q2L
+  is_sim: true
+  cross_section: 3.676
+
+- name: GluGluToContinToZZTo2e2nu
+  is_sim: true
+  cross_section: 17.73
+
+- name: GluGluToContinToZZTo2mu2nu
+  is_sim: true
+  cross_section: 17.73
+
+- name: GluGluToWWToENEN
+  is_sim: true
+  cross_section: 36.8
+
+- name: GluGluToWWToMNMN
+  is_sim: true
+  cross_section: 36.77
+
 - name: ZJetsToNuNu_HT-100To200
   is_sim: true
   cross_section: 271.3
@@ -274,3 +307,43 @@
 - name: TTJets
   is_sim: true
   cross_section: 734.6  # XSDB
+
+- name: TTTo2L2Nu
+  is_sim: true
+  cross_section: 687.1 # XSDB, for RunIILowPUSummer20UL17MiniAODv2-pilot_106X_mc2017_realistic_v9For2017H_v1-v2
+
+- name: ST_t-channel_top
+  is_sim: true
+  cross_section: 119.7
+
+- name: ST_t-channel_antitop
+  is_sim: true
+  cross_section: 71.75
+
+- name: ST_tW_top
+  is_sim: true
+  cross_section: 32.45
+
+- name: ST_tW_antitop
+  is_sim: true
+  cross_section: 32.51
+
+- name: ST_s-channel
+  is_sim: true
+  cross_section: 3.549
+
+- name: TTWJetsToLNu
+  is_sim: true
+  cross_section: 0.2163
+
+- name: TTZToLLNuNu_M-10
+  is_sim: true
+  cross_section: 0.2439
+
+- name: tZq_ll
+  is_sim: true
+  cross_section: 0.07561
+
+- name: VBS_ZZTo2L2Nu
+  is_sim: true
+  cross_section: 0.00308  # XSDB, for RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2
