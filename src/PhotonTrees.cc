@@ -83,10 +83,10 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
   auto const MaxPtGSettingsNode = dataset.Info().Parameters()["max_ptgamma"];
 
   if (MinPtGSettingsNode and not MinPtGSettingsNode.IsNull()) {
-    datasetMinPtG_ = MinPtGSettingsNode.as<Int_t>();
+    datasetMinPtG_.emplace(MinPtGSettingsNode.as<Int_t>());
   }
   if (MaxPtGSettingsNode and not MaxPtGSettingsNode.IsNull()) {
-    datasetMaxPtG_ = MaxPtGSettingsNode.as<Int_t>();
+    datasetMaxPtG_.emplace(MaxPtGSettingsNode.as<Int_t>());
   }
 
   if (datasetMinPtG_.has_value() or datasetMaxPtG_.has_value()) {
