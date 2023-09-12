@@ -70,10 +70,10 @@ ElectronTrees::ElectronTrees(Options const &options, Dataset &dataset)
     AddBranch("jet_mass", jetMass_, "jet_mass[jet_size]/F");
   }
 
-  datasetLHEVptUpperLimitInc_ = std::nullopt;
+  datasetLHEVptUpperLimitInc_.reset();
   auto const LHEVptUpperLimitIncSettingsNode = dataset.Info().Parameters()["LHE_Vpt_upper_limit_inc"];
   if (LHEVptUpperLimitIncSettingsNode and not LHEVptUpperLimitIncSettingsNode.IsNull()) {
-    datasetLHEVptUpperLimitInc_ = LHEVptUpperLimitIncSettingsNode.as<Float_t>();
+    datasetLHEVptUpperLimitInc_.emplace(LHEVptUpperLimitIncSettingsNode.as<Float_t>());
   }
 
   auto const &isQCDNode = dataset.Info().Parameters()["mc_qcd"];

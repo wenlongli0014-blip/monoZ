@@ -26,6 +26,8 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
       srcNumPVGood_{dataset.Reader(), "PV_npvsGood"} {
 
   if (isSim_) {
+    srcLHEVpt_.reset(new TTreeReaderValue<Float_t>(dataset.Reader(), "LHE_Vpt"));
+
     auto const &node = dataset.Info().Parameters()["zz_2l2nu"];
 
     if (node and not node.IsNull() and node.as<bool>())
@@ -63,6 +65,12 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
     AddBranch("jet_phi", jetPhi_, "jet_phi[jet_size]/F");
     AddBranch("jet_mass", jetMass_, "jet_mass[jet_size]/F");
   }
+
+  datasetLHEVptUpperLimitInc_.reset();
+  auto const LHEVptUpperLimitIncSettingsNode = dataset.Info().Parameters()["LHE_Vpt_upper_limit_inc"];
+  if (LHEVptUpperLimitIncSettingsNode and not LHEVptUpperLimitIncSettingsNode.IsNull()) {
+    datasetLHEVptUpperLimitInc_.emplace(LHEVptUpperLimitIncSettingsNode.as<Float_t>());
+  }
 }
 
 
@@ -78,6 +86,9 @@ po::options_description DileptonTrees::OptionsDescription() {
 
 
 bool DileptonTrees::ProcessEvent() {
+  if (datasetLHEVptUpperLimitInc_.has_value() and not (*srcLHEVpt_->Get() <= datasetLHEVptUpperLimitInc_.value()))
+    return false;
+
   if (not ApplyCommonFilters())
     return false;
 

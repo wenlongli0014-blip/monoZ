@@ -63,20 +63,20 @@ EGammaFromMisid::EGammaFromMisid(Options const &options, Dataset &dataset)
     AddBranch("event", &event_);
   }
 
-  datasetLHEVptUpperLimitInc_ = std::nullopt;
+  datasetLHEVptUpperLimitInc_.reset();
   auto const LHEVptUpperLimitIncSettingsNode = dataset.Info().Parameters()["LHE_Vpt_upper_limit_inc"];
   if (LHEVptUpperLimitIncSettingsNode and not LHEVptUpperLimitIncSettingsNode.IsNull()) {
-    datasetLHEVptUpperLimitInc_ = LHEVptUpperLimitIncSettingsNode.as<Float_t>();
+    datasetLHEVptUpperLimitInc_.emplace(LHEVptUpperLimitIncSettingsNode.as<Float_t>());
   }
 
   auto const MinPtGSettingsNode = dataset.Info().Parameters()["min_ptgamma"];
   auto const MaxPtGSettingsNode = dataset.Info().Parameters()["max_ptgamma"];
 
   if (MinPtGSettingsNode and not MinPtGSettingsNode.IsNull()) {
-    datasetMinPtG_ = MinPtGSettingsNode.as<Int_t>();
+    datasetMinPtG_.emplace(MinPtGSettingsNode.as<Int_t>());
   }
   if (MaxPtGSettingsNode and not MaxPtGSettingsNode.IsNull()) {
-    datasetMaxPtG_ = MaxPtGSettingsNode.as<Int_t>();
+    datasetMaxPtG_.emplace(MaxPtGSettingsNode.as<Int_t>());
   }
 
   if (datasetMinPtG_.has_value() or datasetMaxPtG_.has_value()) {
