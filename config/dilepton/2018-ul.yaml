@@ -18,21 +18,15 @@ run_sampler:
 # [3] https://indico.cern.ch/event/944264/#176-trigger-studies
 trigger_filter:
   ee:
-  - triggers: [
-      Ele23_Ele12_CaloIdL_TrackIdL_IsoVL, DoubleEle25_CaloIdL_MW,
-      DoublePhoton70, Ele32_WPTight_Gsf, Photon200
+  - triggers: [Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Ele23_Ele12_CaloIdL_TrackIdL_IsoVL, DiEle27_WPTightCaloOnly_L1DoubleEG, DoubleEle33_CaloIdL_MW, DoubleEle25_CaloIdL_MW, DoubleEle27_CaloIdL_MW, DoublePhoton70, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
     ]
   mumu:
   - triggers: [
-      Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8,
-      IsoMu24, Mu50, TkMu100, OldMu100
+Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8, Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass8, IsoMu24, IsoMu27, IsoMu30, Mu50
     ]
   emu:
   - triggers: [
-      Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL,
-      Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ,
-      Ele32_WPTight_Gsf, Photon200,
-      IsoMu24, Mu50, TkMu100, OldMu100
+Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, IsoMu24, IsoMu27, IsoMu30, Mu50, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
     ]
 
 apply_trigger_weight: false
@@ -48,8 +42,8 @@ trigger_efficiency:
 l1t_prefiring: false
 
 pileup_weight:
-  data_profile: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-08-03_2018-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-08-03_2018-NanoAODv9/pileup/pileup_profiles_sim.root
+  data_profile: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2018-NanoAODv9/pileup/pileup_profiles_data.root
+  sim_profiles: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2018-NanoAODv9/pileup/pileup_profiles_sim.root
   # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profiles_data.root
   # default_sim_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profile_sim.root
 
@@ -83,49 +77,6 @@ selection_cuts:
   min_dphi_jets_ptmiss: 0.5
   min_dphi_leptonsjets_ptmiss: 2.5
 
-#jets:
-#  # Use TightLepVeto working point for jet ID as recommended in https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVRun2018?rev=13
-#  jet_id_bit: 2
-#  min_pt: 30
-#  max_abs_eta: 4.7
-#  corrections:
-#    sim:
-#    - levels:
-#      - JERC/Summer19UL18_V5_MC_L1FastJet_AK4PFchs.txt
-#      - JERC/Summer19UL18_V5_MC_L2Relative_AK4PFchs.txt
-#      - JERC/Summer19UL18_V5_MC_L3Absolute_AK4PFchs.txt
-#      - JERC/Summer19UL18_V5_MC_L2L3Residual_AK4PFchs.txt
-#    data:
-#    - run_range: [315252, 316995]  # 2018A
-#      levels:
-#      - JERC/Summer19UL18_RunA_V5_DATA_L1FastJet_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunA_V5_DATA_L2Relative_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunA_V5_DATA_L3Absolute_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunA_V5_DATA_L2L3Residual_AK4PFchs.txt
-#    - run_range: [317080, 319310]  # 2018B
-#      levels:
-#      - JERC/Summer19UL18_RunB_V5_DATA_L1FastJet_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunB_V5_DATA_L2Relative_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunB_V5_DATA_L3Absolute_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunB_V5_DATA_L2L3Residual_AK4PFchs.txt
-#    - run_range: [319337, 320065]  # 2018C
-#      levels:
-#      - JERC/Summer19UL18_RunC_V5_DATA_L1FastJet_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunC_V5_DATA_L2Relative_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunC_V5_DATA_L3Absolute_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunC_V5_DATA_L2L3Residual_AK4PFchs.txt
-#    - run_range: [320500, 325175]  # 2018D
-#      levels:
-#      - JERC/Summer19UL18_RunD_V5_DATA_L1FastJet_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunD_V5_DATA_L2Relative_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunD_V5_DATA_L3Absolute_AK4PFchs.txt
-#      - JERC/Summer19UL18_RunD_V5_DATA_L2L3Residual_AK4PFchs.txt
-#    uncertainty: JERC/Summer19UL18_V5_MC_Uncertainty_AK4PFchs.txt
-#  resolution:
-#    # Taken from https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution?rev=108
-#    sim_resolution: JERC/Summer19UL18_JRV2_MC_PtResolution_AK4PFchs.txt
-#    scale_factors: JERC/Summer19UL18_JRV2_MC_SF_AK4PFchs.txt
-
 jets:
   # Use TightLepVeto working point for jet ID as recommended in https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVRun2018?rev=13
   jet_id_bit: 2
@@ -134,38 +85,81 @@ jets:
   corrections:
     sim:
     - levels:
-      - JERC/Autumn18_V19_MC_L1FastJet_AK4PFchs.txt
-      - JERC/Autumn18_V19_MC_L2Relative_AK4PFchs.txt
-      - JERC/Autumn18_V19_MC_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L2L3Residual_AK4PFchs.txt
     data:
     - run_range: [315252, 316995]  # 2018A
       levels:
-      - JERC/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFchs.txt
-      - JERC/Autumn18_RunA_V19_DATA_L2Relative_AK4PFchs.txt
-      - JERC/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFchs.txt
-      - JERC/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L2L3Residual_AK4PFchs.txt
     - run_range: [317080, 319310]  # 2018B
       levels:
-      - JERC/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFchs.txt
-      - JERC/Autumn18_RunB_V19_DATA_L2Relative_AK4PFchs.txt
-      - JERC/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFchs.txt
-      - JERC/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L2L3Residual_AK4PFchs.txt
     - run_range: [319337, 320065]  # 2018C
       levels:
-      - JERC/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFchs.txt
-      - JERC/Autumn18_RunC_V19_DATA_L2Relative_AK4PFchs.txt
-      - JERC/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFchs.txt
-      - JERC/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFchs.txt
-    - run_range: [320673, 325175]  # 2018D
+      - JERC/Summer19UL18_RunC_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L2L3Residual_AK4PFchs.txt
+    - run_range: [320500, 325175]  # 2018D
       levels:
-      - JERC/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt
-      - JERC/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt
-      - JERC/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt
-      - JERC/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt
-    uncertainty: JERC/Autumn18_V19_MC_Uncertainty_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L2L3Residual_AK4PFchs.txt
+    uncertainty: JERC/Summer19UL18_V5_MC_Uncertainty_AK4PFchs.txt
   resolution:
-    sim_resolution: JERC/Autumn18_V7b_MC_PtResolution_AK4PFchs.txt
-    scale_factors: JERC/Autumn18_V7b_MC_SF_AK4PFchs.txt
+    # Taken from https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution?rev=108
+    sim_resolution: JERC/Summer19UL18_JRV2_MC_PtResolution_AK4PFchs.txt
+    scale_factors: JERC/Summer19UL18_JRV2_MC_SF_AK4PFchs.txt
+
+#jets:
+#  # Use TightLepVeto working point for jet ID as recommended in https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVRun2018?rev=13
+#  jet_id_bit: 2
+#  min_pt: 30
+#  max_abs_eta: 4.7
+#  corrections:
+#    sim:
+#    - levels:
+#      - JERC/Autumn18_V19_MC_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_V19_MC_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_V19_MC_L3Absolute_AK4PFchs.txt
+#    data:
+#    - run_range: [315252, 316995]  # 2018A
+#      levels:
+#      - JERC/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [317080, 319310]  # 2018B
+#      levels:
+#      - JERC/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [319337, 320065]  # 2018C
+#      levels:
+#      - JERC/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [320673, 325175]  # 2018D
+#      levels:
+#      - JERC/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    uncertainty: JERC/Autumn18_V19_MC_Uncertainty_AK4PFchs.txt
+#  resolution:
+#    sim_resolution: JERC/Autumn18_V7b_MC_PtResolution_AK4PFchs.txt
+#    scale_factors: JERC/Autumn18_V7b_MC_SF_AK4PFchs.txt
 
 ptmiss:
   jer: true
@@ -190,14 +184,20 @@ jet_geometric_veto:
   eta_range: [-3.0, -1.4]
   phi_range: [-1.6, -0.8]
 
-b_tag_weight:
-  #scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
-  scale_factors: BTag/DeepJet_102XSF_WP_V1.csv
-  efficiency: BTag/btagging_efficiencies_deep2018.root
-  bottom_hist_name: b
-  charm_hist_name: c
-  light_hist_name: udsg
+#b_tag_weight:
+#  #scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
+#  scale_factors: BTag/DeepJet_102XSF_WP_V1.csv
+#  efficiency: BTag/btagging_efficiencies_deep2018.root
+#  bottom_hist_name: b
+#  charm_hist_name: c
+#  light_hist_name: udsg
 
+b_tag_weight:
+  scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
+  efficiency: BTag/BTagEff_2018.root
+  bottom_hist_name: bottom_eff
+  charm_hist_name: charm_eff
+  light_hist_name: light_eff
 apply_lepton_weight: true
 
 lepton_efficiency:
