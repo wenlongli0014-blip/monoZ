@@ -75,6 +75,10 @@ class DileptonTrees final : public EventTrees {
   /// Specifies the cut on ptmiss. Default is 80.
   double ptMissCut_;
 
+  mutable std::unique_ptr<TTreeReaderValue<Float_t>> srcLHEVpt_;
+
+  std::optional<Float_t> datasetLHEVptUpperLimitInc_;
+
   /**
    * \brief An object to reconstruct generator-level ZZ system
    *

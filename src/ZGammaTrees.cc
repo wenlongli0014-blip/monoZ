@@ -90,10 +90,10 @@ ZGammaTrees::ZGammaTrees(Options const &options, Dataset &dataset)
     AddBranch("event", &event_);
   }
 
-  datasetLHEVptUpperLimitInc_ = std::nullopt;
+  datasetLHEVptUpperLimitInc_.reset();
   auto const LHEVptUpperLimitIncSettingsNode = dataset.Info().Parameters()["LHE_Vpt_upper_limit_inc"];
   if (LHEVptUpperLimitIncSettingsNode and not LHEVptUpperLimitIncSettingsNode.IsNull()) {
-    datasetLHEVptUpperLimitInc_ = LHEVptUpperLimitIncSettingsNode.as<Float_t>();
+    datasetLHEVptUpperLimitInc_.emplace(LHEVptUpperLimitIncSettingsNode.as<Float_t>());
   }
 
   auto const WGSettingsNode = dataset.Info().Parameters()["wgamma_lnugamma"];
