@@ -58,6 +58,8 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
   AddBranch("mT", &mT_);
+  AddBranch("HT", &jetsHT_);
+  AddBranch("lowptjets_HT", &lowptjetsHT_);
   AddBranch("num_pv_good", &numPVGood_);
   AddBranch("trigger_weight", &triggerWeight_);
   if (not isSim_) {
@@ -405,7 +407,17 @@ bool PhotonTrees::ProcessEvent() {
 
   numPVGood_ = *srcNumPVGood_;
 
+  jetsHT_ = 0;
+  for (auto const &jet : jets) {
+    jetsHT_ += jet.p4.Pt();
+  }
 
+  auto const &lowptjets = jetBuilder_.GetLowPt();
+
+  lowptjetsHT_ = 0;
+  for (auto const &lowptjet : lowptjets) {
+    lowptjetsHT_ += lowptjet.p4.Pt();
+  }
 
   // FIXME temporary. These will be replaced by a new class, much more practical. For now, still use old functions from Utils.
   // Get mean weights
