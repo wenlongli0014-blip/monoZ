@@ -19,6 +19,18 @@ selections:
   tag: ptmiss_geq120
   label: "$p_\\mathrm{T}^\\mathrm{miss} \\geq 120.$"
 
+- formula: "jet_size == 0"
+  weight: weight
+  weight_data: trigger_weight * beam_halo_weight
+  tag: eq0jet
+  label: "0j"
+
+- formula: "jet_size == 1"
+  weight: weight
+  weight_data: trigger_weight * beam_halo_weight
+  tag: eq1jet
+  label: "1j"
+
 - formula: "jet_size >= 2"
   weight: weight
   weight_data: trigger_weight * beam_halo_weight
@@ -151,3 +163,12 @@ variables:
   label: "Number of good vertices"
   unit:
   tag: numpvgood
+- formula: "jetsHT + lowptjets_HT"
+  binning:
+    default:
+      range: [10., 1400.]
+      bins: 20
+  x_scale: log
+  label: "$H_\\mathrm{T}$ (including low-pt jets)"
+  unit: GeV
+  tag: HT

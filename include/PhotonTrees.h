@@ -81,6 +81,7 @@ class PhotonTrees final : public EventTrees {
   Float_t photonPt_, photonEta_, photonPhi_, photonMass_;
   Float_t missPt_, missPhi_;
   Float_t mT_, triggerWeight_;
+  Float_t jetsHT_, lowptjetsHT_;
   Float_t beamHaloWeight_;
   Float_t photonReweighting_, photonNvtxReweighting_, photonEtaReweighting_;
   Float_t meanWeight_;
