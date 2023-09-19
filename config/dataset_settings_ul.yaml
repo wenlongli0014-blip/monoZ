@@ -355,7 +355,11 @@
 
 - name: TTTo2L2Nu
   is_sim: true
-  cross_section: 687.1 # XSDB, for RunIILowPUSummer20UL17MiniAODv2-pilot_106X_mc2017_realistic_v9For2017H_v1-v2
+  # from [1] multiplied by the branching fraction (3 * 0.1086)^2.
+  # [1] https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO?rev=16
+  #cross_section: 72.9327 # XSDB, 687.1* (3 * 0.1086)^2 = 72.9327 for RunIILowPUSummer20UL17MiniAODv2-pilot_106X_mc2017_realistic_v9For2017H_v1-v2
+  ## Cross section computed as the inclusive NNLO cross section of 831.76 pb
+  cross_section: 88.288
 
 - name: ST_t-channel_top
   is_sim: true
