@@ -29,3 +29,5 @@ GJets_HT-600ToInf.yaml
 TTJets.yaml
 
 WWTo2L2Nu.yaml
+WZTo3LNu.yaml
+ZZTo2L2Nu.yaml
