@@ -19,6 +19,51 @@
 - name: SinglePhoton
   is_sim: false
 
+- name: DYJetsToLL_M50_HT100to200
+  is_sim: true
+  cross_section: 139.2
+
+- name: DYJetsToLL_M50_HT200to400
+  is_sim: true
+  cross_section: 5.174
+
+- name: DYJetsToLL_M50_HT400to600
+  is_sim: true
+  cross_section: 5.174
+
+- name: DYJetsToLL_M50_HT600to800
+  is_sim: true
+  cross_section: 1.258
+
+- name: DYJetsToLL_M50_HT800to1200
+  is_sim: true
+  cross_section: 0.5598
+
+- name: DYJetsToLL_M50_HT1200to2500
+  is_sim: true
+  cross_section: 0.1305 
+
+- name: DYJetsToLL_M50_HT2500toInf
+  is_sim: true
+  cross_section: 0.002997
+
+
+- name: GluGluToContinToZZTo2e2nu
+  is_sim: true
+  cross_section: 17.73  #XSDB
+
+- name: GluGluToContinToZZTo2mu2nu
+  is_sim: true
+  cross_section: 17.73  #XSDB
+
+- name: GluGluToWWToENEN
+  is_sim: true
+  cross_section: 36.8  #XSDB
+
+- name: GluGluToWWToMNMN
+  is_sim: true
+  cross_section: 36.77  #XSDB
+
 - name: GJets_HT-40To100
   is_sim: true
   cross_section: 18650.0
@@ -319,6 +364,46 @@
 - name: ST_t-channel_antitop
   is_sim: true
   cross_section: 71.75
+
+- name: ST_t-channel_antitop_4f
+  is_sim: true
+  cross_section: 67.93  #XSDB
+
+- name: ST_t-channel_top_4f
+  is_sim: true
+  cross_section: 113.4  #XSDB
+
+- name: VBS_ZZTo2L2Nu
+  is_sim: true
+  cross_section: 0.00308  #XSDB
+
+- name: WWTo1L1Nu2Q
+  is_sim: true
+  cross_section: 51.65  
+
+- name: WWW
+  is_sim: true
+  cross_section: 0.2158   #XSDB
+
+- name: WWZ
+  is_sim: true
+  cross_section: 0.1707  #XSDB
+
+- name: WZTo1L1Nu2Q
+  is_sim: true
+  cross_section: 9.119
+
+- name: WZTo1L3Nu
+  is_sim: true
+  cross_section: 3.414  #XSDB
+
+- name: WZZ
+  is_sim: true
+  cross_section: 0.05709  #XSDB
+
+- name: ZZZ
+  is_sim: true
+  cross_section: 0.01476  #XSDB
 
 - name: ST_tW_top
   is_sim: true

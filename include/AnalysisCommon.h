@@ -12,6 +12,7 @@
 #include <EWCorrectionWeight.h>
 #include <GenJetBuilder.h>
 #include <GenWeight.h>
+#include <IsoTrackBuilder.h>
 #include <JetBuilder.h>
 #include <JetGeometricVeto.h>
 #include <KFactorCorrection.h>
@@ -85,6 +86,7 @@ class AnalysisCommon {
 
   ElectronBuilder electronBuilder_;
   MuonBuilder muonBuilder_;
+  IsoTrackBuilder isotrkBuilder_;
   TauBuilder tauBuilder_;
   std::optional<GenJetBuilder> genJetBuilder_;
   JetBuilder jetBuilder_;

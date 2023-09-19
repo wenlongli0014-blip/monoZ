@@ -13,6 +13,7 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
       bTagger_{options}, pileUpIdFilter_{options},
       electronBuilder_{dataset, options},
       muonBuilder_{dataset, options, tabulatedRngEngine_},
+      isotrkBuilder_{dataset, options},
       tauBuilder_{dataset, options},
       jetBuilder_{dataset, options, tabulatedRngEngine_, &pileUpIdFilter_},
       ptMissBuilder_{dataset, options},
@@ -36,6 +37,7 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
   }
 
   tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
+  isotrkBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
   jetBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
 
   // Type 1 corrections for ptmiss
