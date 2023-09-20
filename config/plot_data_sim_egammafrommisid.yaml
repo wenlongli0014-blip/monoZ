@@ -89,3 +89,12 @@ variables:
   label: "$p_\\mathrm{T}^{miss}$"
   unit: GeV
   tag: pt_miss
+# - formula: "jet_size"
+#   binning:
+#     default:
+#       range: [0, 6]
+#       bins: 6
+#   x_scale: linear
+#   label: "$N_{jets}$"
+#   unit: 
+#   tag: njets

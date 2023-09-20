@@ -102,7 +102,7 @@ class EGammaFromMisid final : public EventTrees {
   // Int_t leptonCharge_[2];
   // Float_t leptonPt_[2], leptonEta_[2], leptonPhi_[2], leptonMass_[2];
   // static int const maxSize_ = 32;
-  // Int_t jetSize_;
+  Int_t jetSize_;
   // Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
   //         jetMass_[maxSize_];
 
