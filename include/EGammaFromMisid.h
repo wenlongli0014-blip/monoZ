@@ -52,7 +52,7 @@ class EGammaFromMisid final : public EventTrees {
   bool CheckProbe(std::variant<Electron const *, Photon const *>);
 
   /// Fills additional variables, mostly lepton and jet momenta
-  void FillMoreVariables();
+  void FillMoreVariables(std::vector<Jet> const &jets);
 
   static double constexpr kNominalMZ_ = 91.1876;
 
@@ -101,10 +101,10 @@ class EGammaFromMisid final : public EventTrees {
   ULong64_t event_;
   // Int_t leptonCharge_[2];
   // Float_t leptonPt_[2], leptonEta_[2], leptonPhi_[2], leptonMass_[2];
-  // static int const maxSize_ = 32;
+  static int const maxSize_ = 32;
   Int_t jetSize_;
-  // Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
-  //         jetMass_[maxSize_];
+  Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
+          jetMass_[maxSize_];
 
   bool isWJetsToLNu_;
 };
