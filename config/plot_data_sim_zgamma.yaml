@@ -85,8 +85,8 @@ samples:
     # files: [ZGTo2NuG, ZGTo2NuG_PtG-130]
     # color: gold
   - label: "$Z\\gamma \\to 2\\ell\\gamma$"
-    # files: [ZGTo2LG]
-    files: [ZLLGJets]
+    files: [ZGTo2LG]
+    # files: [ZLLGJets]
     color: maroon
   # - label: "$W\\gamma \\to \\ell\\nu\\gamma$"
   #   files: [WGToLNuG]
