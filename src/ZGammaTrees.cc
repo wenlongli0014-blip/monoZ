@@ -318,10 +318,6 @@ bool ZGammaTrees::ProcessEvent() {
 
   analysisCat_ = jetCat_;
 
-  // Only consider photons in the barrel except for Njet >= 2
-  if (jets.size() < 2 && !photon->isEB)
-    return false;
-
   // Veto event if the photon fails the following identification
   if (!photon->passElecVeto)
     return false;
@@ -500,8 +496,13 @@ ZGammaTrees::CheckLeptons() const {
     l2 = &tightMuons[1];
   } else
     return {};
+
   if (l1->charge * l2->charge > 0)
     return {};
+
+  if (not (l1->p4.Pt() > 15. && l2->p4.Pt() > 15.))
+    return {};
+
   return std::make_tuple(leptonCat, l1, l2);
 }
 
