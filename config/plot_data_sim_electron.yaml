@@ -73,6 +73,9 @@ samples:
     - label: "$t\\bar t$"
       files: [TTJets]
       color: greenyellow
+    - label: "Single-top"
+      files: [ST_t-channel, ST_tW, ST_s-channel]
+      color: yellow
     - label: "$\\gamma + $jets"
       files: [GJets]
       color: darkorange

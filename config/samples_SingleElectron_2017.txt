@@ -40,3 +40,9 @@ QCD_HT1500to2000.yaml
 QCD_HT2000toInf.yaml
 
 TTJets.yaml
+
+ST_t-channel_top.yaml
+ST_t-channel_antitop.yaml
+ST_tW_top.yaml
+ST_tW_antitop.yaml
+ST_s-channel.yaml

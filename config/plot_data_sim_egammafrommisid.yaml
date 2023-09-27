@@ -38,6 +38,9 @@ samples:
     - label: "$t\\bar t$"
       files: [TTJets]
       color: greenyellow
+    - label: "Single-top"
+      files: [ST_t-channel, ST_tW, ST_s-channel]
+      color: yellow
     - label: "$WW(\\to 2\\ell 2\\nu)$"
       files: [WWTo2L2Nu]
       color: lightseagreen
@@ -89,12 +92,12 @@ variables:
   label: "$p_\\mathrm{T}^{miss}$"
   unit: GeV
   tag: pt_miss
-# - formula: "jet_size"
-#   binning:
-#     default:
-#       range: [0, 6]
-#       bins: 6
-#   x_scale: linear
-#   label: "$N_{jets}$"
-#   unit: 
-#   tag: njets
+- formula: "jet_size"
+  binning:
+    default:
+      range: [0, 6]
+      bins: 6
+  x_scale: linear
+  label: "$N_{jets}$"
+  unit: 
+  tag: njets
