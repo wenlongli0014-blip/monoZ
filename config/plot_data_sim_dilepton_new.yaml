@@ -103,7 +103,7 @@ samples:
     files: [TT]
     color: greenyellow
   - label: "Single $t$, $tW$"
-    files: [ST_s-channel, ST_t-channel, ST_tW, ST_t-channel_antitop_4f, ST_t-channel_top_4f]
+    files: [ST_s-channel, ST_t-channel, ST_tW]
     color: mediumblue
   - label: "Drell-Yan"
     files: [DYJetsToLL_PtZ]
