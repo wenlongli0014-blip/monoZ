@@ -1,7 +1,8 @@
-catalogPath=/pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2018-NanoAODv9/DDF/Dilepton
+catalogPath=/pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016HIPM-NanoAODv9/DDF/Dilepton
 
-EGamma.yaml
+DoubleEG.yaml
 DoubleMuon.yaml
+SingleElectron.yaml
 SingleMuon.yaml
 MuonEG.yaml
 
@@ -54,4 +55,4 @@ WWZ.yaml
 WZZ.yaml
 ZZZ.yaml
 
-VBS_ZZTo2L2Nu.yaml
+# VBS_ZZTo2L2Nu.yaml
