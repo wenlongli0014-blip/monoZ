@@ -56,11 +56,17 @@ EGammaFromMisid::EGammaFromMisid(Options const &options, Dataset &dataset)
   AddBranch("tag_phi", &tagPhi_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
+  AddBranch("jet_size", &jetSize_);
 
   if (storeMoreVariables_) {
     AddBranch("run", &run_);
     AddBranch("lumi", &lumi_);
     AddBranch("event", &event_);
+
+    AddBranch("jet_pt", jetPt_, "jet_pt[jet_size]/F");
+    AddBranch("jet_eta", jetEta_, "jet_eta[jet_size]/F");
+    AddBranch("jet_phi", jetPhi_, "jet_phi[jet_size]/F");
+    AddBranch("jet_mass", jetMass_, "jet_mass[jet_size]/F");
   }
 
   datasetLHEVptUpperLimitInc_.reset();
@@ -204,6 +210,9 @@ bool EGammaFromMisid::ProcessEvent() {
   missPt_ = p4Miss.Pt();
   missPhi_ = p4Miss.Phi();
 
+  auto const &jets = jetBuilder_.Get();
+  jetSize_ = jets.size();
+
   eventCat_ = int(eventCat);
   numPVGood_ = *srcNumPVGood_;
 
@@ -219,7 +228,7 @@ bool EGammaFromMisid::ProcessEvent() {
         tagPhi_ = e1->p4.Phi();
 
         if (storeMoreVariables_)
-          FillMoreVariables();
+          FillMoreVariables(jets);
 
         FillTree();
       }
@@ -233,7 +242,7 @@ bool EGammaFromMisid::ProcessEvent() {
         tagPhi_ = e0->p4.Phi();
 
         if (storeMoreVariables_)
-          FillMoreVariables();
+          FillMoreVariables(jets);
 
         FillTree();
       }
@@ -249,7 +258,7 @@ bool EGammaFromMisid::ProcessEvent() {
       tagPhi_ = e->p4.Phi();
 
       if (storeMoreVariables_)
-        FillMoreVariables();
+        FillMoreVariables(jets);
 
       FillTree();
       break;
@@ -274,9 +283,19 @@ bool EGammaFromMisid::CheckProbe(std::variant<Electron const *, Photon const *> 
   }
 }
 
-void EGammaFromMisid::FillMoreVariables() {
+void EGammaFromMisid::FillMoreVariables(std::vector<Jet> const &jets) {
 
   run_ = *srcRun_;
   lumi_ = *srcLumi_;
   event_ = *srcEvent_;
+
+  jetSize_ = std::min<int>(jets.size(), maxSize_);
+
+  for (int i = 0; i < jetSize_; ++i) {
+    auto const &p4 = jets[i].p4;
+    jetPt_[i] = p4.Pt();
+    jetEta_[i] = p4.Eta();
+    jetPhi_[i] = p4.Phi();
+    jetMass_[i] = p4.M();
+  }
 }

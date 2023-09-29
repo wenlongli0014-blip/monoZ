@@ -124,7 +124,8 @@ double BTagWeight::GetEfficiency(double pt, double eta, int flavour) const {
     default:
       flavourLabel = "udsg";
   }
-  int const globalBin = effTables_.at(flavourLabel)->FindFixBin(pt, eta);
+  double const max_pt = effTables_.at(flavourLabel)->GetXaxis()->GetBinCenter(effTables_.at(flavourLabel)->GetNbinsX());
+  int const globalBin = effTables_.at(flavourLabel)->FindFixBin(std::min(pt, max_pt), eta);
   return effTables_.at(flavourLabel)->GetBinContent(globalBin);
 }
 

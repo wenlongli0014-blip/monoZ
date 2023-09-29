@@ -1,80 +1,45 @@
 # This is the configuration file to get plots from the ZGammaTrees analysis.
 
 selections:
-# - formula: "ptmiss > 0."
-#   weight: weight
-#   tag: baseline
-#   label: "baseline selection"
-
-- formula: "lepton_pt[0] >= 15. && lepton_pt[1] >= 15."
+- formula: "ptmiss >= 0."
   weight: weight
-  tag: lep_pt_geq15
-  label: "l1_pt >= 15. && l2_pt >= 15."
+  tag: baseline
+  label: "baseline selection"
 
-- formula: "lepton_pt[0] >= 15. && lepton_pt[1] >= 15. && photon_pt >= 55."
+- formula: "lepton_cat == 0"
   weight: weight
-  tag: lep_pt_geq15_photon_pt_geq55
-  label: "l1_pt >= 15. && l2_pt >= 15. && photon_pt >= 55."
+  tag: ee
+  label: "$ee$"
 
-# - formula: "lepton_cat == 0 && jet_cat == 0"
-#   weight: weight
-#   tag: ee_eq0jet
-#   label: "$ee, 0j$"
-
-# - formula: "lepton_cat == 0 && jet_cat == 1"
-#   weight: weight
-#   tag: ee_eq1jet
-#   label: "$ee, 1j$"
-
-# - formula: "lepton_cat == 0 && jet_cat == 2"
-#   weight: weight
-#   tag: ee_geq2jets
-#   label: "$ee, \\geqslant 2j"
-
-# - formula: "lepton_cat == 1 && jet_cat == 0"
-#   weight: weight
-#   tag: mumu_eq0jet
-#   label: "$\\mu\\mu, 0j$"
-
-# - formula: "lepton_cat == 1 && jet_cat == 1"
-#   weight: weight
-#   tag: mumu_eq1jet
-#   label: "$\\mu\\mu, 1j$"
-
-# - formula: "lepton_cat == 1 && jet_cat == 2"
-#   weight: weight
-#   tag: mumu_geq2jets
-#   label: "$\\mu\\mu, \\geqslant 2j"
-
-# - formula: "lepton_cat == 0"
-#   weight: weight
-#   tag: ee
-#   label: "$ee$"
-
-# - formula: "lepton_cat == 1"
-#   weight: weight
-#   tag: mumu
-#   label: "$\\mu\\mu$"
-
-- formula: "lepton_cat == 0 && lepton_pt[0] >= 15. && lepton_pt[1] >= 15."
+- formula: "lepton_cat == 1"
   weight: weight
-  tag: ee__lep_pt_geq15
-  label: "$ee$ (l1_pt >= 15. && l2_pt >= 15.)"
+  tag: mumu
+  label: "$\\mu\\mu$"
 
-- formula: "lepton_cat == 1 && lepton_pt[0] >= 15. && lepton_pt[1] >= 15."
+- formula:  "photon_pt >= 55."
   weight: weight
-  tag: mumu__lep_pt_geq15
-  label: "$\\mu\\mu$ (l1_pt >= 15. && l2_pt >= 15.)"
+  tag: photon_pt_geq55
+  label: "photon_pt >= 55."
 
-- formula: "lepton_cat == 0 && lepton_pt[0] >= 15. && lepton_pt[1] >= 15. && photon_pt >= 55."
+- formula: "lepton_cat == 0 && photon_pt >= 55."
   weight: weight
-  tag: ee__lep_pt_geq15_photon_pt_geq55
-  label: "$ee$ (l1_pt >= 15. && l2_pt >= 15. && photon_pt >= 55.)"
+  tag: ee__photon_pt_geq55
+  label: "$ee$ (photon_pt >= 55.)"
 
-- formula: "lepton_cat == 1 && lepton_pt[0] >= 15. && lepton_pt[1] >= 15. && photon_pt >= 55."
+- formula: "lepton_cat == 1 && photon_pt >= 55."
   weight: weight
-  tag: mumu__lep_pt_geq15_photon_pt_geq55
-  label: "$\\mu\\mu$ (l1_pt >= 15. && l2_pt >= 15. && photon_pt >= 55.)"
+  tag: mumu__photon_pt_geq55
+  label: "$\\mu\\mu$ (photon_pt >= 55.)"
+
+- formula:  "abs(photon_eta) <= 1.4442 && photon_pt >= 55."
+  weight: weight
+  tag: barrel_photon_pt_geq55
+  label: "barrel, photon_pt >= 55."
+
+- formula:  "abs(photon_eta) >= 1.5660 && photon_pt >= 55."
+  weight: weight
+  tag: endcap_photon_pt_geq55
+  label: "endcap, photon_pt >= 55."
 
 samples:
   path_prefix: ""
@@ -85,8 +50,8 @@ samples:
     # files: [ZGTo2NuG, ZGTo2NuG_PtG-130]
     # color: gold
   - label: "$Z\\gamma \\to 2\\ell\\gamma$"
-    # files: [ZGTo2LG]
-    files: [ZLLGJets]
+    files: [ZGTo2LG]
+    # files: [ZLLGJets]
     color: maroon
   # - label: "$W\\gamma \\to \\ell\\nu\\gamma$"
   #   files: [WGToLNuG]

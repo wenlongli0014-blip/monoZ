@@ -32,15 +32,24 @@ samples:
     - label: "WJetsToLNu\n(NLO)"
       files: [WJetsToLNu_0J, WJetsToLNu_1J, WJetsToLNu_2J]
       color: palevioletred
+    # - label: "$\\gamma + $jets"
+    #   files: [GJets]
+    #   color: darkorange
     - label: "$t\\bar t$"
       files: [TTJets]
       color: greenyellow
-    - label: "$\\gamma + $jets"
-      files: [GJets]
-      color: darkorange
+    - label: "Single-top"
+      files: [ST_t-channel, ST_tW, ST_s-channel]
+      color: yellow
     - label: "$WW(\\to 2\\ell 2\\nu)$"
       files: [WWTo2L2Nu]
       color: lightseagreen
+    - label: "$WZ(\\to 3\\ell \\nu)$"
+      files: [WZTo3LNu]
+      color: mediumseagreen
+    - label: "$ZZ(\\to 2\\ell 2\\nu)$"
+      files: [ZZTo2L2Nu]
+      color: seagreen
     - label: "Drell-Yan"
       files: [DYJetsToLL_PtZ]
       color: steelblue
@@ -83,3 +92,12 @@ variables:
   label: "$p_\\mathrm{T}^{miss}$"
   unit: GeV
   tag: pt_miss
+- formula: "jet_size"
+  binning:
+    default:
+      range: [0, 6]
+      bins: 6
+  x_scale: linear
+  label: "$N_{jets}$"
+  unit: 
+  tag: njets

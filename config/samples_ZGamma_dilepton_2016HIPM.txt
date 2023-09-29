@@ -15,5 +15,5 @@ DYJetsToLL_PtZ-400To650.yaml
 DYJetsToLL_PtZ-650ToInf.yaml
 TTGJets.yaml
 ZGTo2LG.yaml
-ZLLGJets_PtG-15to130.yaml # Currently will result in error as it lacks the Electron_eCorr branch
-ZLLGJets_PtG-130.yaml
+# ZLLGJets_PtG-15to130.yaml Currently will result in error as it lacks the Electron_eCorr branch
+# ZLLGJets_PtG-130.yaml
