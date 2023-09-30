@@ -188,3 +188,21 @@ variables:
   label: "njets"
   unit: 
   tag: njets
+
+# - formula: "lepton_pt[0]"
+#   binning:
+#     default:
+#       range: [20., 250.]
+#       bins: 20
+#   x_scale: log
+#   label: "$p_{\\mathrm{T}}(\\ell_1)$"
+#   tag: l1_pt
+
+# - formula: "lepton_pt[1]"
+#   binning:
+#     default:
+#       range: [20., 250.]
+#       bins: 20
+#   x_scale: log
+#   label: "$p_{\\mathrm{T}}(\\ell_2)$"
+#   tag: l2_pt
