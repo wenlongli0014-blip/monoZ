@@ -172,9 +172,19 @@ variables:
 - formula: "jet_cat"
   binning:
     default:
-      range: [0., 2.]
+      range: [0, 3]
       bins: 3
   x_scale: linear
-  label: "nJet"
-  unit: nJet
-  tag: njet
+  label: "jet_cat"
+  unit: 
+  tag: jet_cat
+
+- formula: "jet_size"
+  binning:
+    default:
+      range: [0, 6]
+      bins: 6
+  x_scale: linear
+  label: "njets"
+  unit: 
+  tag: njets
