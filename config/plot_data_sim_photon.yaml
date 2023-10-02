@@ -163,12 +163,12 @@ variables:
   label: "Number of good vertices"
   unit:
   tag: numpvgood
-- formula: "jetsHT + lowptjets_HT"
-  binning:
-    default:
-      range: [10., 1400.]
-      bins: 20
-  x_scale: log
-  label: "$H_\\mathrm{T}$ (including low-pt jets)"
-  unit: GeV
-  tag: HT
+# - formula: "HT + lowptjets_HT"
+#   binning:
+#     default:
+#       range: [10., 1400.]
+#       bins: 20
+#   x_scale: log
+#   label: "$H_\\mathrm{T}$ (including low-pt jets)"
+#   unit: GeV
+#   tag: HT
