@@ -9,59 +9,33 @@ run_sampler:
   luminosity: Lumi/lumi.yaml
   range: [272007, 284044]
 
-# The choice of dilepton triggers is based on [1-3].
-# [1] https://indico.cern.ch/event/904978/#172-triggers-revisited
-# [2] https://indico.cern.ch/event/904979/#178-triggers-revisited-episode
-# [3] https://indico.cern.ch/event/944264/#176-trigger-studies
+# The choice of dilepton triggers is based on the list used by the VBS group
 trigger_filter:
   ee:
   - triggers: [
-      Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, DoublePhoton60,
-      Ele25_eta2p1_WPTight_Gsf, Ele27_WPTight_Gsf, Photon175
+      Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ,
+      Ele25_eta2p1_WPTight_Gsf,
+      Ele27_eta2p1_WPLoose_Gsf,
+      Ele27_WPTight_Gsf,
+      Ele35_WPLoose_Gsf
     ]
-  - triggers: [DoubleEle33_CaloIdL_GsfTrkIdVL]
-    run_range: [272007, 278822]
-  - triggers: [DoubleEle33_CaloIdL_MW]
-    run_range: [272007, 276437]
-  - triggers: [DoubleEle33_CaloIdL_MW]
-    run_range: [278873, 284044]
-  - triggers: [Ele27_eta2p1_WPLoose_Gsf]
-    run_range: [272007, 280385]
   mumu:
   - triggers: [
+      Mu17_TrkIsoVVL_Mu8_TrkIsoVVL, Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL,
       Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ, Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ,
-      IsoMu24, IsoTkMu24, Mu50
+      IsoMu20, IsoTkMu20, IsoMu20, IsoTkMu20, IsoMu24, IsoTkMu24
     ]
-  - triggers: [Mu17_TrkIsoVVL_Mu8_TrkIsoVVL, Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL]
-    run_range: [272007, 280385]
-  - triggers: [TkMu50]
-    run_range: [274954, 284044]
   emu:
   - triggers: [
+      Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL,
+      Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL,
+      Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL,
       Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL,
-      Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL
-    ]
-    run_range: [272007, 280385]
-  - triggers: [Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ]
-    run_range: [278273, 284044]
-  - triggers: [Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ]
-    run_range: [280919, 284044]
-  - triggers: [
-      Ele25_eta2p1_WPTight_Gsf, Ele27_WPTight_Gsf, Photon175
-    ]
-  - triggers: [Ele27_eta2p1_WPLoose_Gsf]
-    run_range: [272007, 280385]
-  - triggers: [
-      IsoMu24, IsoTkMu24, Mu50
-    ]
-  photon:
-  - triggers: [
-      Photon50_R9Id90_HE10_IsoM,
-      Photon75_R9Id90_HE10_IsoM,
-      Photon90_R9Id90_HE10_IsoM,
-      Photon120_R9Id90_HE10_IsoM,
-      Photon165_R9Id90_HE10_IsoM,
-      Photon175
+      IsoMu20, IsoTkMu20, IsoMu20, IsoTkMu20, IsoMu24, IsoTkMu24
+      Ele25_eta2p1_WPTight_Gsf,
+      Ele27_eta2p1_WPLoose_Gsf,
+      Ele27_WPTight_Gsf,
+      Ele35_WPLoose_Gsf
     ]
 
 apply_trigger_weight: false
@@ -77,8 +51,8 @@ trigger_efficiency:
 l1t_prefiring: true
 
 pileup_weight:
-  data_profile: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/zgamma/2023-06-15_2016noHIPM-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/zgamma/2023-06-15_2016noHIPM-NanoAODv9/pileup/pileup_profiles_sim.root
+  data_profile: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016noHIPM-NanoAODv9/pileup/pileup_profiles_data.root
+  sim_profiles: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016noHIPM-NanoAODv9/pileup/pileup_profiles_sim.root
 
 met_filters:
   # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETOptionalFiltersRun2?rev=158#2016_data_and_MC_UL
