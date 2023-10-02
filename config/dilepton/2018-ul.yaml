@@ -12,21 +12,19 @@ run_sampler:
   luminosity: Lumi/lumi.yaml
   range: [315252, 325273]
 
-# The choice of dilepton triggers is based on [1-3].
-# [1] https://indico.cern.ch/event/904978/#172-triggers-revisited
-# [2] https://indico.cern.ch/event/904979/#178-triggers-revisited-episode
-# [3] https://indico.cern.ch/event/944264/#176-trigger-studies
+# The choice of dilepton triggers is based on the list used by the VBS group
 trigger_filter:
   ee:
-  - triggers: [Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Ele23_Ele12_CaloIdL_TrackIdL_IsoVL, DiEle27_WPTightCaloOnly_L1DoubleEG, DoubleEle33_CaloIdL_MW, DoubleEle25_CaloIdL_MW, DoubleEle27_CaloIdL_MW, DoublePhoton70, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
+  - triggers: [
+      Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Ele23_Ele12_CaloIdL_TrackIdL_IsoVL, DiEle27_WPTightCaloOnly_L1DoubleEG, DoubleEle33_CaloIdL_MW, DoubleEle25_CaloIdL_MW, DoubleEle27_CaloIdL_MW, DoublePhoton70, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
     ]
   mumu:
   - triggers: [
-Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8, Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass8, IsoMu24, IsoMu27, IsoMu30, Mu50
+      Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8, Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass8, IsoMu24, IsoMu27, IsoMu30, Mu50
     ]
   emu:
   - triggers: [
-Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, IsoMu24, IsoMu27, IsoMu30, Mu50, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
+      Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, IsoMu24, IsoMu27, IsoMu30, Mu50, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
     ]
 
 apply_trigger_weight: false
