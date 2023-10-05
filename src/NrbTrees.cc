@@ -171,7 +171,7 @@ bool NrbTrees::ProcessEvent() {
   
   for (auto const &jet : jets) {
     if (std::abs(TVector2::Phi_mpi_pi(
-            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetsPtMiss_)
+            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
       return false;
     if (bTagger_.Loose(jet)) btagLoose_ = true;
     if (bTagger_.Medium(jet)) btagMedium_ = true;

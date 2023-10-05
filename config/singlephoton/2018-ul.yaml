@@ -80,7 +80,7 @@ selection_cuts:
   z_mass_window: 15.0
   min_pt_ll: 55.0
   min_dphi_ll_ptmiss: 1.0
-  min_dphi_jets_ptmiss: 0.5
+  min_dphi_jet_ptmiss: 0.5
   min_dphi_leptonsjets_ptmiss: 2.5
 
 jets:

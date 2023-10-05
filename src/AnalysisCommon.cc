@@ -27,7 +27,7 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
   zMassWindow_ = selectionCutsNode["z_mass_window"].as<double>();
   minPtLL_ = selectionCutsNode["min_pt_ll"].as<double>();
   minDphiLLPtMiss_ = selectionCutsNode["min_dphi_ll_ptmiss"].as<double>();
-  minDphiJetsPtMiss_ = selectionCutsNode["min_dphi_jets_ptmiss"].as<double>();
+  minDphiJetPtMiss_ = selectionCutsNode["min_dphi_jet_ptmiss"].as<double>();
   minDphiLeptonsJetsPtMiss_ =
     selectionCutsNode["min_dphi_leptonsjets_ptmiss"].as<double>();
 

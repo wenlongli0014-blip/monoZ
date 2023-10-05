@@ -148,7 +148,7 @@ bool DileptonTrees::ProcessEvent() {
       return false;
 
     if (std::abs(TVector2::Phi_mpi_pi(
-            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetsPtMiss_)
+            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
       return false;
   }
 

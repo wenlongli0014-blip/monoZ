@@ -171,7 +171,7 @@ bool ElectronTrees::ProcessEvent() {
     }
 
     if (std::abs(TVector2::Phi_mpi_pi(jet.p4.Phi() - p4Miss.Phi())) 
-          < minDphiJetsPtMiss_) {
+          < minDphiJetPtMiss_) {
       return false;
       }
   }

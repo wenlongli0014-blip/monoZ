@@ -273,7 +273,7 @@ bool NrbAnalysis::ProcessEvent() {
     bool passDeltaPhiJetMET = true;
 
     for (auto const &jet : jets)
-      if (std::abs(utils::deltaPhi(jet.p4, ptMissP4)) < minDphiJetsPtMiss_) {
+      if (std::abs(utils::deltaPhi(jet.p4, ptMissP4)) < minDphiJetPtMiss_) {
         passDeltaPhiJetMET = false;
         break;
       }

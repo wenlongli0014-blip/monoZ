@@ -276,7 +276,7 @@ bool PhotonTrees::ProcessEvent() {
     }
 
     if (std::abs(TVector2::Phi_mpi_pi(jet.p4.Phi() - p4Miss.Phi())) 
-          < minDphiJetsPtMiss_){
+          < minDphiJetPtMiss_){
       //if(sel) std::cout<<"fail DPhi(jet,MET)>0.5 selection"<<std::endl;
       return false;
       }
