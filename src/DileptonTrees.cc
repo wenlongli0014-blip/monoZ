@@ -211,7 +211,7 @@ DileptonTrees::CheckLeptons() const {
   } else
     return {};
 
-  if (l1->p4.Pt() < 25. || l2->p4.Pt() < 25.)
+  if (not (l1->p4.Pt() > 25. && l2->p4.Pt() > 20.))
     return {};
 
   return std::make_tuple(leptonCat, l1, l2);
