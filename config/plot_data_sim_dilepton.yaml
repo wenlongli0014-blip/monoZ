@@ -12,26 +12,55 @@
 #   blind:    Requests that data are kept blind. The plots will put data points
 #             at total expectation instead. Optional; defaults to false.
 selections:
-# - formula: "lepton_cat <= 1"
-#   weight: weight
-#   tag: baseline
-#   label: "baseline, $\\ell\\ell$"
+- formula: "ll_pt > 55 && (lepton_cat == 0 || lepton_cat == 1 )"
+  weight: weight
+  tag: baseline
+  label: "$ll, inclusive$"
 
-- formula: "lepton_cat <= 1 && jet_cat == 0"
+- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) &&jet_cat == 0"
   weight: weight
   tag: eq0jet
-  label: "$\\ell\\ell, 0j$"
+  label: "$ll, 0j$"
 
-- formula: "lepton_cat <= 1 && jet_cat == 1"
+- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 1"
   weight: weight
-  tag: eq1jet
-  label: "$\\ell\\ell, 1j$"
+  tag: geq1jet
+  label: "$ll, = 1j$"
 
-- formula: "lepton_cat <= 1 && jet_cat == 2"
+- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
   weight: weight
   tag: geq2jet
-  label: "$\\ell\\ell, \\geqslant 2j$"
+  label: "$ll$, $\\geq$ 2j"
 
+- formula: "ll_pt > 55 &&( lepton_cat == 1 ) &&jet_cat == 0"
+  weight: weight
+  tag: mumu_eq0jet
+  label: "$\\mu\\mu, 0j$"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 1"
+  weight: weight
+  tag: mumu_geq1jet
+  label: "$\\mu\\mu, = 1j$"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 2"
+  weight: weight
+  tag: mumu_geq2jet
+  label: "$\\mu\\mu$, $\\geq$ 2j"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 0 ) &&jet_cat == 0"
+  weight: weight
+  tag: ee_eq0jet
+  label: "$ee, 0j$"
+
+- formula: "( lepton_cat == 0 ) && jet_cat == 1"
+  weight: weight
+  tag: ee_geq1jet
+  label: "$ee, = 1j$"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 0 ) && jet_cat == 2"
+  weight: weight
+  tag: ee_geq2jet
+  label: "$ee$, $\\geq$ 2j"
 
 # Information about input files and decoration for different processes
 samples:
@@ -58,16 +87,33 @@ samples:
   #   files:  Name for input files. Processed in the same way as for data.
   #   color:  Color for this process.
   simulation:
-  - label: "DYJetsToLL"
-    # files: [DYJetsToLL-amcatnlo]
+  #- label: "$gg \\to (H) \\to ZZ$"
+  #  files: [GGToZZ_BSI]
+  #  color: crimson
+  # - label: "VBF"
+  #   files: [VBFToZZ_BSI_Phantom]
+  #   color: darkviolet
+  - label: "VVV"
+    files: [WWW, WWZ, WZZ, ZZZ]
+    color: mediumpurple
+  - label: "$q\\bar q \\to ZZ$"
+    files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
+    color: darkorange
+  - label: "$WW$, $WZ$"
+    files: [WWTo2L2Nu, WZTo2Q2L, WZTo3LNu]
+    color: lightseagreen
+  - label: "$t\\bar t$"
+    files: [TT]
+    color: greenyellow
+  - label: "Single $t$, $tW$"
+    files: [ST_s-channel, ST_t-channel, ST_tW]
+    color: mediumblue
+  - label: "Drell-Yan"
     files: [DYJetsToLL_PtZ]
     color: steelblue
-  - label: "$WW(\\to 2\\ell 2\\nu)$"
-    files: [WWTo2L2Nu]
-    color: lightseagreen
-  - label: "$WZ$"
-    files: [WZTo3LNu]
-    color: seagreen
+  - label: "Other"
+    files: [TTWJetsToLNu, TTZToLLNuNu_M-10, tZq_ll]
+    color: slateblue
 
 
 # Variables whose distributions are to be plotted. Each element of the list is a
@@ -93,55 +139,80 @@ samples:
 #             the variable-level scale. If both are given, the
 #             selection-specific scale takes precedence.
 variables:
+- formula: "ll_pt"
+  binning:
+    default:
+      range: [55., 450.]
+      bins: 15
+  x_scale: log
+  label: "$p_\\mathrm{T}^{\\ell\\ell}$"
+  unit: GeV
+  tag: pt_ll
+
 - formula: "ptmiss"
   binning:
     default:
       range: [10., 1000.]
       bins: 20
   x_scale: log
-  label: "$p_\\mathrm{T}^{miss}$"
+  label: "$p_\\mathrm{T}^\\mathrm{miss}$"
   unit: GeV
   tag: pt_miss
-- formula: "ptmiss_phi"
+
+- formula: "ll_mass"
+  binning:
+    default:
+      range: [50., 130.]
+      bins: 20
+  x_scale: log
+  label: "$\\mathrm{Z}_\\mathrm{miss}$"
+  unit: GeV
+  tag: z_mass
+
+- formula: "jet_cat"
+  binning:
+    default:
+      range: [0, 3]
+      bins: 3
+  x_scale: linear
+  label: "jet_cat"
+  unit: 
+  tag: jet_cat
+
+- formula: "jet_size"
+  binning:
+    default:
+      range: [0, 6]
+      bins: 6
+  x_scale: linear
+  label: "njets"
+  unit: 
+  tag: njets
+
+- formula: "lepton_pt[0]"
+  binning:
+    default:
+      range: [20., 250.]
+      bins: 20
+  x_scale: log
+  label: "$p_{\\mathrm{T}}(\\ell_1)$"
+  tag: l1_pt
+
+- formula: "lepton_pt[1]"
+  binning:
+    default:
+      range: [20., 250.]
+      bins: 20
+  x_scale: log
+  label: "$p_{\\mathrm{T}}(\\ell_2)$"
+  tag: l2_pt
+
+- formula: "dphi_visibles_ptmiss"
   binning:
     default:
       range: [-4., 4.]
       bins: 40
   x_scale: linear
-  label: "$p_\\mathrm{T}^{miss}$"
+  label: "$\\Delta\\phi(\\ell\\ell + \\mathrm{jets}, p_\\mathrm{T}^{miss})$"
   unit: 
-  tag: phi_miss
-- formula: "num_pv_good"
-  binning:
-    default:
-      range: [0., 75.]
-      bins: 20
-  x_scale: linear
-  label: "Number of good vertices"
-  unit:
-  tag: numpvgood
-- formula: "ll_pt"
-  binning:
-    default:
-      range: [20., 1400.]
-      bins: 20
-  x_scale: log
-  label: "$p_{\\mathrm{T}}(\\ell\\ell)$"
-  tag: ll_pt
-- formula: "lepton_pt[0]"
-  binning:
-    default:
-      range: [5., 250.]
-      bins: 20
-  x_scale: log
-  label: "$p_{\\mathrm{T}}(\\ell_1)$"
-  tag: l1_pt
-- formula: "lepton_pt[1]"
-  binning:
-    default:
-      range: [5., 250.]
-      bins: 20
-  x_scale: log
-  label: "$p_{\\mathrm{T}}(\\ell_1)$"
-  tag: l2_pt
-
+  tag: dphi_visibles_ptmiss
