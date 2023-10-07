@@ -93,6 +93,7 @@ class DileptonTrees final : public EventTrees {
   Int_t leptonCat_, jetCat_, numPVGood_;
   Float_t llPt_, llEta_, llPhi_, llMass_;
   Float_t missPt_, missPhi_;
+  Float_t dPhiVisiblesPtmiss_;
   Float_t mT_;
 
   TTreeReaderValue<int> srcNumPVGood_;

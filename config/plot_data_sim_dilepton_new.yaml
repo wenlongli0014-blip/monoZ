@@ -206,3 +206,13 @@ variables:
   x_scale: log
   label: "$p_{\\mathrm{T}}(\\ell_2)$"
   tag: l2_pt
+
+- formula: "dphi_visibles_ptmiss"
+  binning:
+    default:
+      range: [-4., 4.]
+      bins: 40
+  x_scale: linear
+  label: "$\\Delta\\phi(\\ell\\ell + \\mathrm{jets}, p_\\mathrm{T}^{miss})$"
+  unit: 
+  tag: dphi_visibles_ptmiss

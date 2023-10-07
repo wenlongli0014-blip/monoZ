@@ -189,9 +189,9 @@ bool NrbTrees::ProcessEvent() {
     if (bTagger_.Medium(jetl)) btagMediumLowPt_ = true;
     if (bTagger_.Tight(jetl)) btagTightLowPt_ = true;
   }
-  if (DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_})
-      < minDphiLeptonsJetsPtMiss_)
-    return false;
+  // if (DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_})
+  //     < minDphiLeptonsJetsPtMiss_)
+  //   return false;
 
   if (jets.size() == 0)
     jetCat_ = int(JetCat::kEq0J);

@@ -306,8 +306,8 @@ bool ZGammaTrees::ProcessEvent() {
       return false;
   }
 
-  if (DPhiPtMiss2(p4Miss, {&jetBuilder_, &photonBuilder_}) < minDphiLeptonsJetsPtMiss_)
-    return false;
+  // if (DPhiPtMiss2(p4Miss, {&jetBuilder_, &photonBuilder_}) < minDphiLeptonsJetsPtMiss_)
+  //   return false;
 
   if (jets.size() == 0)
     jetCat_ = int(JetCat::kEq0J);

@@ -44,6 +44,7 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
   AddBranch("ll_mass", &llMass_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
+  AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("mT", &mT_);
   AddBranch("num_pv_good", &numPVGood_);
 
@@ -152,9 +153,7 @@ bool DileptonTrees::ProcessEvent() {
       return false;
   }
 
-  if (DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_})
-      < minDphiLeptonsJetsPtMiss_)
-    return false;
+  dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_});
 
   if (jets.size() == 0)
     jetCat_ = int(JetCat::kEq0J);

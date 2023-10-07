@@ -281,9 +281,9 @@ bool NrbAnalysis::ProcessEvent() {
     //DPhi
     bool passDphi(currentEvt.deltaPhi_MET_Boson > minDphiLLPtMiss_);
 
-    bool passDeltaPhiLeptonsJetsMET(
-      DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_})
-        > minDphiLeptonsJetsPtMiss_);
+    // bool passDeltaPhiLeptonsJetsMET(
+    //   DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_})
+    //     > minDphiLeptonsJetsPtMiss_);
 
     //boson
     bool passMass(fabs(currentEvt.M_Boson-91) < zMassWindow_);
@@ -302,7 +302,7 @@ bool NrbAnalysis::ProcessEvent() {
     passThirdLeptonveto = passThirdLeptonveto && passIsoTrackVeto;
 
     TString tags = currentEvt.s_lepCat; 
-    if(currentEvt.M_Boson>50 && currentEvt.M_Boson<200 && passQt && passThirdLeptonveto && passDeltaPhiJetMET && passDphi && passDeltaPhiLeptonsJetsMET){
+    if(currentEvt.M_Boson>50 && currentEvt.M_Boson<200 && passQt && passThirdLeptonveto && passDeltaPhiJetMET && passDphi){
       if(passbveto)
       {
          if(ptMissP4.Pt()>50 ){
@@ -404,7 +404,7 @@ bool NrbAnalysis::ProcessEvent() {
       }
     }
 
-    if(currentEvt.M_Boson>50 && currentEvt.M_Boson<200 && passQt && passThirdLeptonveto  && passDeltaPhiJetMET && passDphi && passDeltaPhiLeptonsJetsMET)
+    if(currentEvt.M_Boson>50 && currentEvt.M_Boson<200 && passQt && passThirdLeptonveto  && passDeltaPhiJetMET && passDphi)
     {
       for(unsigned int Index=0;Index<optim_Cuts1_met_.size();Index++)
       {

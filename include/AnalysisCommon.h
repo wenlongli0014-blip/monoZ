@@ -70,8 +70,9 @@ class AnalysisCommon {
   double intLumi_;
 
   /// Selection cuts values
-  double zMassWindow_, minPtLL_, minDphiLLPtMiss_, minDphiJetPtMiss_,
-         minDphiLeptonsJetsPtMiss_;
+  // double zMassWindow_, minPtLL_, minDphiLLPtMiss_, minDphiJetPtMiss_,
+        //  minDphiLeptonsJetsPtMiss_;
+  double zMassWindow_, minPtLL_, minDphiLLPtMiss_, minDphiJetPtMiss_;
 
   /// Indicates whether this is simulation or real data
   bool isSim_;

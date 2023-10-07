@@ -68,6 +68,7 @@ class ElectronTrees final : public EventTrees {
   Float_t electronEtaSc_;
   // Float_t dijetM_;
   Float_t missPt_, missPhi_;
+  Float_t dPhiVisiblesPtmiss_;
   Float_t electronMetDeltaPhi_;
   Float_t electronMetMt_;
 

@@ -54,6 +54,7 @@ ElectronTrees::ElectronTrees(Options const &options, Dataset &dataset)
   // AddBranch("dijet_M", &dijetM_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
+  AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("electron_MET_deltaPhi", &electronMetDeltaPhi_);
   AddBranch("electron_MET_Mt", &electronMetMt_);
   AddBranch("num_pv_good", &numPVGood_);
@@ -176,10 +177,7 @@ bool ElectronTrees::ProcessEvent() {
       }
   }
 
-  if (DPhiPtMiss({&jetBuilder_, &electronBuilder_}) < minDphiLeptonsJetsPtMiss_) {
-    return false;
-
-  }
+  dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &electronBuilder_});
 
   // if (jets[0].p4.Eta() * jets[1].p4.Eta() >= 0)
   //   return false;

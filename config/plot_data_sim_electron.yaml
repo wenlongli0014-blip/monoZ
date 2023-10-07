@@ -151,3 +151,30 @@ variables:
   label: "Number of good vertices"
   unit:
   tag: numpvgood
+- formula: "electron_MET_deltaPhi"
+  binning:
+    default:
+      range: [-4., 4.]
+      bins: 40
+  x_scale: linear
+  label: "$\\Delta\\phi(e, E_\\mathrm{T}^{miss})$"
+  unit:
+  tag: dPhi_electron_MET
+- formula: "electron_MET_Mt"
+  binning:
+    default:
+      range: [10., 1000.]
+      bins: 20
+  x_scale: log
+  label: "$M_\\mathrm{T}(e, E_\\mathrm{T}^{miss})$"
+  unit:
+  tag: Mt_electron_MET
+- formula: "dphi_visibles_ptmiss"
+  binning:
+    default:
+      range: [-4., 4.]
+      bins: 40
+  x_scale: linear
+  label: "$\\Delta\\phi(e + \\mathrm{jets}, p_\\mathrm{T}^{miss})$"
+  unit: 
+  tag: dphi_visibles_ptmiss

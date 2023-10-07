@@ -80,6 +80,7 @@ class PhotonTrees final : public EventTrees {
   Int_t jetCat_, analysisCat_, numPVGood_;
   Float_t photonPt_, photonEta_, photonPhi_, photonMass_;
   Float_t missPt_, missPhi_;
+  Float_t dPhiVisiblesPtmiss_;
   Float_t mT_, triggerWeight_;
   Float_t jetsHT_, lowptjetsHT_;
   Float_t beamHaloWeight_;

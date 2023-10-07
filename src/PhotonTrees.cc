@@ -57,6 +57,7 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
   AddBranch("photon_mass", &photonMass_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
+  AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("mT", &mT_);
   AddBranch("HT", &jetsHT_);
   AddBranch("lowptjets_HT", &lowptjetsHT_);
@@ -281,11 +282,9 @@ bool PhotonTrees::ProcessEvent() {
       return false;
       }
   }
-  if (DPhiPtMiss({&jetBuilder_, &photonBuilder_}) < minDphiLeptonsJetsPtMiss_)
-  {
-    //if(sel) std::cout<<"fail DPhi(jet+photon,MET) selection"<<std::endl;
-    return false;
-  }
+
+  dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &photonBuilder_});
+
   if (jets.size() == 0)
     jetCat_ = int(JetCat::kEq0J);
   else if (jets.size() == 1)
