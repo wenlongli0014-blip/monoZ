@@ -174,24 +174,27 @@
 - name: WZTo3LNu
   is_sim: true
   cross_section: 5.257
-  # ew_correction: WZ
+  ew_correction: WZ
 
 - name: WZTo2Q2L
   is_sim: true
   cross_section: 6.565
-  # ew_correction: WZ
+  ew_correction: WZ
 
 - name: ZZTo2L2Nu
   is_sim: true
   cross_section: 0.9738
+  ew_correction: ZZ
 
 - name: ZZTo4L
   is_sim: true
   cross_section: 1.325  # XSDB, for RunIIAutumn18MiniAOD-102X
+  ew_correction: ZZ
 
 - name: ZZTo2Q2L
   is_sim: true
   cross_section: 3.676
+  ew_correction: ZZ
 
 - name: GluGluToContinToZZTo2e2nu
   is_sim: true
