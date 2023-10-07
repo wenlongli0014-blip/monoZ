@@ -96,6 +96,8 @@ class PhotonTrees final : public EventTrees {
   Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
           jetMass_[maxSize_];
 
+  Float_t dijetMass_;
+
   bool isQCD_;
   bool isWJetsToLNu_;
   std::vector<std::string> lines_;

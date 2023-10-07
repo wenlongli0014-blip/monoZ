@@ -66,7 +66,6 @@ class ElectronTrees final : public EventTrees {
   Float_t electronPt_, electronEta_, electronPhi_;
   Float_t electronM_;
   Float_t electronEtaSc_;
-  // Float_t dijetM_;
   Float_t missPt_, missPhi_;
   Float_t dPhiVisiblesPtmiss_;
   Float_t electronMetDeltaPhi_;
@@ -79,6 +78,8 @@ class ElectronTrees final : public EventTrees {
   static int const maxSize_ = 32;
   Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
           jetMass_[maxSize_];
+
+  Float_t dijetMass_;
 
   bool isQCD_;
 };

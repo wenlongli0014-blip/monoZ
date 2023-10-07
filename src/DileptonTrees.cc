@@ -47,6 +47,7 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
   AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("mT", &mT_);
   AddBranch("num_pv_good", &numPVGood_);
+  AddBranch("dijet_mass", &dijetMass_);
 
   if (storeMoreVariables_) {
     AddBranch("event", &event_);
@@ -162,6 +163,13 @@ bool DileptonTrees::ProcessEvent() {
   else
     jetCat_ = int(JetCat::kGEq2J);
 
+
+  if (jets.size() >= 2) {
+    auto dijet_p4 =  jets[0].p4 + jets[1].p4;
+    dijetMass_ = dijet_p4.M();
+  } else {
+    dijetMass_ = -1.;
+  }
 
   double const eT =
       std::sqrt(std::pow(p4LL.Pt(), 2) + std::pow(p4LL.M(), 2))

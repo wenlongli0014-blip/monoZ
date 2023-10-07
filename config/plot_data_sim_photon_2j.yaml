@@ -1,0 +1,60 @@
+# This is the configuration file to get plots from the PhotonTrees analysis.
+
+selections:
+- formula: "jet_size >= 2"
+  weight: weight
+  weight_data: trigger_weight * beam_halo_weight
+  tag: geq2jet
+  label: "$\\geq$ 2j"
+
+- formula: "jet_size >= 2 && ptmiss < 120."
+  weight: weight
+  weight_data: trigger_weight * beam_halo_weight
+  tag: ptmiss_l120_geq2jet
+  label: "$p_\\mathrm{T}^\\mathrm{miss} < 120.$, $\\geq$ 2j"
+
+- formula: "jet_size >= 2 && ptmiss >= 120."
+  weight: weight
+  weight_data: trigger_weight * beam_halo_weight
+  tag: ptmiss_geq120_geq2jet
+  label: "$p_\\mathrm{T}^\\mathrm{miss} \\geq 120.$, $\\geq$ 2j"
+
+samples:
+  path_prefix: ""
+  data:
+    files: [Data]
+  simulation:
+    - label: "$Z\\gamma \\to 2\\nu\\gamma$"
+      files: [ZNuNuGJets]
+      color: gold
+    # - label: "$Z(\\to 2\\nu) + $jets\n(HT > 100)"
+    #   files: [ZJetsToNuNu]
+    #   color: steelblue
+    - label: "$W\\gamma \\to \\ell\\nu\\gamma$"
+      files: [WGToLNuG]
+      color: blueviolet
+    - label: "$t\\gamma$, $tt\\gamma$"
+      files: [TTGJets, TGJets]
+      color: limegreen
+    - label: "$\\gamma + $jets"
+      files: [GJets]
+      color: darkorange
+    # - label: "WJetsToLNu\n(LO)"
+    #   files: [WJets]
+    - label: "WJetsToLNu\n(NLO)"
+      files: [WJetsToLNu_0J, WJetsToLNu_1J, WJetsToLNu_2J]
+      color: palevioletred
+    - label: "QCD (HT > 100)"
+      files: [QCD]
+      color: darkgray
+
+variables:
+- formula: "dijet_mass"
+  binning:
+    default:
+      range: [0., 2000.]
+      bins: 20
+  x_scale: linear
+  label: "$m_{jj}$"
+  unit: GeV
+  tag: dijet_mass

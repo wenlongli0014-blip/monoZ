@@ -1,0 +1,116 @@
+# This is an example configuration file for script plot_data_sim.py
+
+# Variants of events selection to apply. Each element of this list is a mapping
+# with the following keys:
+#   formula:  Formula defining which events are to be kept.
+#   weight:   Formula to compute event weight in simulation.
+#   weight_data:  Formula to compute event weight in data. Optional; by default
+#                 events in data are not weighted.
+#   tag:      String uniquely identifying this selection.
+#   label:    LaTeX label to describe this selection in plots. Optional;
+#             defaults to the value of tag.
+#   blind:    Requests that data are kept blind. The plots will put data points
+#             at total expectation instead. Optional; defaults to false.
+selections:
+
+- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
+  weight: weight
+  tag: geq2jet
+  label: "$ll$, $\\geq$ 2j"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 2"
+  weight: weight
+  tag: mumu_geq2jet
+  label: "$\\mu\\mu$, $\\geq$ 2j"
+
+- formula: "ll_pt > 55 &&( lepton_cat == 0 ) && jet_cat == 2"
+  weight: weight
+  tag: ee_geq2jet
+  label: "$ee$, $\\geq$ 2j"
+
+# Information about input files and decoration for different processes
+samples:
+  # Optional prefix that will be added to all file paths. Can also be provided
+  # as a command line option for the script (which takes precedence if both are
+  # given).
+  path_prefix: ""
+
+  # Optional name of tree to read from input files. Defaults to "Vars".
+  tree_name: Vars
+
+  # Optional label for the type of entries in the source tree. Used as a part of
+  # the label of the y axis. Defaults to "Events".
+  entries_label: Events
+
+  # Data sample. Each file name is prepended with the path prefix above, and
+  # several standard endings are tried.
+  data:
+    files: [Data]
+
+  # Samples for simulation. Each element of the list is a mapping with the
+  # following keys:
+  #   label:  LaTeX label for this process to be used in plots.
+  #   files:  Name for input files. Processed in the same way as for data.
+  #   color:  Color for this process.
+  simulation:
+  #- label: "$gg \\to (H) \\to ZZ$"
+  #  files: [GGToZZ_BSI]
+  #  color: crimson
+  # - label: "VBF"
+  #   files: [VBFToZZ_BSI_Phantom]
+  #   color: darkviolet
+  - label: "VVV"
+    files: [WWW, WWZ, WZZ, ZZZ]
+    color: mediumpurple
+  - label: "$q\\bar q \\to ZZ$"
+    files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
+    color: darkorange
+  - label: "$WW$, $WZ$"
+    files: [WWTo2L2Nu, WZTo2Q2L, WZTo3LNu]
+    color: lightseagreen
+  - label: "$t\\bar t$"
+    files: [TT]
+    color: greenyellow
+  - label: "Single $t$, $tW$"
+    files: [ST_s-channel, ST_t-channel, ST_tW]
+    color: mediumblue
+  - label: "Drell-Yan"
+    files: [DYJetsToLL_PtZ]
+    color: steelblue
+  - label: "Other"
+    files: [TTWJetsToLNu, TTZToLLNuNu_M-10, tZq_ll]
+    color: slateblue
+
+
+# Variables whose distributions are to be plotted. Each element of the list is a
+# mapping with the following keys:
+#   formula:  Formula to compute the variable.
+#   tag:      String uniquely identifying the variable.
+#   label:    LaTeX label for this variable to be used in plots. Optional;
+#             defaults to the value of tag.
+#   binning:  Binning for each selection, with the selection's tag used as the
+#             key of the mapping. It is also possible to provide a default
+#             bining using key "default" instead of the selection's tag.
+#   x_scale:  Indicates whether linear or log scale should be used for x axis
+#             for this variable. Allowed values are "linear" and "log".
+#             Optional; defaults to "linear".
+#   y_scale:  Scale for y axis for this variable. Optional; defaults to "log".
+#             Otherwise similar to x_scale.
+#   unit:     Unit for measurement for this variable. Optional.
+# The binning is described with the following keys:
+#   bins:     Number of bins or a sequence that defines binning.
+#   range:    Full range. Can only be given when value of bins is a number.
+#   scale:    Selection-specific scale for x axis. It has the same meaning as
+#             the variable-level scale described above. Optional; defaults to
+#             the variable-level scale. If both are given, the
+#             selection-specific scale takes precedence.
+variables:
+- formula: "dijet_mass"
+  binning:
+    default:
+      range: [0., 2000.]
+      bins: 20
+  x_scale: linear
+  label: "$m_{jj}$"
+  unit: GeV
+  tag: dijet_mass

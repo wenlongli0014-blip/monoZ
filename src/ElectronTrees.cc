@@ -51,13 +51,13 @@ ElectronTrees::ElectronTrees(Options const &options, Dataset &dataset)
   AddBranch("electron_phi", &electronPhi_);
   AddBranch("electron_M", &electronM_);
   AddBranch("electron_eta_sc", &electronEtaSc_);
-  // AddBranch("dijet_M", &dijetM_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
   AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("electron_MET_deltaPhi", &electronMetDeltaPhi_);
   AddBranch("electron_MET_Mt", &electronMetMt_);
   AddBranch("num_pv_good", &numPVGood_);
+  AddBranch("dijet_mass", &dijetMass_);
 
 
   if (storeMoreVariables_) {
@@ -179,16 +179,12 @@ bool ElectronTrees::ProcessEvent() {
 
   dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &electronBuilder_});
 
-  // if (jets[0].p4.Eta() * jets[1].p4.Eta() >= 0)
-  //   return false;
-
-  // auto dijetP4 = jets[0].p4 + jets[1].p4;
-  // dijetM_ = dijetP4.M();
-  // if (dijetM_ <= 400.0)
-  //   return false;
-
-  // if (std::abs(jets[0].p4.Eta() - jets[1].p4.Eta()) <= 2.4)
-  //   return false;
+  if (jets.size() >= 2) {
+    auto dijet_p4 =  jets[0].p4 + jets[1].p4;
+    dijetMass_ = dijet_p4.M();
+  } else {
+    dijetMass_ = -1.;
+  }
 
   electronPt_ = electron->p4.Pt();
   electronEta_ = electron->p4.Eta();

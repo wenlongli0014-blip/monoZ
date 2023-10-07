@@ -62,6 +62,7 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
   AddBranch("HT", &jetsHT_);
   AddBranch("lowptjets_HT", &lowptjetsHT_);
   AddBranch("num_pv_good", &numPVGood_);
+  AddBranch("dijet_mass", &dijetMass_);
   AddBranch("trigger_weight", &triggerWeight_);
   if (not isSim_) {
     AddBranch("beam_halo_weight", &beamHaloWeight_);
@@ -292,17 +293,13 @@ bool PhotonTrees::ProcessEvent() {
   else 
     jetCat_ = int(JetCat::kGEq2J);
 
-  /*
-  if (jets.size() == 2) {
-    if (jets[0].p4.Eta() * jets[1].p4.Eta() > 0)
-      return false;
-    auto dijetP4 = jets[0].p4 + jets[1].p4;
-    if (dijetP4.M() < 400.)
-      return false;
-    if (dijetP4.Eta() < 2.4)
-      return false;
+  if (jets.size() >= 2) {
+    auto dijet_p4 =  jets[0].p4 + jets[1].p4;
+    dijetMass_ = dijet_p4.M();
+  } else {
+    dijetMass_ = -1.;
   }
-  */
+
   analysisCat_ = jetCat_;
 
   // Only consider photons in the barrel except for Njet >= 2

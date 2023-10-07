@@ -106,6 +106,8 @@ class DileptonTrees final : public EventTrees {
   Int_t jetSize_;
   Float_t jetPt_[maxSize_], jetEta_[maxSize_], jetPhi_[maxSize_],
           jetMass_[maxSize_];
+
+  Float_t dijetMass_;
 };
 
 #endif  // HZZ2L2NU_INCLUDE_DILEPTONTREES_H_
