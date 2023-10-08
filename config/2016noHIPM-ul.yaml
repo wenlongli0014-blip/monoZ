@@ -149,10 +149,10 @@ b_tagger:
 
 b_tag_weight:
   scale_factors: BTag/wp_deepJet_106XUL16postVFP_v3_preULformat_csvCommaWorkaround.csv
-  efficiency: BTag/BTagEff_2016postVFP.root
-  bottom_hist_name: bottom_eff
-  charm_hist_name: charm_eff
-  light_hist_name: light_eff
+  efficiency: BTag/2016.root
+  bottom_hist_name: 'B Jet'
+  charm_hist_name: 'C Jet'
+  light_hist_name: 'Light Jet'
 
 apply_lepton_weight: true
 
