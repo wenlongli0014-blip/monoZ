@@ -96,6 +96,9 @@ samples:
   - label: "VVV"
     files: [WWW, WWZ, WZZ, ZZZ]
     color: mediumpurple
+  - label: "$gg \\to ZZ \\to 2\\ell 2\\nu$"
+    files: [GGToZZ]
+    color: crimson
   - label: "$q\\bar q \\to ZZ$"
     files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
     color: darkorange

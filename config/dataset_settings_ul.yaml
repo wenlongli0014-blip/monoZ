@@ -50,19 +50,21 @@
 
 - name: GluGluToContinToZZTo2e2nu
   is_sim: true
-  cross_section: 17.73  #XSDB
+  cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
+  k_factor: ggF
 
 - name: GluGluToContinToZZTo2mu2nu
   is_sim: true
-  cross_section: 17.73  #XSDB
+  cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
+  k_factor: ggF
 
-- name: GluGluToWWToENEN
-  is_sim: true
-  cross_section: 36.8  #XSDB
+# - name: GluGluToWWToENEN
+#   is_sim: true
+#   cross_section: 36.8  #XSDB
 
-- name: GluGluToWWToMNMN
-  is_sim: true
-  cross_section: 36.77  #XSDB
+# - name: GluGluToWWToMNMN
+#   is_sim: true
+#   cross_section: 36.77  #XSDB
 
 - name: GJets_HT-40To100
   is_sim: true
