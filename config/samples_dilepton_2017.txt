@@ -24,8 +24,8 @@ DYJetsToLL_PtZ-650ToInf.yaml
 
 GluGluToContinToZZTo2e2nu.yaml
 GluGluToContinToZZTo2mu2nu.yaml
-# GluGluToWWToENEN.yaml
-# GluGluToWWToMNMN.yaml
+GluGluToWWToENEN.yaml
+GluGluToWWToMNMN.yaml
 
 TTTo2L2Nu.yaml
 

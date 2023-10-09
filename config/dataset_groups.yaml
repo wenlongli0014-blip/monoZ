@@ -36,6 +36,8 @@ GGToZZ: [GluGluToContinToZZTo2e2nu, GluGluToContinToZZTo2mu2nu]
 GGToHToZZ: [GGToHToZZTo2E2Nu, GGToHToZZTo2Mu2Nu]
 GGToZZ_BSI: [GGToZZTo2E2Nu_BSI, GGToZZTo2Mu2Nu_BSI]
 
+GGToWW: [GluGluToWWToENEN, GluGluToWWToMNMN]
+
 VBFToZZ: [VBFToContinToZZTo2l2nu]
 VBFToZZ_Phantom: [
   VBFToContinToZZTo2E2Nue_Phantom, VBFToContinToZZTo2E2Num_Phantom,

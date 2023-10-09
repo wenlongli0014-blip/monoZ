@@ -47,7 +47,6 @@
   is_sim: true
   cross_section: 0.002997
 
-
 - name: GluGluToContinToZZTo2e2nu
   is_sim: true
   cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
@@ -58,13 +57,13 @@
   cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
   k_factor: ggF
 
-# - name: GluGluToWWToENEN
-#   is_sim: true
-#   cross_section: 36.8  #XSDB
+- name: GluGluToWWToENEN
+  is_sim: true
+  cross_section: 0.0368  # XSDB value scaled by 0.001
 
-# - name: GluGluToWWToMNMN
-#   is_sim: true
-#   cross_section: 36.77  #XSDB
+- name: GluGluToWWToMNMN
+  is_sim: true
+  cross_section: 0.03677  # XSDB value scaled by 0.001
 
 - name: GJets_HT-40To100
   is_sim: true
@@ -197,22 +196,6 @@
   is_sim: true
   cross_section: 3.676
   ew_correction: ZZ
-
-- name: GluGluToContinToZZTo2e2nu
-  is_sim: true
-  cross_section: 17.73
-
-- name: GluGluToContinToZZTo2mu2nu
-  is_sim: true
-  cross_section: 17.73
-
-- name: GluGluToWWToENEN
-  is_sim: true
-  cross_section: 36.8
-
-- name: GluGluToWWToMNMN
-  is_sim: true
-  cross_section: 36.77
 
 - name: ZJetsToNuNu_HT-100To200
   is_sim: true

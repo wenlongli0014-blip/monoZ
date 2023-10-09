@@ -99,6 +99,9 @@ samples:
   - label: "$gg \\to ZZ \\to 2\\ell 2\\nu$"
     files: [GGToZZ]
     color: crimson
+  - label: "$gg \\to WW \\to 2\\ell 2\\nu$"
+    files: [GGToWW]
+    color: pink
   - label: "$q\\bar q \\to ZZ$"
     files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
     color: darkorange
