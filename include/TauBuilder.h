@@ -38,6 +38,7 @@ class TauBuilder : public CollectionBuilder<Tau> {
 
   mutable TTreeReaderArray<float> srcPt_, srcEta_, srcPhi_;
   mutable TTreeReaderArray<int> srcDecayMode_;
+  mutable TTreeReaderArray<UChar_t> srcIdDeepTau2017v2p1VSe_, srcIdDeepTau2017v2p1VSmu_, srcIdDeepTau2017v2p1VSjet_;
 
 };
 

@@ -9,11 +9,14 @@
 
 TauBuilder::TauBuilder(Dataset &dataset, Options const &)
     : CollectionBuilder{dataset.Reader()},
-      minLepPt_{18.},
+      minLepPt_{20.},
       srcPt_{dataset.Reader(), "Tau_pt"},
       srcEta_{dataset.Reader(), "Tau_eta"},
       srcPhi_{dataset.Reader(), "Tau_phi"},
-      srcDecayMode_{dataset.Reader(), "Tau_decayMode"}
+      srcDecayMode_{dataset.Reader(), "Tau_decayMode"},
+      srcIdDeepTau2017v2p1VSe_{dataset.Reader(), "Tau_idDeepTau2017v2p1VSe"},
+      srcIdDeepTau2017v2p1VSmu_{dataset.Reader(), "Tau_idDeepTau2017v2p1VSmu"},
+      srcIdDeepTau2017v2p1VSjet_{dataset.Reader(), "Tau_idDeepTau2017v2p1VSjet"}
 {}
 
 
@@ -28,10 +31,15 @@ void TauBuilder::Build() const {
 
   for (unsigned i = 0; i < srcPt_.GetSize(); ++i) {
     if (srcDecayMode_[i] == 5 or srcDecayMode_[i] == 6) continue;  // decay modes 5 and 6 are rejected
-    float pt = srcPt_[i];
-    if (pt < minLepPt_ ) continue; // lower pt treshold for taus
 
-    if (fabs(srcEta_[i]) > 2.3) continue; 
+    if (not (srcIdDeepTau2017v2p1VSe_[i] >= 2)) continue;  // VVLoose
+    if (not (srcIdDeepTau2017v2p1VSmu_[i] >= 1)) continue;  // VVVLoose
+    if (not (srcIdDeepTau2017v2p1VSjet_[i] >= 16)) continue;  // Medium
+
+    float pt = srcPt_[i];
+    if (not (pt > minLepPt_ )) continue; // lower pt treshold for taus
+
+    if (not (std::abs(srcEta_[i]) < 2.3)) continue;
 
     Tau tau;
     tau.p4.SetPtEtaPhiM(srcPt_[i], srcEta_[i], srcPhi_[i], 0.);
