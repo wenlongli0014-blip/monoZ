@@ -365,10 +365,6 @@
   is_sim: true
   cross_section: 113.4  #XSDB
 
-- name: VBS_ZZTo2L2Nu
-  is_sim: true
-  cross_section: 0.00308  #XSDB
-
 - name: WWTo1L1Nu2Q
   is_sim: true
   cross_section: 51.65  
