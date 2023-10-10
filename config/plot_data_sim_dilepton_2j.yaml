@@ -28,6 +28,11 @@ selections:
   tag: ee_geq2jet
   label: "$ee$, $\\geq$ 2j"
 
+- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2 && ptmiss > 120."
+  weight: weight
+  tag: geq2jet_ptmiss_geq120
+  label: "$ll$, $\\geq$ 2j, $p_\\mathrm{T}^\\mathrm{miss} \\geq 120$"
+
 # Information about input files and decoration for different processes
 samples:
   # Optional prefix that will be added to all file paths. Can also be provided
@@ -59,9 +64,18 @@ samples:
   # - label: "VBF"
   #   files: [VBFToZZ_BSI_Phantom]
   #   color: darkviolet
+  # - label: "VBS_ZZTo2L2Nu"
+  #   files: [VBS_ZZTo2L2Nu]
+  #   color: darkviolet
   - label: "VVV"
     files: [WWW, WWZ, WZZ, ZZZ]
     color: mediumpurple
+  - label: "$gg \\to ZZ \\to 2\\ell 2\\nu$"
+    files: [GGToZZ]
+    color: crimson
+  # - label: "$gg \\to WW \\to 2\\ell 2\\nu$"
+  #   files: [GGToWW]
+  #   color: pink
   - label: "$q\\bar q \\to ZZ$"
     files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
     color: darkorange
@@ -114,3 +128,12 @@ variables:
   label: "$m_{jj}$"
   unit: GeV
   tag: dijet_mass
+- formula: "abs(jet_eta[0] - jet_eta[1])"
+  binning:
+    default:
+      range: [0., 10.]
+      bins: 20
+  x_scale: linear
+  label: "$\\Delta\\eta_{jj}$"
+  unit: 
+  tag: dijet_delta_eta
