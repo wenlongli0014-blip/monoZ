@@ -182,20 +182,13 @@ jet_geometric_veto:
   eta_range: [-3.0, -1.4]
   phi_range: [-1.6, -0.8]
 
-#b_tag_weight:
-#  #scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
-#  scale_factors: BTag/DeepJet_102XSF_WP_V1.csv
-#  efficiency: BTag/btagging_efficiencies_deep2018.root
-#  bottom_hist_name: b
-#  charm_hist_name: c
-#  light_hist_name: udsg
-
 b_tag_weight:
   scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
   efficiency: BTag/2018.root
   bottom_hist_name: 'B Jet'
   charm_hist_name: 'C Jet'
   light_hist_name: 'Light Jet'
+
 apply_lepton_weight: true
 
 lepton_efficiency:
