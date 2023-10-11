@@ -13,22 +13,22 @@
 #             at total expectation instead. Optional; defaults to false.
 selections:
 
-- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
+- formula: "(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
   weight: weight
   tag: geq2jet
   label: "$ll$, $\\geq$ 2j"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 2"
+- formula: "( lepton_cat == 1 ) && jet_cat == 2"
   weight: weight
   tag: mumu_geq2jet
   label: "$\\mu\\mu$, $\\geq$ 2j"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 0 ) && jet_cat == 2"
+- formula: "( lepton_cat == 0 ) && jet_cat == 2"
   weight: weight
   tag: ee_geq2jet
   label: "$ee$, $\\geq$ 2j"
 
-- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2 && ptmiss > 120."
+- formula: "(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2 && ptmiss > 120."
   weight: weight
   tag: geq2jet_ptmiss_geq120
   label: "$ll$, $\\geq$ 2j, $p_\\mathrm{T}^\\mathrm{miss} \\geq 120$"
@@ -119,6 +119,42 @@ samples:
 #             the variable-level scale. If both are given, the
 #             selection-specific scale takes precedence.
 variables:
+- formula: "jet_pt[0]"
+  binning:
+    default:
+      range: [30., 1400.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}(j_1)$"
+  unit:
+  tag: pt_leading_jet
+- formula: "jet_eta[0]"
+  binning:
+    default:
+      range: [-5., 5.]
+      bins: 50
+  x_scale: linear
+  label: "$\\eta(j_1)$"
+  unit: 
+  tag: eta_leading_jet
+- formula: "jet_pt[1]"
+  binning:
+    default:
+      range: [30., 1400.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}(j_2)$"
+  unit:
+  tag: pt_subleading_jet
+- formula: "jet_eta[1]"
+  binning:
+    default:
+      range: [-5., 5.]
+      bins: 50
+  x_scale: linear
+  label: "$\\eta(j_2)$"
+  unit: 
+  tag: eta_subleading_jet
 - formula: "dijet_mass"
   binning:
     default:

@@ -12,42 +12,42 @@
 #   blind:    Requests that data are kept blind. The plots will put data points
 #             at total expectation instead. Optional; defaults to false.
 selections:
-- formula: "ll_pt > 55 && (lepton_cat == 0 || lepton_cat == 1 )"
+- formula: " (lepton_cat == 0 || lepton_cat == 1 )"
   weight: weight
   tag: baseline
   label: "$ll, inclusive$"
 
-- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) &&jet_cat == 0"
+- formula: "(lepton_cat == 0 || lepton_cat == 1 ) &&jet_cat == 0"
   weight: weight
   tag: eq0jet
   label: "$ll, 0j$"
 
-- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 1"
+- formula: "(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 1"
   weight: weight
   tag: geq1jet
   label: "$ll, = 1j$"
 
-- formula: "ll_pt > 55 &&(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
+- formula: "(lepton_cat == 0 || lepton_cat == 1 ) && jet_cat == 2"
   weight: weight
   tag: geq2jet
   label: "$ll$, $\\geq$ 2j"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 1 ) &&jet_cat == 0"
+- formula: "( lepton_cat == 1 ) &&jet_cat == 0"
   weight: weight
   tag: mumu_eq0jet
   label: "$\\mu\\mu, 0j$"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 1"
+- formula: "( lepton_cat == 1 ) && jet_cat == 1"
   weight: weight
   tag: mumu_geq1jet
   label: "$\\mu\\mu, = 1j$"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 1 ) && jet_cat == 2"
+- formula: "( lepton_cat == 1 ) && jet_cat == 2"
   weight: weight
   tag: mumu_geq2jet
   label: "$\\mu\\mu$, $\\geq$ 2j"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 0 ) &&jet_cat == 0"
+- formula: "( lepton_cat == 0 ) &&jet_cat == 0"
   weight: weight
   tag: ee_eq0jet
   label: "$ee, 0j$"
@@ -57,10 +57,15 @@ selections:
   tag: ee_geq1jet
   label: "$ee, = 1j$"
 
-- formula: "ll_pt > 55 &&( lepton_cat == 0 ) && jet_cat == 2"
+- formula: "( lepton_cat == 0 ) && jet_cat == 2"
   weight: weight
   tag: ee_geq2jet
   label: "$ee$, $\\geq$ 2j"
+
+- formula: "( lepton_cat == 2 )"
+  weight: weight
+  tag: emu
+  label: "$e\\mu, inclusive$"
 
 # Information about input files and decoration for different processes
 samples:
@@ -151,7 +156,7 @@ variables:
 - formula: "ll_pt"
   binning:
     default:
-      range: [55., 450.]
+      range: [60., 450.]
       bins: 15
   x_scale: log
   label: "$p_\\mathrm{T}^{\\ell\\ell}$"
@@ -171,10 +176,10 @@ variables:
 - formula: "ll_mass"
   binning:
     default:
-      range: [50., 130.]
+      range: [70., 110.]
       bins: 20
   x_scale: log
-  label: "$\\mathrm{Z}_\\mathrm{miss}$"
+  label: "$m_{\\ell\\ell}$"
   unit: GeV
   tag: z_mass
 
