@@ -35,5 +35,8 @@ ST_tW_antitop.yaml
 ST_s-channel.yaml
 
 WWTo2L2Nu.yaml
+WZTo2Q2L.yaml
 WZTo3LNu.yaml
 ZZTo2L2Nu.yaml
+ZZTo2Q2L.yaml
+ZZTo4L.yaml

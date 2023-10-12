@@ -44,11 +44,11 @@ samples:
     - label: "$WW(\\to 2\\ell 2\\nu)$"
       files: [WWTo2L2Nu]
       color: lightseagreen
-    - label: "$WZ(\\to 3\\ell \\nu)$"
-      files: [WZTo3LNu]
+    - label: "$WZ$"
+      files: [WZTo3LNu, WZTo2Q2L]
       color: mediumseagreen
-    - label: "$ZZ(\\to 2\\ell 2\\nu)$"
-      files: [ZZTo2L2Nu]
+    - label: "$ZZ$"
+      files: [ZZTo2L2Nu, ZZTo2Q2L, ZZTo4L]
       color: seagreen
     - label: "Drell-Yan"
       files: [DYJetsToLL_PtZ]
@@ -68,7 +68,7 @@ variables:
 - formula: "probe_pt"
   binning:
     default:
-      range: [55., 250.]
+      range: [60., 450.]
       bins: 20
   x_scale: log
   label: "$p_\\mathrm{T}^{\\mathrm{probe}}$"
