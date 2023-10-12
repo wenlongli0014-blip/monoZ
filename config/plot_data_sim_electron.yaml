@@ -64,6 +64,9 @@ samples:
   data:
     files: [Data]
   simulation:
+    - label: "VV"
+      files: [WWTo1L1Nu2Q, WWTo2L2Nu, WZTo1L1Nu2Q, WZTo1L3Nu, WZTo2Q2L, WZTo3LNu, ZZTo2L2Nu, ZZTo2Q2L, ZZTo4L]
+      color: lightseagreen
     # - label: "WJetsToLNu\n(LO)"
       # files: [WJets]
     - label: "WJetsToLNu\n(NLO)"
@@ -91,7 +94,7 @@ variables:
 - formula: "electron_pt"
   binning:
     default:
-      range: [20., 1400.]
+      range: [60., 1400.]
       bins: 20
   x_scale: log
   label: "$p_\\mathrm{T}^e$"
