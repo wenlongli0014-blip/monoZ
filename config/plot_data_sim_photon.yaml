@@ -106,7 +106,7 @@ variables:
 - formula: "photon_pt"
   binning:
     default:
-      range: [20., 1400.]
+      range: [60., 1400.]
       bins: 20
   x_scale: log
   label: "$p_\\mathrm{T}^{\\gamma}$"
@@ -115,7 +115,7 @@ variables:
 - formula: "photon_pt"
   binning:
     default:
-      range: [20., 720.]
+      range: [60., 720.]
       bins: 20
   x_scale: linear
   label: "$p_\\mathrm{T}^{\\gamma}$"

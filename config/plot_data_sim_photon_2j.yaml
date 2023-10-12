@@ -49,6 +49,42 @@ samples:
       color: darkgray
 
 variables:
+- formula: "jet_pt[0]"
+  binning:
+    default:
+      range: [30., 1400.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}(j_1)$"
+  unit:
+  tag: pt_leading_jet
+- formula: "jet_eta[0]"
+  binning:
+    default:
+      range: [-5., 5.]
+      bins: 50
+  x_scale: linear
+  label: "$\\eta(j_1)$"
+  unit: 
+  tag: eta_leading_jet
+- formula: "jet_pt[1]"
+  binning:
+    default:
+      range: [30., 1400.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}(j_2)$"
+  unit:
+  tag: pt_subleading_jet
+- formula: "jet_eta[1]"
+  binning:
+    default:
+      range: [-5., 5.]
+      bins: 50
+  x_scale: linear
+  label: "$\\eta(j_2)$"
+  unit: 
+  tag: eta_subleading_jet
 - formula: "dijet_mass"
   binning:
     default:
@@ -58,3 +94,12 @@ variables:
   label: "$m_{jj}$"
   unit: GeV
   tag: dijet_mass
+- formula: "abs(jet_eta[0] - jet_eta[1])"
+  binning:
+    default:
+      range: [0., 10.]
+      bins: 20
+  x_scale: linear
+  label: "$\\Delta\\eta_{jj}$"
+  unit: 
+  tag: dijet_delta_eta
