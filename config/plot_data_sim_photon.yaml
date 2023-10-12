@@ -97,6 +97,8 @@ samples:
     #   files: [WJets]
     - label: "WJetsToLNu\n(NLO)"
       files: [WJetsToLNu_0J, WJetsToLNu_1J, WJetsToLNu_2J]
+    # - label: "WJetsToLNu\n(Data-driven)"
+    #   files: [WJets_Data-driven_Data, WJets_Data-driven_GJets, WJets_Data-driven_QCD, WJets_Data-driven_DYJetsToLL_PtZ,  WJets_Data-driven_ST_s-channel,  WJets_Data-driven_ST_t-channel,  WJets_Data-driven_ST_tW]
       color: palevioletred
     - label: "QCD (HT > 100)"
       files: [QCD]
