@@ -16,30 +16,30 @@ selections:
   tag: mumu
   label: "$\\mu\\mu$"
 
-- formula:  "photon_pt >= 55."
+- formula:  "photon_pt >= 60."
   weight: weight
-  tag: photon_pt_geq55
-  label: "photon_pt >= 55."
+  tag: photon_pt_geq60
+  label: "photon_pt >= 60."
 
-- formula: "lepton_cat == 0 && photon_pt >= 55."
+- formula: "lepton_cat == 0 && photon_pt >= 60."
   weight: weight
-  tag: ee__photon_pt_geq55
-  label: "$ee$ (photon_pt >= 55.)"
+  tag: ee__photon_pt_geq60
+  label: "$ee$ (photon_pt >= 60.)"
 
-- formula: "lepton_cat == 1 && photon_pt >= 55."
+- formula: "lepton_cat == 1 && photon_pt >= 60."
   weight: weight
-  tag: mumu__photon_pt_geq55
-  label: "$\\mu\\mu$ (photon_pt >= 55.)"
+  tag: mumu__photon_pt_geq60
+  label: "$\\mu\\mu$ (photon_pt >= 60.)"
 
-- formula:  "abs(photon_eta) <= 1.4442 && photon_pt >= 55."
+- formula:  "abs(photon_eta) <= 1.4442 && photon_pt >= 60."
   weight: weight
-  tag: barrel_photon_pt_geq55
-  label: "barrel, photon_pt >= 55."
+  tag: barrel_photon_pt_geq60
+  label: "barrel, photon_pt >= 60."
 
-- formula:  "abs(photon_eta) >= 1.5660 && photon_pt >= 55."
+- formula:  "abs(photon_eta) >= 1.5660 && photon_pt >= 60."
   weight: weight
-  tag: endcap_photon_pt_geq55
-  label: "endcap, photon_pt >= 55."
+  tag: endcap_photon_pt_geq60
+  label: "endcap, photon_pt >= 60."
 
 samples:
   path_prefix: ""
