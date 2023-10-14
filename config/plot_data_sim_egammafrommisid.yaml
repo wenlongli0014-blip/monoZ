@@ -36,7 +36,8 @@ samples:
     #   files: [GJets]
     #   color: darkorange
     - label: "$t\\bar t$"
-      files: [TTJets]
+      # files: [TTJets]
+      files: [TT]
       color: greenyellow
     - label: "Single-top"
       files: [ST_t-channel, ST_tW, ST_s-channel]

@@ -320,6 +320,10 @@
   ## Cross section computed as the inclusive NNLO cross section of 831.76 pb
   cross_section: 88.288
 
+- name: TTToSemiLeptonic
+  is_sim: true
+  cross_section: 365.34  # XSDB NNLO
+
 - name: ST_t-channel_top
   is_sim: true
   cross_section: 119.7

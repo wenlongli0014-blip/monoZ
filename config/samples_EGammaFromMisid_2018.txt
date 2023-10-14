@@ -26,7 +26,8 @@ GJets_HT-200To400.yaml
 GJets_HT-400To600.yaml
 GJets_HT-600ToInf.yaml
 
-TTJets.yaml
+TTTo2L2Nu.yaml
+TTToSemiLeptonic.yaml
 
 ST_t-channel_top.yaml
 ST_t-channel_antitop.yaml
