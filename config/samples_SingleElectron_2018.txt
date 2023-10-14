@@ -39,7 +39,8 @@ QCD_HT1000to1500.yaml
 QCD_HT1500to2000.yaml
 QCD_HT2000toInf.yaml
 
-TTJets.yaml
+TTTo2L2Nu.yaml
+TTToSemiLeptonic.yaml
 
 ST_t-channel_top.yaml
 ST_t-channel_antitop.yaml

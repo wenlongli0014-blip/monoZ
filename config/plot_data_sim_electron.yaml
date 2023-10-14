@@ -74,7 +74,8 @@ samples:
       files: [WJetsToLNu_0J, WJetsToLNu_1J, WJetsToLNu_2J]
       color: palevioletred
     - label: "$t\\bar t$"
-      files: [TTJets]
+      # files: [TTJets]
+      files: [TTTo2L2Nu, TTToSemiLeptonic]
       color: greenyellow
     - label: "Single-top"
       files: [ST_t-channel, ST_tW, ST_s-channel]
