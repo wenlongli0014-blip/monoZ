@@ -1,7 +1,7 @@
 # Groups of datasets to be merged in harvesting. The source datasets do not have
 # to be present.
 
-TT: [TT, TTTo2L2Nu]  # To have consistent naming across different years
+# TT: [TT, TTTo2L2Nu]  # To have consistent naming across different years
 ST_tW: [ST_tW_top, ST_tW_antitop]
 ST_t-channel: [ST_t-channel_top, ST_t-channel_antitop]
 WJets: [

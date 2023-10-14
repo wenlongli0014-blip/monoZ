@@ -37,7 +37,7 @@ samples:
     #   color: darkorange
     - label: "$t\\bar t$"
       # files: [TTJets]
-      files: [TT]
+      files: [TTTo2L2Nu]
       color: greenyellow
     - label: "Single-top"
       files: [ST_t-channel, ST_tW, ST_s-channel]

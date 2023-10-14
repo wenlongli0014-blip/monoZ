@@ -117,7 +117,7 @@ samples:
     files: [WWTo2L2Nu, WZTo2Q2L, WZTo3LNu]
     color: lightseagreen
   - label: "$t\\bar t$"
-    files: [TT]
+    files: [TTTo2L2Nu]
     color: greenyellow
   - label: "Single $t$, $tW$"
     files: [ST_s-channel, ST_t-channel, ST_tW]
