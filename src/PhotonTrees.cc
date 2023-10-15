@@ -67,10 +67,6 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
   if (not isSim_) {
     AddBranch("beam_halo_weight", &beamHaloWeight_);
   }
-  AddBranch("photon_reweighting", &photonReweighting_);
-  AddBranch("photon_nvtx_reweighting", &photonNvtxReweighting_);
-  AddBranch("photon_eta_reweighting", &photonEtaReweighting_);
-  AddBranch("mean_weight", &meanWeight_);
 
   if (storeMoreVariables_) {
     AddBranch("run", &run_);
@@ -128,6 +124,16 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
     options.GetConfig(), {"photon_reweighting", "apply_mean_weights"});
   utils::loadInstrMETWeights(applyNvtxWeights_, applyEtaWeights_, applyPtWeights_, applyMassLineshape_, nVtxWeight_map_, etaWeight_map_, ptWeight_map_, lineshapeMassWeight_map_, v_jetCat_, options);
   utils::loadMeanWeights(applyMeanWeights_, meanWeight_map_, v_analysisCat_, options);
+
+  if (applyNvtxWeights_ || applyEtaWeights_ || applyPtWeights_) {
+    AddBranch("photon_reweighting", &photonReweighting_);
+    AddBranch("photon_nvtx_reweighting", &photonNvtxReweighting_);
+    AddBranch("photon_eta_reweighting", &photonEtaReweighting_);
+  }
+
+  if (applyMeanWeights_) {
+    AddBranch("mean_weight", &meanWeight_);
+  }
   //std::ifstream read_file;
   //read_file.open(FileInPath::Resolve("extra.txt").c_str());
   //std::string line;
