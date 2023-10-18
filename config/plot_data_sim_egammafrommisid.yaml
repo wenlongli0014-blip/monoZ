@@ -87,7 +87,7 @@ variables:
 - formula: "ptmiss"
   binning:
     default:
-      range: [10., 1000.]
+      range: [12., 1200.]
       bins: 20
   x_scale: log
   label: "$p_\\mathrm{T}^{miss}$"
