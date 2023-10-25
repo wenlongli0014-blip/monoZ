@@ -1,4 +1,5 @@
 period: "2016"
+is_APV: true
 # "Golden" data from https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions16/13TeV/Legacy_2016/Cert_271036-284044_13TeV_Legacy2016_Collisions16_JSON.txt
 luminosity: 19501.601622
 
@@ -179,6 +180,12 @@ b_tag_weight:
   bottom_hist_name: 'B Jet'
   charm_hist_name: 'C Jet'
   light_hist_name: 'Light Jet'
+
+pileup_id:
+  pt_range: [20., 50.]
+  abs_eta_edges: [5.]
+  working_points: [M, N]
+  scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
 
 apply_lepton_weight: true
 

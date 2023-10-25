@@ -185,13 +185,11 @@ b_tag_weight:
   charm_hist_name: 'C Jet'
   light_hist_name: 'Light Jet'
 
-# Example for filtering based on pileup ID
-# pileup_id:
-#   pt_range: [15., 50.]  # https://twiki.cern.ch/twiki/bin/view/CMS/PileupJetID?rev=61#Recommendations_for_13_TeV_data
-#   abs_eta_edges: [2.5, 3.]
-#   working_points: [N, T, N]
-#   efficiency: PileupID/pileup_eff_nanoaodv6.xgb
-#   scale_factors: PileupID/scalefactorsPUID_81Xtraining.root
+pileup_id:
+  pt_range: [20., 50.]
+  abs_eta_edges: [5.]
+  working_points: [M, N]
+  scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
 
 apply_lepton_weight: true
 

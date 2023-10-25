@@ -49,8 +49,8 @@ trigger_efficiency:
 l1t_prefiring: true
 
 pileup_weight:
-  data_profile: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/zgamma/2023-08-12_2017-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/zgamma/2023-08-12_2017-NanoAODv9/pileup/pileup_profiles_sim.root
+  data_profile: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/electron/2023-08-08_2017-NanoAODv9/pileup/pileup_profiles_data.root
+  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/electron/2023-08-08_2017-NanoAODv9/pileup/pileup_profiles_sim.root
   # sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-04-28_2017-NanoAODv9/pileup/pileup_profiles_sim.root
   # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_data.root
   # sim_profiles: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_sim_dilepton.root # pileup_profiles_sim_instrmet.root
@@ -81,7 +81,7 @@ met_filters:
 
 selection_cuts:
   z_mass_window: 15.0
-  min_pt_ll: 20.0
+  min_pt_ll: 60.0
   min_dphi_ll_ptmiss: 1.0
   min_dphi_jet_ptmiss: 0.5
   # min_dphi_leptonsjets_ptmiss: 2.5
@@ -159,12 +159,6 @@ b_tag_weight:
   bottom_hist_name: 'B Jet'
   charm_hist_name: 'C Jet'
   light_hist_name: 'Light Jet'
-
-pileup_id:
-  pt_range: [20., 50.]
-  abs_eta_edges: [5.]
-  working_points: [M, N]
-  scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
 
 apply_lepton_weight: true
 

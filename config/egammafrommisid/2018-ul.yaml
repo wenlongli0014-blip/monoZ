@@ -48,8 +48,8 @@ trigger_efficiency:
 l1t_prefiring: false
 
 pileup_weight:
-  data_profile: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-08-22_2018-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-08-22_2018-NanoAODv9/pileup/pileup_profiles_sim.root
+  data_profile: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/electron/2023-08-08_2018-NanoAODv9/pileup/pileup_profiles_data.root
+  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/electron/2023-08-08_2018-NanoAODv9/pileup/pileup_profiles_sim.root
   # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profiles_data.root
   # default_sim_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profile_sim.root
 
@@ -155,12 +155,6 @@ b_tag_weight:
   bottom_hist_name: 'B Jet'
   charm_hist_name: 'C Jet'
   light_hist_name: 'Light Jet'
-
-pileup_id:
-  pt_range: [20., 50.]
-  abs_eta_edges: [5.]
-  working_points: [M, N]
-  scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
 
 apply_lepton_weight: true
 
@@ -322,7 +316,6 @@ photon_efficiency:
   # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018?rev=73
   photon:
   - PhotonSF/egammaEffi.txt_EGM2D_Pho_Tight.root_UL18.root:EGamma_SF2D
-  - TriggerSF/singlePhoton_trigger_SFs/photonTriggerSF_2018.root:h2_scale_factors
 
 photon_triggers:
   triggers:
