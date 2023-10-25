@@ -174,14 +174,6 @@ b_tagger:
   min_pt: 20
   max_abs_eta: 2.5
 
-# Veto events with jets in the HEM15/16 region
-# https://indico.cern.ch/event/885282/#174-study-on-the-hem-issue-in
-jet_geometric_veto:
-  run_range: [319077, 325175]
-  lumi_fraction: 0.647
-  eta_range: [-3.0, -1.4]
-  phi_range: [-1.6, -0.8]
-
 b_tag_weight:
   scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
   efficiency: BTag/2018.root
@@ -194,6 +186,14 @@ pileup_id:
   abs_eta_edges: [5.]
   working_points: [M, N]
   scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
+
+# Veto events with jets in the HEM15/16 region
+# https://indico.cern.ch/event/885282/#174-study-on-the-hem-issue-in
+jet_geometric_veto:
+  run_range: [319077, 325175]
+  lumi_fraction: 0.647
+  eta_range: [-3.0, -1.4]
+  phi_range: [-1.6, -0.8]
 
 apply_lepton_weight: true
 

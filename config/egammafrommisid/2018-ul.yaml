@@ -141,6 +141,13 @@ b_tagger:
   min_pt: 20
   max_abs_eta: 2.5
 
+b_tag_weight:
+  scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
+  efficiency: BTag/2018.root
+  bottom_hist_name: 'B Jet'
+  charm_hist_name: 'C Jet'
+  light_hist_name: 'Light Jet'
+
 # Veto events with jets in the HEM15/16 region
 # https://indico.cern.ch/event/885282/#174-study-on-the-hem-issue-in
 jet_geometric_veto:
@@ -148,13 +155,6 @@ jet_geometric_veto:
   lumi_fraction: 0.647
   eta_range: [-3.0, -1.4]
   phi_range: [-1.6, -0.8]
-
-b_tag_weight:
-  scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
-  efficiency: BTag/2018.root
-  bottom_hist_name: 'B Jet'
-  charm_hist_name: 'C Jet'
-  light_hist_name: 'Light Jet'
 
 apply_lepton_weight: true
 
