@@ -30,7 +30,6 @@ find_package(
 )
 find_package(ROOT 6 REQUIRED)
 find_package(yaml-cpp REQUIRED)
-find_package(xgboost REQUIRED)
 
 
 # Minimalistic library to embed the hash of the current Git commit into the
@@ -138,7 +137,6 @@ add_library(hzz2l2nu SHARED
   src/TriggerWeight.cc
   src/Utils.cc
   src/WeightCollector.cc
-  src/XGBoostPredictor.cc
   src/ZGammaTrees.cc
 )
 target_include_directories(hzz2l2nu PUBLIC include)
@@ -150,7 +148,6 @@ target_link_libraries(hzz2l2nu
   PUBLIC Boost::stacktrace_basic -rdynamic  # To preserve human-readable names
   PUBLIC ROOT::Hist ROOT::MathCore ROOT::Physics ROOT::Tree ROOT::TreePlayer
   PUBLIC yaml-cpp
-  PUBLIC xgboost::xgboost
 )
 
 add_executable(runHZZanalysis src/runHZZanalysis.cc)
