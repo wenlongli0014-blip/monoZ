@@ -17,7 +17,7 @@
 #include <Options.h>
 #include <PhysicsObjects.h>
 #include <PileUpIdFilter.h>
-#include <XGBoostPredictor.h>
+// #include <XGBoostPredictor.h>
 
 
 /**
@@ -58,9 +58,9 @@ class PileUpIdWeight : public WeightBase {
     return weights_[0];
   }
 
-  int NumVariations() const override {
-    return 4;
-  }
+  // int NumVariations() const override {
+  //   return 4;
+  // }
 
   double operator()() const override {
     if (cache_.IsUpdated())
@@ -68,13 +68,13 @@ class PileUpIdWeight : public WeightBase {
     return weights_[int(defaultVariation_)];
   }
 
-  double RelWeight(int variation) const override {
-    if (cache_.IsUpdated())
-      Update();
-    return weights_[variation + 1] / weights_[0];
-  }
+  // double RelWeight(int variation) const override {
+  //   if (cache_.IsUpdated())
+  //     Update();
+  //   return weights_[variation + 1] / weights_[0];
+  // }
 
-  std::string_view VariationName(int variation) const override;
+  // std::string_view VariationName(int variation) const override;
 
  private:
   /**
@@ -84,10 +84,10 @@ class PileUpIdWeight : public WeightBase {
    */
   enum class Variation : int {
     kNominal = 0,
-    kTagUp = 1,
-    kTagDown = 2,
-    kMistagUp = 3,
-    kMistagDown = 4
+    // kTagUp = 1,
+    // kTagDown = 2,
+    // kMistagUp = 3,
+    // kMistagDown = 4
   };
 
   /// Auxiliary structure that provides details specific to each |eta| range
@@ -102,7 +102,7 @@ class PileUpIdWeight : public WeightBase {
      * \brief Histograms with pileup ID scale factors and their uncertainties
      * for matched and pileup jets
      */
-    std::shared_ptr<TH2> sfMatched, sfUncMatched, sfPileUp, sfUncPileUp;
+    std::shared_ptr<TH2> sf, eff;
   };
 
   /**
@@ -115,8 +115,7 @@ class PileUpIdWeight : public WeightBase {
   double GetEfficiency(Context const &context, Jet const &jet) const;
 
   /// Finds pileup ID scale factor for given jet and variation
-  double GetScaleFactor(
-      Context const &context, Jet const &jet, Variation variation) const;
+  double GetScaleFactor(Context const &context, Jet const &jet) const;
 
   /**
    * \brief Reads histograms with scale factors for all used working points
@@ -125,7 +124,7 @@ class PileUpIdWeight : public WeightBase {
    * \param[in] year  Year of data taking the scale factors for which should be
    *   read.
    */
-  void LoadScaleFactors(YAML::Node const config, int year);
+  void LoadScaleFactors(YAML::Node const config, std::string year, bool isUL);
 
   /// Computes event weights for all systematic variations
   void Update() const;
@@ -143,17 +142,17 @@ class PileUpIdWeight : public WeightBase {
   /// \ref Context for each |eta| region
   std::vector<Context> contexts_;
 
-  /**
-   * \brief Array with input features for the computation of the pileup ID
-   * efficiency in simulation
-   *
-   * It will be reused for each computation. Features that don't change are set
-   * in the constructor.
-   */
-  mutable std::array<float, 13> effFeatures_;
+  // /**
+  //  * \brief Array with input features for the computation of the pileup ID
+  //  * efficiency in simulation
+  //  *
+  //  * It will be reused for each computation. Features that don't change are set
+  //  * in the constructor.
+  //  */
+  // mutable std::array<float, 13> effFeatures_;
 
-  /// Model that parameterizes the pileup ID efficiency in simulation
-  std::optional<XGBoostPredictor> effCalc_;
+  // /// Model that parameterizes the pileup ID efficiency in simulation
+  // std::optional<XGBoostPredictor> effCalc_;
 
   /// Interface to read the expected number of pileup interactions
   mutable TTreeReaderValue<float> expPileUp_;
@@ -168,7 +167,8 @@ class PileUpIdWeight : public WeightBase {
    *
    * The order is the same as in enum \ref Variation.
    */
-  mutable std::array<double, 5> weights_;
+  // mutable std::array<double, 5> weights_;
+  mutable std::array<double, 1> weights_;
 };
 
 #endif  // HZZ2L2NU_INCLUDE_PILEUPIDWEIGHT_H_

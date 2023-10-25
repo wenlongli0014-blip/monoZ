@@ -80,7 +80,7 @@ bool PileUpIdFilter::operator()(Jet const &jet) const {
   if (not enabled_)
     return true;
 
-  if (jet.p4.Pt() < minPt_ or jet.p4.Pt() > maxPt_)
+  if (not (jet.p4.Pt() >= minPt_ and jet.p4.Pt() < maxPt_))
     return true;
 
   int const bin = std::upper_bound(

@@ -47,7 +47,7 @@ class PileUpIdFilter {
 
   /// Indicates whether pileup ID is applicable for given jet
   bool IsTaggable(Jet const &jet) const {
-    return jet.p4.Pt() >= minPt_ and jet.p4.Pt() <= maxPt_;
+    return jet.p4.Pt() >= minPt_ and jet.p4.Pt() < maxPt_;
   }
 
   /**
