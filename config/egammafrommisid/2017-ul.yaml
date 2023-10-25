@@ -153,12 +153,14 @@ b_tagger:
   min_pt: 20
   max_abs_eta: 2.5
 
-b_tag_weight:
-  scale_factors: BTag/wp_deepJet_106XUL17_v3_preULformat.csv
-  efficiency: BTag/2017.root
-  bottom_hist_name: 'B Jet'
-  charm_hist_name: 'C Jet'
-  light_hist_name: 'Light Jet'
+apply_b_tag_weight: false
+
+# b_tag_weight:
+#   scale_factors: BTag/wp_deepJet_106XUL17_v3_preULformat.csv
+#   efficiency: BTag/2017.root
+#   bottom_hist_name: 'B Jet'
+#   charm_hist_name: 'C Jet'
+#   light_hist_name: 'Light Jet'
 
 apply_lepton_weight: true
 

@@ -244,7 +244,7 @@ bool NrbAnalysis::ProcessEvent() {
 
     // Apply the btag weights
     if (isSim_)
-      weight *= bTagWeight_();
+      weight *= (bTagWeight_.value())();
 
     mon_.fillAnalysisHistos(currentEvt, "tot", weight);
 

@@ -100,7 +100,7 @@ class AnalysisCommon {
   std::optional<EWCorrectionWeight> ewCorrectionWeight_;
   std::optional<PileUpWeight> pileUpWeight_;
   std::optional<L1TPrefiringWeight> l1tPrefiringWeight_;
-  BTagWeight bTagWeight_;
+  std::optional<BTagWeight> bTagWeight_;
   std::optional<PileUpIdWeight> pileUpIdWeight_;
   WeightCollector weightCollector_;
 

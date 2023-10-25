@@ -19,7 +19,6 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
       ptMissBuilder_{dataset, options},
       leptonWeight_{dataset, options, &electronBuilder_, &muonBuilder_},
       triggerWeight_{dataset, options, &electronBuilder_, &muonBuilder_},
-      bTagWeight_{dataset, options, &bTagger_, &jetBuilder_},
       meKinFilter_{dataset}, metFilters_{options, dataset},
       jetGeometricVeto_{dataset, options, &jetBuilder_, tabulatedRngEngine_} {
 
@@ -62,7 +61,10 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
     if (auto const node = options.GetConfig()["apply_trigger_weight"]; node == nullptr or node.as<bool>()) { // defalts to true
       weightCollector_.Add(&triggerWeight_);
     }
-    weightCollector_.Add(&bTagWeight_);
+    if (auto const node = options.GetConfig()["apply_b_tag_weight"]; node == nullptr or node.as<bool>()) { // defalts to true
+      bTagWeight_.emplace(dataset, options, &bTagger_, &jetBuilder_);
+      weightCollector_.Add(&bTagWeight_.value());
+    }
 
     if (options.GetConfig()["pileup_id"]) {
       pileUpIdWeight_.emplace(dataset, options, &pileUpIdFilter_, &jetBuilder_);
