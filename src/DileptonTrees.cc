@@ -218,6 +218,9 @@ DileptonTrees::CheckLeptons() const {
   } else
     return {};
 
+  if (not (l1->charge * l2->charge < 0))
+    return {};
+
   if (not (l1->p4.Pt() > 25. && l2->p4.Pt() > 20.))
     return {};
 
