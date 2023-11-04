@@ -38,6 +38,7 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
     genPartStatusFlags_.reset(new TTreeReaderArray<Int_t>(dataset.Reader(), "GenPart_statusFlags"));
   }
 
+  tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
   photonBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
   jetBuilder_.EnableCleaning({&photonBuilder_});
   ptMissBuilder_.PullCalibration({&photonBuilder_});

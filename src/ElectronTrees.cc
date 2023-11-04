@@ -38,6 +38,7 @@ ElectronTrees::ElectronTrees(Options const &options, Dataset &dataset)
     genPartStatusFlags_.reset(new TTreeReaderArray<Int_t>(dataset.Reader(), "GenPart_statusFlags"));
   }
 
+  tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
   photonBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
 
   // weightCollector_.Add(&photonWeight_);

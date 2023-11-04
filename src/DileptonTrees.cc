@@ -34,6 +34,8 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
       genZZBuilder_.emplace(dataset);
   }
 
+  tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
+
   CreateWeightBranches();
 
   AddBranch("lepton_cat", &leptonCat_);
