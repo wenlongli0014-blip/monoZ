@@ -35,6 +35,7 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
   }
 
   tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
+  jetBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
 
   CreateWeightBranches();
 

@@ -40,7 +40,7 @@ PhotonTrees::PhotonTrees(Options const &options, Dataset &dataset)
 
   tauBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
   photonBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_});
-  jetBuilder_.EnableCleaning({&photonBuilder_});
+  jetBuilder_.EnableCleaning({&muonBuilder_, &electronBuilder_, &photonBuilder_});
   ptMissBuilder_.PullCalibration({&photonBuilder_});
 
   weightCollector_.Add(&photonWeight_);
