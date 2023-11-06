@@ -129,7 +129,7 @@ void MuonBuilder::Build() const {
     if (not (muon.p4.Pt() > minPtTight_))
       continue;
 
-    if (not (srcdxy_[i] < 0.02 and srcdz_[i] < 0.1))
+    if (not (std::abs(srcdxy_[i]) < 0.02 and std::abs(srcdz_[i]) < 0.1))
       continue;
 
     tightMuons_.emplace_back(muon);
