@@ -11,7 +11,7 @@
 #include <Utils.h>
 
 
-MuonBuilder::MuonBuilder(Dataset &dataset, Options const &,
+MuonBuilder::MuonBuilder(Dataset &dataset, Options const &options,
                          TabulatedRngEngine &rngEngine)
     : CollectionBuilder{dataset.Reader()},
       minPtLoose_{10.}, minPtTight_{15.},
@@ -39,7 +39,11 @@ MuonBuilder::MuonBuilder(Dataset &dataset, Options const &,
     genPartEta_.reset(new TTreeReaderArray<float>(dataset.Reader(), "GenPart_eta"));
     genPartPhi_.reset(new TTreeReaderArray<float>(dataset.Reader(), "GenPart_phi"));
   }
-  rochesterCorrection_.reset(new RoccoR(FileInPath::Resolve("rcdata.2016.v3")));
+
+  auto const roccorPath_ = Options::NodeAs<std::string>(
+      options.GetConfig(), {"roccor", "path"});
+
+  rochesterCorrection_.reset(new RoccoR(FileInPath::Resolve(roccorPath_)));
 }
 
 
@@ -69,14 +73,12 @@ void MuonBuilder::ApplyRochesterCorrection(
     auto const genMatch = FindGenMatch(*muon, 0.01);
 
     if (genMatch)
-      scaleFactor = rochesterCorrection_->kScaleFromGenMC(
-        muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),
-        trackerLayers, genMatch->p4.Pt(), tabulatedRng_.Rndm(2 * index));
+      scaleFactor = rochesterCorrection_->kSpreadMC(
+        muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),  genMatch->p4.Pt());
     else
-      scaleFactor = rochesterCorrection_->kScaleAndSmearMC(
+      scaleFactor = rochesterCorrection_->kSmearMC(
         muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),
-        trackerLayers,
-        tabulatedRng_.Rndm(2 * index), tabulatedRng_.Rndm(2 * index + 1));
+        trackerLayers, tabulatedRng_.Rndm(2 * index));
   } else
     scaleFactor = rochesterCorrection_->kScaleDT(
       muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi());

@@ -343,6 +343,9 @@ lepton_efficiency:
     #     schema: [eta, pt]
     #     clip_pt: true
 
+roccor:
+  path: roccor/RoccoR2016bUL.txt
+
 photon_efficiency:
   # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018?rev=73
   photon:
