@@ -180,7 +180,7 @@ bool ZGammaTrees::ProcessEvent() {
   llPhi_ = p4LL.Phi();
   llMass_ = p4LL.M();
 
-  if (std::abs(p4LL.M() - kNominalMZ_) > zMassWindow_)
+  if (not (std::abs(p4LL.M() - kNominalMZ_) < zMassWindow_))
     return false;
 
   if (datasetLHEVptUpperLimitInc_.has_value() and not (*srcLHEVpt_->Get() <= datasetLHEVptUpperLimitInc_.value()))
@@ -218,7 +218,7 @@ bool ZGammaTrees::ProcessEvent() {
     }
   }
 
-  if (photon->p4.Pt() < minPtLL_)
+  if (not (photon->p4.Pt() > minPtLL_))
     return false;
 
 

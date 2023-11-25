@@ -133,7 +133,7 @@ bool ElectronTrees::ProcessEvent() {
     return false;
   }
 
-  if (electron->p4.Pt() < minPtLL_) {
+  if (not (electron->p4.Pt() > minPtLL_)) {
     return false;
   }
 

@@ -127,10 +127,10 @@ bool DileptonTrees::ProcessEvent() {
   llPhi_ = p4LL.Phi();
   llMass_ = p4LL.M();
 
-  if (std::abs(p4LL.M() - kNominalMZ_) > zMassWindow_)
+  if (not (std::abs(p4LL.M() - kNominalMZ_) < zMassWindow_))
     return false;
 
-  if (p4LL.Pt() < minPtLL_)
+  if (not (p4LL.Pt() > minPtLL_))
     return false;
 
 
