@@ -88,6 +88,8 @@ class DileptonTrees final : public EventTrees {
 
   TriggerFilter triggerFilter_;
 
+  TTreeReaderValue<UInt_t> srcRun_;
+  TTreeReaderValue<UInt_t> srcLumi_;
   TTreeReaderValue<ULong64_t> srcEvent_;
 
   Int_t leptonCat_, jetCat_, numPVGood_;
@@ -98,6 +100,7 @@ class DileptonTrees final : public EventTrees {
 
   TTreeReaderValue<int> srcNumPVGood_;
 
+  UInt_t run_, lumi_;
   ULong64_t event_;
   Float_t genMZZ_;
   Int_t leptonCharge_[2];

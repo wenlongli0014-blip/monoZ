@@ -22,6 +22,8 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
       storeMoreVariables_{options.Exists("more-vars")},
       ptMissCut_{options.GetAs<double>("ptmiss-cut")},
       triggerFilter_{dataset, options, &runSampler_},
+      srcRun_{dataset.Reader(), "run"},
+      srcLumi_{dataset.Reader(), "luminosityBlock"},
       srcEvent_{dataset.Reader(), "event"},
       srcNumPVGood_{dataset.Reader(), "PV_npvsGood"} {
 
@@ -53,6 +55,8 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
   AddBranch("dijet_mass", &dijetMass_);
 
   if (storeMoreVariables_) {
+    AddBranch("run", &run_);
+    AddBranch("lumi", &lumi_);
     AddBranch("event", &event_);
 
     if (genZZBuilder_)
@@ -234,6 +238,8 @@ DileptonTrees::CheckLeptons() const {
 void DileptonTrees::FillMoreVariables(
     std::array<Lepton, 2> const &leptons, std::vector<Jet> const &jets) {
 
+  run_ = *srcRun_;
+  lumi_ = *srcLumi_;
   event_ = *srcEvent_;
 
   if (genZZBuilder_)
