@@ -122,3 +122,7 @@ triggerMuMu:
 triggerEMu:
   processes: ["*"]
   is_weight: true
+
+electronEnergy:
+  processes: ["*"]
+  is_weight: false

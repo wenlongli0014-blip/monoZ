@@ -5,7 +5,7 @@
 #include <algorithm>
 
 
-ElectronBuilder::ElectronBuilder(Dataset &dataset, Options const &)
+ElectronBuilder::ElectronBuilder(Dataset &dataset, Options const &options)
     : CollectionBuilder{dataset.Reader()},
       minPtLoose_{10.}, minPtTight_{15.},
       // maxRelIsoLoose_{0.4}, maxRelIsoTight_{0.1},
@@ -18,7 +18,18 @@ ElectronBuilder::ElectronBuilder(Dataset &dataset, Options const &)
       srcCharge_{dataset.Reader(), "Electron_charge"},
       srcIdLoose_{dataset.Reader(), "Electron_mvaFall17V2Iso_WPL"},
       srcIdTight_{dataset.Reader(), "Electron_mvaFall17V2Iso_WP90"},
-      srcECorr_{dataset.Reader(), "Electron_eCorr"} {}
+      srcECorr_{dataset.Reader(), "Electron_eCorr"},
+      srcEnergyErr_{dataset.Reader(), "Electron_energyErr"} {
+      // syst_{Syst::None} {
+
+      systLabel = options.GetAs<std::string>("syst");
+        // if (systLabel == "electronEnergy_up")
+        //   syst_ = Syst::UnclEnergyUp;
+        // else if (systLabel == "electronEnergy_down")
+        //   syst_ = Syst::UnclEnergyDown;
+        // else
+        //   syst_ = Syst::None;
+      }
 
 
 std::vector<Electron> const &ElectronBuilder::GetLoose() const {
@@ -45,17 +56,29 @@ void ElectronBuilder::Build() const {
     bool const passIdLoose = srcIdLoose_[i];
     bool const passIdTight = srcIdTight_[i];
 
+    double pt = srcPt_[i];
+
+    // std::cout << "nominal pt " << pt << std::endl;
+    // std::cout << systLabel << std::endl;
+    if (systLabel == "electronEnergy_up") {
+      pt += srcEnergyErr_[i] / std::cosh(eta);
+    }
+    if ((systLabel == "electronEnergy_down")) {
+      pt -= srcEnergyErr_[i] / std::cosh(eta);
+    }
+    // std::cout << "varied pt " << pt << std::endl;
+
     if (not passIdLoose)
       continue;
 
-    if (not (srcPt_[i] > minPtLoose_))
+    if (not (pt > minPtLoose_))
       continue;
 
     if (not (absEtaSc < 2.5))
       continue;
 
     Electron electron;
-    electron.p4.SetPtEtaPhiM(srcPt_[i], srcEta_[i], srcPhi_[i], srcMass_[i]);
+    electron.p4.SetPtEtaPhiM(pt, srcEta_[i], srcPhi_[i], srcMass_[i]);
     electron.charge = srcCharge_[i];
     electron.etaSc = etaSc;
 
@@ -71,13 +94,15 @@ void ElectronBuilder::Build() const {
     if (not passIdTight)
       continue;
 
-    if (not (srcPt_[i] > minPtTight_))
+    if (not (pt > minPtTight_))
       continue;
 
     if (absEtaSc > 1.4442 and absEtaSc < 1.5660)  // EB-EE gap
       continue;
 
     tightElectrons_.emplace_back(electron);
+
+
   }
 
   // Make sure the collections are ordered in pt

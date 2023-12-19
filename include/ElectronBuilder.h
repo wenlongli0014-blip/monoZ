@@ -24,7 +24,7 @@
 class ElectronBuilder : public CollectionBuilder<Electron> {
  public:
   /// Constructor
-  ElectronBuilder(Dataset &dataset, Options const &);
+  ElectronBuilder(Dataset &dataset, Options const &options);
 
   /// Alias for \ref GetTight
   std::vector<Electron> const &Get() const override;
@@ -36,8 +36,17 @@ class ElectronBuilder : public CollectionBuilder<Electron> {
   std::vector<Electron> const &GetTight() const;
 
  private:
+  // enum class Syst {
+  //   None,
+  // };
+
   /// Constructs electrons for the current event
   void Build() const override;
+
+  // /// Systematic variation to be applied
+  // Syst syst_;
+
+  std::string systLabel;
 
   /// Minimal pt for loose electrons, GeV
   double minPtLoose_;
@@ -56,6 +65,8 @@ class ElectronBuilder : public CollectionBuilder<Electron> {
   mutable TTreeReaderArray<int> srcCharge_;
   mutable TTreeReaderArray<bool> srcIdLoose_, srcIdTight_;
   mutable TTreeReaderArray<float> srcECorr_;
+
+  mutable TTreeReaderArray<float> srcEnergyErr_;
 };
 
 
