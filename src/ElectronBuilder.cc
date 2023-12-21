@@ -7,6 +7,7 @@
 
 ElectronBuilder::ElectronBuilder(Dataset &dataset, Options const &options)
     : CollectionBuilder{dataset.Reader()},
+      isSim_{dataset.Info().IsSimulation()},
       minPtLoose_{10.}, minPtTight_{15.},
       // maxRelIsoLoose_{0.4}, maxRelIsoTight_{0.1},
       srcPt_{dataset.Reader(), "Electron_pt"},
@@ -58,15 +59,17 @@ void ElectronBuilder::Build() const {
 
     double pt = srcPt_[i];
 
-    // std::cout << "nominal pt " << pt << std::endl;
-    // std::cout << systLabel << std::endl;
-    if (systLabel == "electronEnergy_up") {
-      pt += srcEnergyErr_[i] / std::cosh(eta);
+    if (isSim_) {
+      // std::cout << "nominal pt " << pt << std::endl;
+      // std::cout << systLabel << std::endl;
+      if (systLabel == "electronEnergy_up") {
+        pt += srcEnergyErr_[i] / std::cosh(eta);
+      }
+      if ((systLabel == "electronEnergy_down")) {
+        pt -= srcEnergyErr_[i] / std::cosh(eta);
+      }
+      // std::cout << "varied pt " << pt << std::endl;
     }
-    if ((systLabel == "electronEnergy_down")) {
-      pt -= srcEnergyErr_[i] / std::cosh(eta);
-    }
-    // std::cout << "varied pt " << pt << std::endl;
 
     if (not passIdLoose)
       continue;

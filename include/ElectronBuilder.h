@@ -43,6 +43,9 @@ class ElectronBuilder : public CollectionBuilder<Electron> {
   /// Constructs electrons for the current event
   void Build() const override;
 
+  /// Indicates whether running on simulation or data
+  bool isSim_;
+
   // /// Systematic variation to be applied
   // Syst syst_;
 
