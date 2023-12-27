@@ -125,6 +125,7 @@ add_library(hzz2l2nu SHARED
   src/PileUpIdFilter.cc
   src/PileUpIdWeight.cc
   src/PileUpWeight.cc
+  src/PSWeight.cc
   src/PtMissBuilder.cc
   src/RoccoR.cc
   src/RunSampler.cc

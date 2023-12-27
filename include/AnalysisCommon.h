@@ -25,6 +25,7 @@
 #include <PileUpIdFilter.h>
 #include <PileUpIdWeight.h>
 #include <PileUpWeight.h>
+#include <PSWeight.h>
 #include <PtMissBuilder.h>
 #include <RunSampler.h>
 #include <TabulatedRandomGenerator.h>
@@ -96,6 +97,7 @@ class AnalysisCommon {
   LeptonWeight leptonWeight_;
   TriggerWeight triggerWeight_;
   std::optional<GenWeight> genWeight_;
+  std::optional<PSWeight> psWeight_;
   std::optional<KFactorCorrection> kFactorCorrection_;
   std::optional<EWCorrectionWeight> ewCorrectionWeight_;
   std::optional<PileUpWeight> pileUpWeight_;

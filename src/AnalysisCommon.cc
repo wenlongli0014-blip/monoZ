@@ -45,12 +45,14 @@ AnalysisCommon::AnalysisCommon(Options const &options, Dataset &dataset)
 
   if (isSim_) {
     genWeight_.emplace(dataset, options);
+    psWeight_.emplace(dataset, options);
     kFactorCorrection_.emplace(dataset, options);
     ewCorrectionWeight_.emplace(dataset, options);
     pileUpWeight_.emplace(dataset, options, &runSampler_);
     l1tPrefiringWeight_.emplace(dataset, options);
 
     weightCollector_.Add(&genWeight_.value());
+    weightCollector_.Add(&psWeight_.value());
     weightCollector_.Add(&kFactorCorrection_.value());
     weightCollector_.Add(&ewCorrectionWeight_.value());
     weightCollector_.Add(&pileUpWeight_.value());
