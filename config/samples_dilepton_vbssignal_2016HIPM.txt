@@ -1,0 +1,4 @@
+catalogPath=/pnfs/iihe/cms/store/user/yunyangl/ULsamples/dilepton/2023-12-22_2016HIPM-NanoAODv9/DDF/Dilepton
+
+VBS_ZZTo2E2Nu.yaml
+VBS_ZZTo2Mu2Nu.yaml

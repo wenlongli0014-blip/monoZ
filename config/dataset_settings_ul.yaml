@@ -424,3 +424,11 @@
 - name: VBS_ZZTo2L2Nu
   is_sim: true
   cross_section: 0.00308  # XSDB, for RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2
+
+- name: VBS_ZZTo2E2Nu
+  is_sim: true
+  cross_section: 0.001583  # from what is used by SMQawa
+
+- name: VBS_ZZTo2Mu2Nu
+  is_sim: true
+  cross_section: 0.001583  # from what is used by SMQawa

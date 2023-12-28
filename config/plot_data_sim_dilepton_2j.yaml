@@ -64,9 +64,9 @@ samples:
   # - label: "VBF"
   #   files: [VBFToZZ_BSI_Phantom]
   #   color: darkviolet
-  # - label: "VBS_ZZTo2L2Nu"
-  #   files: [VBS_ZZTo2L2Nu]
-  #   color: darkviolet
+  - label: "VBS $ZZ \\to 2\\ell 2\\nu$ \n(NLO)"
+    files: [VBS_ZZTo2E2Nu, VBS_ZZTo2Mu2Nu]
+    color: darkviolet
   - label: "VVV"
     files: [WWW, WWZ, WZZ, ZZZ]
     color: mediumpurple

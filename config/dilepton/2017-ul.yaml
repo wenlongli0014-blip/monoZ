@@ -75,7 +75,7 @@ l1t_prefiring: true
 
 pileup_weight:
   data_profile: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2017-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2017-NanoAODv9/pileup/pileup_profiles_sim.root
+  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/dilepton/2023-12-22_2017-NanoAODv9/pileup/pileup_profiles_sim.root
   # sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-04-28_2017-NanoAODv9/pileup/pileup_profiles_sim.root
   # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_data.root
   # sim_profiles: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_sim_dilepton.root # pileup_profiles_sim_instrmet.root
