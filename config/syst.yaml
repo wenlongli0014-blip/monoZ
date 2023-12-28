@@ -22,6 +22,14 @@ QCDscale:
   processes: ["*"]
   is_weight: true
 
+PS_isr:
+  processes: ["*"]
+  is_weight: true
+
+PS_fsr:
+  processes: ["*"]
+  is_weight: true
+
 # Variation in renormalization scale in the matrix element
 me_renorm:
   processes: ["*"]

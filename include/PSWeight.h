@@ -22,14 +22,28 @@ class PSWeight : public WeightBase {
 
   virtual double NominalWeight() const override;
 
-  int NumVariations() const override {
-    return 0;
+  // int NumVariations() const override {
+  //   return 2;
+  // }
+
+  double operator()() const override {
+    // std::cout << systLabel << std::endl;
+    if (not systLabel.empty()) {
+      // std::cout << RelWeight(systLabel) << std::endl;
+      return NominalWeight() * RelWeight(systLabel);
+    } else
+      return NominalWeight();
   }
 
-//  private:
+  double RelWeight(std::string const systLabel) const;
 
-//   void Update() const;
+ private:
+  
+  //   void Update() const;
+  
+  std::string systLabel;
 
+  mutable TTreeReaderArray<float> srcPSWeights_;
 };
 
 #endif  // HZZ2L2NU_INCLUDE_PSWEIGHT_H_
