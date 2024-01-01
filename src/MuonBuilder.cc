@@ -33,6 +33,8 @@ MuonBuilder::MuonBuilder(Dataset &dataset, Options const &options,
       srcdz_{dataset.Reader(), "Muon_dz"},
       srcTrackerLayers_{dataset.Reader(), "Muon_nTrackerLayers"} {
 
+  systLabel = options.GetAs<std::string>("syst");
+
   if(isSim_){
     genPartId_.reset(new TTreeReaderArray<int>(dataset.Reader(), "GenPart_pdgId"));
     genPartPt_.reset(new TTreeReaderArray<float>(dataset.Reader(), "GenPart_pt"));
@@ -68,22 +70,40 @@ void MuonBuilder::ApplyRochesterCorrection(
 
 
   double scaleFactor = 1.;
+  double scaleFactorError = 0.;
 
   if (isSim_) {
     auto const genMatch = FindGenMatch(*muon, 0.01);
 
-    if (genMatch)
+    if (genMatch) {
       scaleFactor = rochesterCorrection_->kSpreadMC(
         muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),  genMatch->p4.Pt());
-    else
+      scaleFactorError = rochesterCorrection_->kSpreadMCerror(
+        muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),  genMatch->p4.Pt());
+    } else {
       scaleFactor = rochesterCorrection_->kSmearMC(
         muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),
         trackerLayers, tabulatedRng_.Rndm(2 * index));
-  } else
+      scaleFactorError = rochesterCorrection_->kSmearMCerror(
+        muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi(),
+        trackerLayers, tabulatedRng_.Rndm(2 * index));
+    }
+  } else {
     scaleFactor = rochesterCorrection_->kScaleDT(
       muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi());
+    scaleFactorError = rochesterCorrection_->kScaleDTerror(
+      muon->charge, muon->p4.Pt(), muon->p4.Eta(), muon->p4.Phi());
+  }
   
-  
+
+  if (systLabel == "muonEnergy_up") {
+    scaleFactor += scaleFactorError;
+    // std::cout << "here" << std::endl;
+  }
+  if (systLabel == "muonEnergy_down") {
+    scaleFactor -= scaleFactorError;
+  }
+
   muon->p4.SetPtEtaPhiM(muon->p4.Pt() * scaleFactor, muon->p4.Eta(),
                         muon->p4.Phi(), muon->p4.M());
 }

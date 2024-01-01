@@ -95,6 +95,8 @@ class MuonBuilder : public CollectionBuilder<Muon> {
   /// Indicates whether running on simulation or data
   bool isSim_;
 
+  std::string systLabel;
+
   /// Object to compute Rochester correction to muon pt
   std::unique_ptr<RoccoR> rochesterCorrection_;
 

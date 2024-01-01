@@ -134,3 +134,7 @@ triggerEMu:
 electronEnergy:
   processes: ["*"]
   is_weight: false
+
+muonEnergy:
+  processes: ["*"]
+  is_weight: false

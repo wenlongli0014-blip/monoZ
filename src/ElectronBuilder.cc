@@ -65,7 +65,7 @@ void ElectronBuilder::Build() const {
       if (systLabel == "electronEnergy_up") {
         pt += srcEnergyErr_[i] / std::cosh(eta);
       }
-      if ((systLabel == "electronEnergy_down")) {
+      if (systLabel == "electronEnergy_down") {
         pt -= srcEnergyErr_[i] / std::cosh(eta);
       }
       // std::cout << "varied pt " << pt << std::endl;
