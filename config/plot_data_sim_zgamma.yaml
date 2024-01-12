@@ -1,45 +1,60 @@
 # This is the configuration file to get plots from the ZGammaTrees analysis.
 
 selections:
-- formula: "ptmiss >= 0."
-  weight: weight
-  tag: baseline
-  label: "baseline selection"
+# - formula: "ptmiss >= 0."
+#   weight: weight
+#   tag: baseline
+#   label: "baseline selection"
 
-- formula: "lepton_cat == 0"
-  weight: weight
-  tag: ee
-  label: "$ee$"
+# - formula: "lepton_cat == 0"
+#   weight: weight
+#   tag: ee
+#   label: "$ee$"
 
-- formula: "lepton_cat == 1"
-  weight: weight
-  tag: mumu
-  label: "$\\mu\\mu$"
+# - formula: "lepton_cat == 1"
+#   weight: weight
+#   tag: mumu
+#   label: "$\\mu\\mu$"
 
 - formula:  "photon_pt >= 60."
   weight: weight
   tag: photon_pt_geq60
   label: "photon_pt >= 60."
 
-- formula: "lepton_cat == 0 && photon_pt >= 60."
-  weight: weight
-  tag: ee__photon_pt_geq60
-  label: "$ee$ (photon_pt >= 60.)"
+# - formula: "lepton_cat == 0 && photon_pt >= 60."
+#   weight: weight
+#   tag: ee__photon_pt_geq60
+#   label: "$ee$ (photon_pt >= 60.)"
 
-- formula: "lepton_cat == 1 && photon_pt >= 60."
-  weight: weight
-  tag: mumu__photon_pt_geq60
-  label: "$\\mu\\mu$ (photon_pt >= 60.)"
+# - formula: "lepton_cat == 1 && photon_pt >= 60."
+#   weight: weight
+#   tag: mumu__photon_pt_geq60
+#   label: "$\\mu\\mu$ (photon_pt >= 60.)"
 
-- formula:  "abs(photon_eta) <= 1.4442 && photon_pt >= 60."
-  weight: weight
-  tag: barrel_photon_pt_geq60
-  label: "barrel, photon_pt >= 60."
+# - formula:  "abs(photon_eta) <= 1.4442 && photon_pt >= 60."
+#   weight: weight
+#   tag: barrel_photon_pt_geq60
+#   label: "barrel, photon_pt >= 60."
 
-- formula:  "abs(photon_eta) >= 1.5660 && photon_pt >= 60."
+# - formula:  "abs(photon_eta) >= 1.5660 && photon_pt >= 60."
+#   weight: weight
+#   tag: endcap_photon_pt_geq60
+#   label: "endcap, photon_pt >= 60."
+
+- formula:  "photon_pt >= 60. && jet_cat == 0"
   weight: weight
-  tag: endcap_photon_pt_geq60
-  label: "endcap, photon_pt >= 60."
+  tag: photon_pt_geq60_0j
+  label: "$p_\\mathrm{T}^{\\gamma} \\geq 60 GeV, 0j$"
+
+- formula:  "photon_pt >= 60. && jet_cat == 1"
+  weight: weight
+  tag: photon_pt_geq60_1j
+  label: "$p_\\mathrm{T}^{\\gamma} \\geq 60 GeV, 1j$"
+
+- formula:  "photon_pt >= 60. && jet_cat == 2"
+  weight: weight
+  tag: photon_pt_geq60_2j
+  label: "$p_\\mathrm{T}^{\\gamma} \\geq 60 GeV, \\geq 2j$"
 
 samples:
   path_prefix: ""
@@ -112,6 +127,15 @@ variables:
   label: "$N_{jets}$"
   unit: 
   tag: njets
+- formula: "jet_cat"
+  binning:
+    default:
+      range: [0, 3]
+      bins: 3
+  x_scale: linear
+  label: "jet category"
+  unit: 
+  tag: jets_cat
 - formula: "ptmiss"
   binning:
     default:
