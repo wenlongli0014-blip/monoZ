@@ -206,62 +206,20 @@ lepton_efficiency:
       - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt # we use Tight WP (RelIso < 0.15) for muons. See https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideMuonSelection#Muon_Isolation
         schema: [abs_eta, pt]
         clip_pt: true
-    # stat_up:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_StatUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_StatUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # stat_down:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_StatDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_StatDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # syst_up:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_SystUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_SystUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # syst_down:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_SystDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_SystDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # pileup_up:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_PUUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_PUUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # pileup_down:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_PUDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_PUDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # altMC_up:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_AltMCUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_AltMCUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # altMC_down:
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_AltMCDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Muon_efficiencies_id_iso_2018.root:SF_AltMCDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
+    up:
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID_variations.root:NUM_LooseID_DEN_TrackerMuons_abseta_pt_up
+        schema: [abs_eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO_variations.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_up
+        schema: [abs_eta, pt]
+        clip_pt: true
+    down:
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID_variations.root:NUM_LooseID_DEN_TrackerMuons_abseta_pt_down
+        schema: [abs_eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO_variations.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_down
+        schema: [abs_eta, pt]
+        clip_pt: true
   electron:
     nominal:
       - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D.root:EGamma_SF2D
@@ -270,86 +228,20 @@ lepton_efficiency:
       - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
         schema: [eta, pt]
         clip_pt: true
-    # stat_up:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_StatUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_StatUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # stat_down:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_StatDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_StatDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # syst_up:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_SystUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_SystUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # syst_down:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_SystDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_SystDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # pileup_up:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_PUUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_PUUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # pileup_down:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_PUDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_PUDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # altMC_up:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_AltMCUp_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_AltMCUp_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    # altMC_down:
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_AltMCDn_passId
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_id_iso_2018.root:SF_AltMCDn_passId_passIso
-    #     schema: [eta, pt]
-    #     clip_pt: true
-    #   - path: LeptonSF/2018/Electron_efficiencies_tracking_2018.root:EGamma_SF2D
-    #     schema: [eta, pt]
-    #     clip_pt: true
+    up:
+      - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D_variations.root:EGamma_SF2D_up
+        schema: [eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
+    down:
+      - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D_variations.root:EGamma_SF2D_down
+        schema: [eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
 
 roccor:
   path: roccor/RoccoR2018UL.txt

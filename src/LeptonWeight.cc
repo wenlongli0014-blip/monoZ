@@ -209,40 +209,17 @@ LeptonWeight::LeptonWeight(Dataset &dataset, Options const &options,
   // The default weight index is chosen based on the requested systematic
   // variation
   auto const systLabel = options.GetAs<std::string>("syst");
-  if (systLabel == "muonEff_syst_up")
+  if (systLabel == "muonEff_up") {
     defaultWeightIndex_ = 1;
-  else if (systLabel == "muonEff_syst_down")
+  } else if (systLabel == "muonEff_down") {
     defaultWeightIndex_ = 2;
-  else if (systLabel == "muonEff_stat_up")
+  } else if (systLabel == "electronEff_up") {
     defaultWeightIndex_ = 3;
-  else if (systLabel == "muonEff_stat_down")
+  } else if (systLabel == "electronEff_down") {
     defaultWeightIndex_ = 4;
-  else if (systLabel == "muonEff_pileup_up")
-    defaultWeightIndex_ = 5;
-  else if (systLabel == "muonEff_pileup_down")
-    defaultWeightIndex_ = 6;
-  else if (systLabel == "muonEff_altMC_up")
-    defaultWeightIndex_ = 7;
-  else if (systLabel == "muonEff_altMC_down")
-    defaultWeightIndex_ = 8;
-  else if (systLabel == "electronEff_syst_up")
-    defaultWeightIndex_ = 9;
-  else if (systLabel == "electronEff_syst_down")
-    defaultWeightIndex_ = 10;
-  else if (systLabel == "electronEff_stat_up")
-    defaultWeightIndex_ = 11;
-  else if (systLabel == "electronEff_stat_down")
-    defaultWeightIndex_ = 12;
-  else if (systLabel == "electronEff_pileup_up")
-    defaultWeightIndex_ = 13;
-  else if (systLabel == "electronEff_pileup_down")
-    defaultWeightIndex_ = 14;
-  else if (systLabel == "electronEff_altMC_up")
-    defaultWeightIndex_ = 15;
-  else if (systLabel == "electronEff_altMC_down")
-    defaultWeightIndex_ = 16;
-  else  
+  } else {
     defaultWeightIndex_ = 0;
+  }
   LOG_DEBUG << "Index of default leptonSF weight: " << defaultWeightIndex_;
   for (int i = 0; i < NumVariations() / 2 + 1; i++){		
     std::string systName;
@@ -270,37 +247,13 @@ LeptonWeight::~LeptonWeight() {}
 std::string_view LeptonWeight::VariationName(int variation) const {
   switch (variation) {
     case 0:
-      return "muonEff_syst_up";
+      return "muonEff_up";
     case 1:
-      return "muonEff_syst_down";
+      return "muonEff_down";
     case 2:
-      return "muonEff_stat_up";
+      return "electronEff_up";
     case 3:
-      return "muonEff_stat_down";
-    case 4:
-      return "muonEff_pileup_up";
-    case 5:
-      return "muonEff_pileup_down";
-    case 6:
-      return "muonEff_altMC_up";
-    case 7:
-      return "muonEff_altMC_down";
-    case 8:
-      return "electronEff_syst_up";
-    case 9:
-      return "electronEff_syst_down";
-    case 10:
-      return "electronEff_stat_up";
-    case 11:
-      return "electronEff_stat_down";
-    case 12:
-      return "electronEff_pileup_up";
-    case 13:
-      return "electronEff_pileup_down";
-    case 14:
-      return "electronEff_altMC_up";
-    case 15:
-      return "electronEff_altMC_down";
+      return "electronEff_down";
     default:
       return "";
   }
