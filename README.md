@@ -45,6 +45,8 @@ This script also stores the path to the base directory in environment variable `
 Build the package with the following commands:
 
 ```sh
+rm -rf python/hzz/pyroothist/
+git clone https://github.com/andrey-popov/pyroothist.git python/hzz/pyroothist
 mkdir build
 cd build
 cmake ..
