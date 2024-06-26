@@ -118,7 +118,7 @@ void JetBuilder::AddType1Correction(
 
   // The normal type 1 correction for jets not affected by the EE noise
   double const jecL1 = jetCorrector_.GetJecL1(rawP4, area);
-  if (not isEeNoise and rawP4.Pt() * corrFactorNew * rescale > minPtType1Corr_)
+  if (not isEeNoise and rawP4.Pt() * corrFactorNew > minPtType1Corr_)
     AddMomentumShift(rawP4 * jecL1 * rescale, rawP4 * corrFactorNew * rescale);
 
   // If the EE noise mitigation is enabled, the computation starts from an
@@ -135,7 +135,7 @@ void JetBuilder::AddType1Correction(
       return;
     double const rescale = 1. - muonFraction;
 
-    if (rawP4.Pt() * jecOrig * rescale > minPtType1Corr_)
+    if (rawP4.Pt() * jecOrig > minPtType1Corr_)
       AddMomentumShift(rawP4 * jecL1 * rescale, rawP4 * jecOrig * rescale);
   }
 }
@@ -195,7 +195,10 @@ void JetBuilder::ProcessJets() const {
  for (unsigned i = 0; i < srcPt_.GetSize(); ++i) {
     Jet jet;
     jet.p4.SetPtEtaPhiM(srcPt_[i], srcEta_[i], srcPhi_[i], srcMass_[i]);
-
+    // double const jecRaw = 1. / (1 - srcRawFactor_[i]);
+    // TLorentzVector const rawP4 = jet.p4  * (1. / jecRaw);
+    // double const area = srcArea_[i];
+    // double const jecNominal = jetCorrector_.GetJecFull(rawP4, area);
     double const jecNominal = 1. / (1 - srcRawFactor_[i]);
     TLorentzVector const rawP4 = jet.p4  * (1. / jecNominal);
     double jecUncFactor = 1., jerFactor = 1.;
