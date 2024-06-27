@@ -23,5 +23,5 @@ harvest.py --task-dir batch_zgamma_2018/ --config 2018-ul.yaml  $HZZ2L2NU_BASE/c
 plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_dilepton.yaml --prefix ./batch_dilepton_2018/merged/ --output data_sim_dilepton_2018 --year 2018
 plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_photon.yaml --prefix ./batch_singlephoton_2018/merged/ --output data_sim_singlephoton_2018 --year 2018
 plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_egammafrommisid.yaml --prefix ./batch_egammafrommisid_2018/merged/ --output data_sim_egammafrommisid_2018 --year 2018
-plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_singleelectron.yaml --prefix ./batch_singleelectron_2018/merged/ --output data_sim_singleelectron_2018 --year 2018
+plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_electron.yaml --prefix ./batch_singleelectron_2018/merged/ --output data_sim_singleelectron_2018 --year 2018
 plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_zgamma.yaml --prefix ./batch_zgamma_2018/merged/ --output data_sim_zgamma_2018 --year 2018
