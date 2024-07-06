@@ -176,10 +176,12 @@ The following procedure needs to be used to re-compute the weights for the photo
 
 * Run once the `DileptonTrees` analysis (this can be done on data only), using the option `--ptmiss-cut=0`. Harvest the output.
 * Run once the `PhotonTrees` analysis (this can be done on data only), changing the config file for NOT applying mean weights (else, it would drop events with a mean weight of 0).
+以上两步已经在之前完成。
 * Compute nvtx weights:
 
 ```sh
 compute_instrMET_weights.py -o OUTPUTNAME.root -s nvtx PATH/TO/DILEPTON/TREES PATH/TO/PHOTON/TREES
+compute_instrMET_weights.py -o data/InstrMetReweighting/weight_nvtx_2018.root -s nvtx batch_dilepton_2018/merged/ batch_singlephoton_2018/merged/
 ```
 
 * Move the weights to `data/InstrMetReweighting/`. Erase the previous ones or change the config file.
