@@ -6,7 +6,7 @@ import yaml
 def main():
     ROOT.gROOT.LoadMacro('WJets.C')
 
-    with open('config.yaml', 'r') as yaml_file:
+    with open(f'config_{year}.yaml', 'r') as yaml_file:
         yaml_data = yaml.safe_load(yaml_file)
 
     input_dir = yaml_data["input_dir"]
@@ -47,6 +47,13 @@ def main():
         df.Report().Print()
         df_new.Snapshot("Vars", output_filepath)
 
+if __name__ == '__main__':
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument('-y', '--year', choices={'2016', '2016HIPM', '2016noHIPM', '2017', '2018'},
+                            default='2018',
+                            help='YEAR')
+    args = argparser.parse_args()
 
-if __name__ == "__main__":
+    year = args.year
+
     main()
