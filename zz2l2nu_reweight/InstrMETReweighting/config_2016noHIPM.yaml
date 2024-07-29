@@ -1,0 +1,43 @@
+input_dir: "~/Documents/HEP/CMS/outputs/DataDriven/photonCR231011_ll_pt_60/2016noHIPM/merged/"
+output_dir: "./2016noHIPM"
+samples:
+  - name: 'Data'
+    multiplier: '1.0'
+  # - name: 'ZNuNuGJets'
+  #   multiplier: '-1.0'
+  - name: 'ZNuNuGJets_Semi-data-driven'
+    multiplier: '-1.0'
+  - name: 'WGToLNuG'
+    multiplier: '-1.0'
+  # - name: 'WJetsToLNu_0J'
+  #   multiplier: '-1.0'
+  # - name: 'WJetsToLNu_1J'
+  #   multiplier: '-1.0'
+  # - name: 'WJetsToLNu_2J'
+  #   multiplier: '-1.0'
+  - name: 'WJets_Data-driven_Data'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_GJets'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_QCD'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_DYJetsToLL_PtZ'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_TTJets'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_ST_s-channel'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_ST_t-channel'
+    multiplier: '-1.0'
+  - name: 'WJets_Data-driven_ST_tW'
+    multiplier: '-1.0'
+  - name: 'TTGJets'
+    multiplier: '-1.0'
+  - name: 'TGJets'
+    multiplier: '-1.0'
+  - name: 'QCD'
+    multiplier: '-1.0'
+
+nvtx_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_nvtx_2016noHIPM.root"
+eta_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_eta_2016noHIPM.root"
+pt_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_pt_2016noHIPM.root"

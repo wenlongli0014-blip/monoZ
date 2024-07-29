@@ -1,0 +1,23 @@
+input_dir: "~/Documents/HEP/CMS/outputs/ElectronTrees/231011_llpt_60/2018/merged"
+output_dir: "./2018"
+samples:
+  - name: 'Data'
+    multiplier: '1.0'
+  - name: 'QCD'
+    multiplier: '-1.0'
+  - name: 'DYJetsToLL_PtZ'
+    multiplier: '-1.0'
+  - name: 'GJets'
+    multiplier: '-1.0'
+  - name: 'TTJets'
+    multiplier: '-1.0'
+  - name: 'ST_s-channel'
+    multiplier: '-1.0'
+  - name: 'ST_t-channel'
+    multiplier: '-1.0'
+  - name: 'ST_tW'
+    multiplier: '-1.0'
+
+fake_ratio_filepath: "~/Documents/HEP/CMS/outputs/EGammaFromMisid/231011_llpt_60/ratios_2018.root"
+photon_trigger_efficiency_filepath: "~/Downloads/Firefox/trigger_efficiencies_root/singlePhoton_cutbaseID_data/2018.root"
+electron_trigger_efficiency_filepath: "~/Downloads/Firefox/trigger_efficiencies_root/singleElectron_data/fit_UL2018_Efficiency.root"
