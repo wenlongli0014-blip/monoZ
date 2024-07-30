@@ -38,5 +38,5 @@ samples:
   
 
 fake_ratio_filepath: "../ratiosWJets/fakeRatio/ratios_2016noHIPM.root"
-photon_trigger_efficiency_filepath: "../ratiosWJets/singlePhoton_cutbaseID_data/2016noHIPM.root"
-electron_trigger_efficiency_filepath: "../ratiosWJets/singleElectron_data/fit_UL2016noHIPM_Efficiency.root"
+photon_trigger_efficiency_filepath: "../ratiosWJets/singlePhoton_cutbaseID_data/2016postVFP.root"
+electron_trigger_efficiency_filepath: "../ratiosWJets/singleElectron_data/fit_UL2016Post_Efficiency.root"

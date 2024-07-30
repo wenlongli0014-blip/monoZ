@@ -37,5 +37,5 @@ samples:
     multiplier: '-1.0'
 
 fake_ratio_filepath: "../ratiosWJets/fakeRatio/ratios_2016HIPM.root"
-photon_trigger_efficiency_filepath: "../ratiosWJets/singlePhoton_cutbaseID_data/2016HIPM.root"
-electron_trigger_efficiency_filepath: "../ratiosWJets/singleElectron_data/fit_UL2016HIPM_Efficiency.root"
+photon_trigger_efficiency_filepath: "../ratiosWJets/singlePhoton_cutbaseID_data/2016preVFP.root"
+electron_trigger_efficiency_filepath: "../ratiosWJets/singleElectron_data/fit_UL2016Pre_Efficiency.root"
