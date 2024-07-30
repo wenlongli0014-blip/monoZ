@@ -1,5 +1,5 @@
-input_dir: "../../"
-output_dir: "./2018"
+input_dir: "../../batch_singlephoton_2018/merged"
+output_dir: "../../batch_singlephoton_2018/merged"
 samples:
   - name: 'Data'
     multiplier: '1.0'
@@ -30,6 +30,6 @@ samples:
   - name: 'QCD'
     multiplier: '-1.0'
 
-nvtx_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_nvtx_2018.root"
-eta_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_eta_2018.root"
-pt_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_pt_2018.root"
+nvtx_weight_filepath: "../../data/InstrMetReweighting/weight_nvtx_2018.root"
+eta_weight_filepath: "../../data/InstrMetReweighting/weight_eta_2018.root"
+pt_weight_filepath: "../../data/InstrMetReweighting/weight_pt_2018.root"

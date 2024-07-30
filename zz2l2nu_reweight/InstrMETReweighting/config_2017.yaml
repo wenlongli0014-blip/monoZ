@@ -1,20 +1,12 @@
-input_dir: "~/Documents/HEP/CMS/outputs/DataDriven/photonCR231011_ll_pt_60/2017/merged/"
-output_dir: "./2017"
+input_dir: "../../batch_singlephoton_2017/merged"
+output_dir: "../../batch_singlephoton_2017/merged"
 samples:
   - name: 'Data'
     multiplier: '1.0'
-  # - name: 'ZNuNuGJets'
-  #   multiplier: '-1.0'
   - name: 'ZNuNuGJets_Semi-data-driven'
     multiplier: '-1.0'
   - name: 'WGToLNuG'
     multiplier: '-1.0'
-  # - name: 'WJetsToLNu_0J'
-  #   multiplier: '-1.0'
-  # - name: 'WJetsToLNu_1J'
-  #   multiplier: '-1.0'
-  # - name: 'WJetsToLNu_2J'
-  #   multiplier: '-1.0'
   - name: 'WJets_Data-driven_Data'
     multiplier: '-1.0'
   - name: 'WJets_Data-driven_GJets'
@@ -38,6 +30,6 @@ samples:
   - name: 'QCD'
     multiplier: '-1.0'
 
-nvtx_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_nvtx_2017.root"
-eta_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_eta_2017.root"
-pt_weight_filepath: "~/Documents/HEP/CMS/outputs/DataDriven/InstreMETReweighting231011_ll_pt_60/weight_pt_2017.root"
+nvtx_weight_filepath: "../../data/InstrMetReweighting/weight_nvtx_2017.root"
+eta_weight_filepath: "../../data/InstrMetReweighting/weight_eta_2017.root"
+pt_weight_filepath: "../../data/InstrMetReweighting/weight_pt_2017.root"
