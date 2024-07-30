@@ -1,14 +1,14 @@
 #include <yaml-cpp/yaml.h>
 
-YAML::Node config = YAML::LoadFile("config.yaml");
+YAML::Node config = YAML::LoadFile("config_2016HIPM.yaml");
 
-const std::string fake_ratio_filepath = config["fake_ratio_filepath"].as<std::string>();
-const std::string photon_trigger_efficiency_filepath = config["photon_trigger_efficiency_filepath"].as<std::string>();
-const std::string electron_trigger_efficiency_filepath = config["electron_trigger_efficiency_filepath"].as<std::string>();
+std::string fake_ratio_filepath = config["fake_ratio_filepath"].as<std::string>();
+std::string photon_trigger_efficiency_filepath = config["photon_trigger_efficiency_filepath"].as<std::string>();
+std::string electron_trigger_efficiency_filepath = config["electron_trigger_efficiency_filepath"].as<std::string>();
 
-TFile* const fake_ratio_file = TFile::Open(fake_ratio_filepath.c_str());
-TFile* const photon_trigger_efficiency_file = TFile::Open(photon_trigger_efficiency_filepath.c_str());
-TFile* const electron_trigger_efficiency_file = TFile::Open(electron_trigger_efficiency_filepath.c_str());
+TFile* fake_ratio_file = TFile::Open(fake_ratio_filepath.c_str());
+TFile* photon_trigger_efficiency_file = TFile::Open(photon_trigger_efficiency_filepath.c_str());
+TFile* electron_trigger_efficiency_file = TFile::Open(electron_trigger_efficiency_filepath.c_str());
 
 
 

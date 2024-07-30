@@ -1,6 +1,6 @@
 #include <yaml-cpp/yaml.h>
 
-YAML::Node config = YAML::LoadFile("config_2018.yaml");
+YAML::Node config = YAML::LoadFile("config_2017.yaml");
 
 std::string nvtx_weight_filepath = config["nvtx_weight_filepath"].as<std::string>();
 std::string eta_weight_filepath = config["eta_weight_filepath"].as<std::string>();

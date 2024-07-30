@@ -6,7 +6,7 @@ import numpy as np
 def main():
     print(year)
     # 打开输入 ROOT 文件
-    file_in = TFile.Open(f'~/hong/hzz2l2nu/batch_egammafrommisid_{year}/merged/Data.root', 'READ')
+    file_in = TFile.Open(f'../batch_egammafrommisid_{year}/merged/Data.root', 'READ')
     tree_in = file_in.Get('Vars')
 
     # 创建一个新的 ROOT 文件用于保存输出直方图

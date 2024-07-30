@@ -1,5 +1,5 @@
-input_dir: "~/Documents/HEP/CMS/outputs/ElectronTrees/231011_llpt_60/2018/merged"
-output_dir: "./2018"
+input_dir: "../../batch_singleelectron_2018/merged"
+output_dir: "../../batch_singleelectron_2018/merged"
 samples:
   - name: 'Data'
     multiplier: '1.0'
@@ -17,7 +17,25 @@ samples:
     multiplier: '-1.0'
   - name: 'ST_tW'
     multiplier: '-1.0'
+  - name: 'WWTo1L1Nu2Q'
+    multiplier: '-1.0'
+  - name: 'WWTo2L2Nu'
+    multiplier: '-1.0'
+  - name: 'WZTo1L1Nu2Q'
+    multiplier: '-1.0'
+  - name: 'WZTo1L3Nu'
+    multiplier: '-1.0'
+  - name: 'WZTo2Q2L'
+    multiplier: '-1.0'
+  - name: 'WZTo3LNu'
+    multiplier: '-1.0'
+  - name: 'ZZTo2L2Nu'
+    multiplier: '-1.0'
+  - name: 'ZZTo2Q2L'
+    multiplier: '-1.0'
+  - name: 'ZZTo4L'
+    multiplier: '-1.0'
 
-fake_ratio_filepath: "~/Documents/HEP/CMS/outputs/EGammaFromMisid/231011_llpt_60/ratios_2018.root"
-photon_trigger_efficiency_filepath: "~/Downloads/Firefox/trigger_efficiencies_root/singlePhoton_cutbaseID_data/2018.root"
-electron_trigger_efficiency_filepath: "~/Downloads/Firefox/trigger_efficiencies_root/singleElectron_data/fit_UL2018_Efficiency.root"
+fake_ratio_filepath: "../ratiosWJets/fakeRatio/ratios_2018.root"
+photon_trigger_efficiency_filepath: "../ratiosWJets/singlePhoton_cutbaseID_data/2018.root"
+electron_trigger_efficiency_filepath: "../ratiosWJets/singleElectron_data/fit_UL2018_Efficiency.root"

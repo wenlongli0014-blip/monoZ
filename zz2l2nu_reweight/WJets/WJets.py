@@ -4,7 +4,7 @@ import yaml
 
 
 def main():
-    ROOT.gROOT.LoadMacro('WJets.C')
+    ROOT.gROOT.LoadMacro(f'WJets_{year}.C')
 
     with open(f'config_{year}.yaml', 'r') as yaml_file:
         yaml_data = yaml.safe_load(yaml_file)
