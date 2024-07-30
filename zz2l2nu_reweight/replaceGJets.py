@@ -3,7 +3,7 @@ import ROOT
 import ctypes
 
 def main():
-    rdf = ROOT.RDataFrame("Vars", f"../batch_singleelectron_{year}/merged/DYJetsToLL_Data-driven_GJets_nvtx_eta_pt_reweighted.root")
+    rdf = ROOT.RDataFrame("Vars", f"../batch_singlephoton_{year}/merged/DYJetsToLL_Data-driven_GJets_nvtx_eta_pt_reweighted.root")
 
     rdf_new = (rdf.Filter('lepton_cat != 2', 'ossf')
                 .Filter('jet_cat == 2.', '2j  ')

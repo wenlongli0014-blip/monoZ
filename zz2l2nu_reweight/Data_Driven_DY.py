@@ -32,7 +32,7 @@ def main():
             'DYJetsToLL_Data-driven_ZNuNuGJets_Semi-data-driven_nvtx_eta_pt_reweighted.root',
         ]
 
-    paths = [f'../batch_singleelectron_{year}/merged/{name}' for name in names]
+    paths = [f'../batch_singlephoton_{year}/merged/{name}' for name in names]
 
     rdf = ROOT.RDataFrame("Vars", paths)
 
