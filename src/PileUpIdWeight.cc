@@ -56,7 +56,8 @@ PileUpIdWeight::PileUpIdWeight(
     : pileUpIdFilter_{pileUpIdFilter}, jetBuilder_{jetBuilder},
       absEtaEdges_{pileUpIdFilter_->GetAbsEtaEdges()},
       expPileUp_{dataset.Reader(), "Pileup_nTrueInt"},
-      cache_{dataset.Reader()} {
+      cache_{dataset.Reader()},
+      systLabel_(options.GetAs<std::string>("syst")){
   for (auto const &wp : pileUpIdFilter_->GetWorkingPoints())
     contexts_.emplace_back(wp);
 
@@ -82,7 +83,6 @@ PileUpIdWeight::PileUpIdWeight(
   // effFeatures_[4] = (year == 2016) ? 1 : 0;
   // effFeatures_[5] = (year == 2017) ? 1 : 0;
   // effFeatures_[6] = (year == 2018) ? 1 : 0;
-
   auto const systLabel = options.GetAs<std::string>("syst");
   // if (systLabel == "puid_tag_up")
   //   defaultVariation_ = Variation::kTagUp;
@@ -140,13 +140,22 @@ double PileUpIdWeight::GetEfficiency(
 
 double PileUpIdWeight::GetScaleFactor(
     Context const &context, Jet const &jet) const {
-  std::shared_ptr<TH2> histValue;
+  std::shared_ptr<TH2> histValue, histValue_unc;
   // std::shared_ptr<TH2> histValue, histUnc;
 
   histValue = context.sf;
 
   int const bin = histValue->FindFixBin(jet.p4.Pt(), jet.p4.Eta());
-  double const sfNominal = histValue->GetBinContent(bin);
+  double sfNominal = histValue->GetBinContent(bin);
+
+  histValue_unc = context.sf_unc;
+  int const bin_unc = histValue_unc->FindFixBin(jet.p4.Pt(), jet.p4.Eta());
+  double const sf_unc = histValue_unc->GetBinContent(bin_unc);
+
+  if (systLabel_ == "puid_up")
+    sfNominal += sf_unc;
+  if (systLabel_ == "puid_down")
+    sfNominal -= sf_unc;
 
   return sfNominal;
 }
@@ -178,7 +187,7 @@ void PileUpIdWeight::LoadScaleFactors(YAML::Node const config, std::string year,
     std::string const nameFragment = isUL ? ("UL" + year + "_" + wpLabel) : (year + "_" + wpLabel);
 
     LOG_DEBUG << "Will use PileUp Jet ID eff and sf " << nameFragment << ".";
-
+    context.sf_unc = histReader("h2_eff_sf" + nameFragment + "_Systuncty");
     context.sf = histReader("h2_eff_sf" + nameFragment);
     context.eff = histReader("h2_eff_mc" + nameFragment);
 

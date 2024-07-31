@@ -22,6 +22,10 @@ QCDscale:
   processes: ["*"]
   is_weight: true
 
+puid:
+  processes: ["*"]
+  is_weight: true
+
 PS_isr:
   processes: ["*"]
   is_weight: true

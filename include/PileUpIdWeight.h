@@ -51,7 +51,6 @@ class PileUpIdWeight : public WeightBase {
       Dataset &dataset, Options const &options,
       PileUpIdFilter const *pileUpIdFilter,
       JetBuilder const *jetBuilder);
-
   double NominalWeight() const override {
     if (cache_.IsUpdated())
       Update();
@@ -102,7 +101,7 @@ class PileUpIdWeight : public WeightBase {
      * \brief Histograms with pileup ID scale factors and their uncertainties
      * for matched and pileup jets
      */
-    std::shared_ptr<TH2> sf, eff;
+    std::shared_ptr<TH2> sf, eff, sf_unc;
   };
 
   /**
@@ -131,7 +130,6 @@ class PileUpIdWeight : public WeightBase {
 
   PileUpIdFilter const *pileUpIdFilter_;
   JetBuilder const *jetBuilder_;
-
   /**
    * \brief Edges between different |eta| regions
    *
@@ -161,7 +159,7 @@ class PileUpIdWeight : public WeightBase {
   Variation defaultVariation_;
 
   EventCache cache_;
-
+  std::string systLabel_;
   /**
    * \brief Cached weights for all systematic variations
    *
