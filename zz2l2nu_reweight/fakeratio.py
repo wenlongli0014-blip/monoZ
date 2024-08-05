@@ -1,4 +1,4 @@
-
+import argparse
 import ROOT
 from ROOT import TFile, TH1F, TGraphErrors
 import numpy as np
@@ -10,7 +10,7 @@ def main():
     tree_in = file_in.Get('Vars')
 
     # 创建一个新的 ROOT 文件用于保存输出直方图
-    output_file = TFile(f'ratiosWJets/fakeRatio/fake_ratio_{year}_hist.root', 'RECREATE')
+    output_file = TFile(f'ratiosWJets/fakeRatio/fake_ratio_{year}.root', 'RECREATE')
 
     # 定义自定义分bin边界
     pt_bins = np.array([50, 75, 100, 135, 220, 450], dtype='float64')

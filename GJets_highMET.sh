@@ -10,7 +10,7 @@ for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python fakeratio.py -y ${YEAR}; do
 
 #计算reweight后的WJets
 cd WJets
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python WJets/WJets.py -y ${YEAR}; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python WJets.py -y ${YEAR}; done
 cd ..
 
 #计算扣除本底后的GJets
