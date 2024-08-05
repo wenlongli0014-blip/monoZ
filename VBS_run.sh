@@ -11,11 +11,11 @@ for YEAR in 2016HIPM 2016noHIPM 2017 2018; do prepare_htcondor_jobs.py --task-di
 
 sleep 4h
 #merge the rootfile 
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_dilepton_${YEAR}/ --config${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_dilepton_${YEAR}.txt; done
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_singlephoton_${YEAR}/ --config${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_SinglePhoton_InstrMET_${YEAR}.txt; done
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_egammafrommisid_${YEAR}/ --config${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_EGammaFromMisid_${YEAR}.txt; done
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_singleelectron_${YEAR}/ --config${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_SingleElectron_${YEAR}.txt; done
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_zgamma_${YEAR}/ --config${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_ZGamma_dilepton_${YEAR}.txt; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_dilepton_${YEAR}/ --config ${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_dilepton_${YEAR}.txt; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_singlephoton_${YEAR}/ --config ${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_SinglePhoton_InstrMET_${YEAR}.txt; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_egammafrommisid_${YEAR}/ --config ${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_EGammaFromMisid_${YEAR}.txt; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_singleelectron_${YEAR}/ --config ${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_SingleElectron_${YEAR}.txt; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do harvest.py --task-dir batch_zgamma_${YEAR}/ --config ${YEAR}-ul.yaml  $HZZ2L2NU_BASE/config/samples_ZGamma_dilepton_${YEAR}.txt; done
 
 #plot
 # for YEAR in 2016HIPM 2016noHIPM 2017 2018; do plot_data_sim.py ${HZZ2L2NU_BASE}/config/plot_data_sim_dilepton.yaml --prefix ./batch_dilepton_${YEAR}/merged/ --output data_sim_dilepton_${YEAR} --year 2018
