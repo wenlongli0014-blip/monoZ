@@ -3,7 +3,7 @@
 cd zz2l2nu_reweight
 
 #计算Zgamma的normalization并reweight
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python ZGammaReight.py -y ${YEAR}; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python ZGammaReweight.py -y ${YEAR}; done
 
 #计算WJets的fakeRatio
 for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python fakeratio.py -y ${YEAR}; done
