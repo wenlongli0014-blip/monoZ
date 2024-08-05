@@ -32,10 +32,10 @@ def main():
         unc_TTG = math.sqrt(rdf_TTG_new.Filter("pass_cut").Define("w2","weight*weight").Sum("w2").GetValue())
         # print(f"{input_filename_data} Number of TTGJets events with photon_pt > 60 && jet_cat == {jet_cat}: {weighted_count_TTG}")
         # print(f"uncertainty: {unc_TTG}")
-        try:
-            input_filename_ZG = f"../batch_zgamma_{year}/merged/ZLLGJets.root"
-        except:
+        if year == "2016HIPM":
             input_filename_ZG = f"../batch_zgamma_{year}/merged/ZGTo2LG.root"
+        else:
+            input_filename_ZG = f"../batch_zgamma_{year}/merged/ZLLGJets.root"
         rdf_ZG = ROOT.RDataFrame("Vars", input_filename_ZG)
         rdf_ZG_new = rdf_ZG.Define("pass_cut", f"photon_pt > 60 && jet_cat == {jet_cat}")
         weighted_count_ZG = rdf_ZG_new.Filter("pass_cut").Sum("weight").GetValue()
