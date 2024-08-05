@@ -2,7 +2,7 @@ import math
 import ROOT
 from ROOT import TFile, TTree, TBranch
 from array import array
-
+import argparse
 def main():
     print(year)
 
@@ -32,16 +32,18 @@ def main():
         unc_TTG = math.sqrt(rdf_TTG_new.Filter("pass_cut").Define("w2","weight*weight").Sum("w2").GetValue())
         # print(f"{input_filename_data} Number of TTGJets events with photon_pt > 60 && jet_cat == {jet_cat}: {weighted_count_TTG}")
         # print(f"uncertainty: {unc_TTG}")
-
-        input_filename_ZG = f"../batch_zgamma_{year}/merged/ZLLGJets.root"
+        try:
+            input_filename_ZG = f"../batch_zgamma_{year}/merged/ZLLGJets.root"
+        except:
+            input_filename_ZG = f"../batch_zgamma_{year}/merged/ZGTo2LG.root"
         rdf_ZG = ROOT.RDataFrame("Vars", input_filename_ZG)
         rdf_ZG_new = rdf_ZG.Define("pass_cut", f"photon_pt > 60 && jet_cat == {jet_cat}")
         weighted_count_ZG = rdf_ZG_new.Filter("pass_cut").Sum("weight").GetValue()
         unc_ZG = math.sqrt(rdf_ZG_new.Filter("pass_cut").Define("w2","weight*weight").Sum("w2").GetValue())
         # print(f"{input_filename_data} Number of ZGTo2LG events with photon_pt > 60 && jet_cat == {jet_cat}: {weighted_count_ZG}")
         # print(f"uncertainty: {unc_ZG}")
-
-        ratio = (count_data - weighted_count_DY - weighted_count_TTG) / weighted_count_ZG
+        ratio = count_data / weighted_count_ZG
+        # ratio = (count_data - weighted_count_DY - weighted_count_TTG) / weighted_count_ZG
         print("ratio: ", ratio)
         print("stat unc.: ", ratio * math.sqrt( (unc_data ** 2 + unc_DY ** 2 + unc_TTG ** 2) / ((count_data - weighted_count_DY - weighted_count_TTG) ** 2) + (unc_ZG / weighted_count_ZG) ** 2) )
         if jet_cat == 2:
