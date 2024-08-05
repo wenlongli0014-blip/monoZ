@@ -1,0 +1,3 @@
+catalogPath=/pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-08-22_2016HIPM-NanoAODv9/DDF/InstrMET
+
+SinglePhoton.yaml
