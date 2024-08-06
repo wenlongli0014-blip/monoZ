@@ -15,7 +15,7 @@ cd ..
 
 #计算扣除本底后的GJets
 cd InstrMETReweighting
-for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python InstrMETReweighting/CollectWeights.py -y ${YEAR}; done
+for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python CollectWeights.py -y ${YEAR}; done
 cd ..
 #计算Data Driven DY在low MET 和 SR 的估计值
 for YEAR in 2016HIPM 2016noHIPM 2017 2018; do python Data_Driven_DY.py -y ${YEAR}; done

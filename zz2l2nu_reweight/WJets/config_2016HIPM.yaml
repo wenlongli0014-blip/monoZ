@@ -1,5 +1,5 @@
 input_dir: "../../batch_singleelectron_2016HIPM/merged"
-output_dir: "../../batch_singleelectron_2016HIPM/merged"
+output_dir: "../../batch_singlephoton_2016HIPM/merged"
 samples:
   - name: 'Data'
     multiplier: '1.0'
