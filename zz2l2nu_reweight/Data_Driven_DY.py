@@ -1,7 +1,7 @@
 import argparse
 import ROOT
 import ctypes
-
+import argparse
 
 
 def main():

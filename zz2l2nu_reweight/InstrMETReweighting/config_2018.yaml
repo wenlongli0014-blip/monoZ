@@ -1,6 +1,8 @@
 input_dir: "../../batch_singlephoton_2018/merged"
 output_dir: "../../batch_singlephoton_2018/merged"
 samples:
+  - name: 'GJets'
+    multiplier: '1.0'
   - name: 'Data'
     multiplier: '1.0'
   - name: 'ZNuNuGJets_Semi-data-driven'
