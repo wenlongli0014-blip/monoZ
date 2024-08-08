@@ -36,6 +36,6 @@ cd zz2l2nu_reweight
 
 #将pt_ll[60,82.5] MET>160,200区间的DY事例数替换成MC
 for YEAR in 2016 2017; do python replaceGJets_2016_2017.py -y ${YEAR}; done
-python replaceGJets_2018.py -y 2018
+python replaceGJets_2018.py 
 hadd histo2d_2017_and_2018_SR_final.root histo2d_2017_SR_final.root histo2d_2018_SR_final.root
 python final_plot.py
