@@ -1,0 +1,4 @@
+for YEAR in 2016HIPM 2016noHIPM 2017; do python replaceGJets_2016_2017_syst.py -y ${YEAR}; done
+python replaceGJets_2018_syst.py
+hadd histo2d_2016_SR_final_shift.root histo2d_2016HIPM_SR_final_shift.root histo2d_2016noHIPM_SR_final_shift.root
+hadd histo2d_2017_and_2018_SR_final_shift.root histo2d_2018_SR_final_shift.root histo2d_2017_SR_final_shift.root
