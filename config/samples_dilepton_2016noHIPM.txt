@@ -1,4 +1,4 @@
-catalogPath=/pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016noHIPM-NanoAODv9/DDF/Dilepton
+catalogPath=/eos/cms/store/group/phys_smp/ZZTo2L2Nu/HZZsample/2016/YAML
 
 DoubleEG.yaml
 DoubleMuon.yaml
