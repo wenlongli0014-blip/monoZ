@@ -37,4 +37,22 @@ To rebuild the package after a change has been introduced to the code, repeat th
 (cd build && make -j $(nproc))
 ```
 ## Running in local
+Computationally heavy part of the analysis is carried out by program runHZZanalysis. Here is an example command to run it interactively:
+```
+runHZZanalysis --config dilepton/2018-ul.yaml \
+--ddf /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016HIPM-NanoAODv9/DDF/Dilepton/DYJetsToLL_PtZ-0To50.yaml
+--analysis DileptonTrees \
+--max-events 10000 \
+--more-vars \
+```
+- The first parameter `config` is the path to the master configuration file, such as 2016.yaml. It provides global settings that affect all analyises and all datasets. The path is resolved with the help of FileInPath service. Standard configuration files are located in directory $HZZ2L2NU_BASE/config, which is checked by FileInPath automatically.
+- The second parameter `ddf` is the path to a dataset definition file (either a full one or a derived fragment). It provides paths to input files included in the dataset and all dataset-specific configuration parameters.
+- The third parameter `analysis` specify which analysis should be executed.
+- The fourth parameter `max-events` is the maximal number of events to process.
+- The fifth parameter `more-vars`is to add more variables to the processed root.
 
+A number of other command line parameters are supported, many of them also have shortcuts. The complete list can be obtained by running
+```
+runHZZanalysis --analysis <analysis> --help
+```
+## Running in local
