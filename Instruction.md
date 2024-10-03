@@ -9,11 +9,12 @@ This framework can be used to process NanoAOD samples, including processing vari
 ## Set up and building
 This repository cloned with
 ```
-git clone ssh://git@gitlab.cern.ch:7999/hgao/hzz2l2nu.git .
+git clone ssh://git@gitlab.cern.ch:7999/hgao/hzz2l2nu.git 
 ```
 
 At the start of each session, set up the environment with (you can comment out different [lines](env.sh) based on the work cluster)
 ```sh
+cd hzz2l2nu
 . ./env.sh
 ```
 
