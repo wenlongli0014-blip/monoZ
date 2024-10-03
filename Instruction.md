@@ -12,7 +12,7 @@ This repository cloned with
 git clone ssh://git@gitlab.cern.ch:7999/hgao/hzz2l2nu.git .
 ```
 
-At the start of each session, set up the environment with
+At the start of each session, set up the environment with (you can comment out different [lines](env.sh) based on the work cluster)
 ```sh
 . ./env.sh
 ```
