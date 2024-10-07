@@ -41,7 +41,7 @@ To rebuild the package after a change has been introduced to the code, repeat th
 Computationally heavy part of the analysis is carried out by program runHZZanalysis. Here is an example command to run it interactively:
 ```
 runHZZanalysis --config dilepton/2018-ul.yaml \
---ddf /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016HIPM-NanoAODv9/DDF/Dilepton/DYJetsToLL_PtZ-0To50.yaml
+--ddf /eos/cms/store/group/phys_smp/ZZTo2L2Nu/HZZsample/2018/YAML/DYJetsToLL_PtZ-0To50.yaml
 --analysis DileptonTrees \
 --max-events 10000 \
 --more-vars \
