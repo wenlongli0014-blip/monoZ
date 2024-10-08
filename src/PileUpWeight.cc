@@ -12,7 +12,7 @@
 #include <TFile.h>
 #include <TKey.h>
 #include <TDirectory.h>
-
+#include <TVectorD.h>
 PileUpWeight::PileUpWeight(
     Dataset &dataset, Options const &options, RunSampler const *runSampler)
     : cache_{dataset.Reader()}, runSampler_{runSampler},
