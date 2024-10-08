@@ -52,8 +52,8 @@ trigger_efficiency:
 l1t_prefiring: true
 
 pileup_weight:
-  data_profile: /pnfs/iihe/cms/store/user/hanwen/DileptonUL/2023-09-11_2016HIPM-NanoAODv9/pileup/pileup_profiles_data.root
-  sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/dilepton/2023-12-22_2016HIPM-NanoAODv9/pileup/pileup_profiles_sim.root
+  data_profile: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2016APV/pileup_profiles_data.root
+  sim_profiles: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2016APV/pileup_profiles_sim.root
 
 met_filters:
   # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETOptionalFiltersRun2?rev=158#2016_data_and_MC_UL
