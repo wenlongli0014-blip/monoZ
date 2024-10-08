@@ -9,7 +9,9 @@
 #include <HZZException.h>
 #include <Logger.h>
 #include <Utils.h>
-
+#include <TFile.h>
+#include <TKey.h>
+#include <TDirectory.h>
 
 PileUpWeight::PileUpWeight(
     Dataset &dataset, Options const &options, RunSampler const *runSampler)
