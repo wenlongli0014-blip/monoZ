@@ -64,7 +64,7 @@ The submission is done with commands like
 prepare_htcondor_jobs.py --task-dir batch_dilepton_2018 \
 --config dilepton/2018-ul.yaml \
 -- $HZZ2L2NU_BASE/config/samples_dilepton_2018.txt \
---analysis DileptonTrees  
+--analysis DileptonTrees && (cd batch_dilepton_2018 && bash send_jobs.sh)
 ```
 - The first parameter is the name of the directory in which job scripts and output files will be stored. 
 - As with the interactive running, the second parameter is the master configuration file.
