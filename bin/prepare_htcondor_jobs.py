@@ -204,9 +204,10 @@ class JobBuilder:
         script_commands.append('echo ' + run_application_command)
         script_commands.append(run_application_command + ' || exit $?')
 
-        script_commands.append('cp {}{}.root {}/output'.format(
-            self.output_prefix, job_name, self.task_dir
-        ))
+        script_commands.append('cp {}{}.root {}/output'.format(self.output_prefix, job_name,"/eos/user/h/hgao/batch_dilepton_2018")
+        # script_commands.append('cp {}{}.root {}/output'.format(
+        #     self.output_prefix, job_name, self.task_dir
+        # ))
 
         script_path = '{}/jobs/scripts/runOnBatch_{}{}.sh'.format(
             self.task_dir, self.output_prefix, job_name
