@@ -3,13 +3,13 @@
 #include <JetMETCorrections/Modules/interface/JetResolution.h>
 #include <FWCore/Framework/interface/EventSetup.h>
 #include <FWCore/Framework/interface/ESHandle.h>
-
+#include <ostream>
 #include <CondFormats/DataRecord/interface/JetResolutionRcd.h>
 #include <CondFormats/DataRecord/interface/JetResolutionScaleFactorRcd.h>
 #else
 #include "JetResolution.h"
 #endif
-
+using namespace std;
 namespace JME {
 
     JetResolution::JetResolution(const std::string& filename) {
