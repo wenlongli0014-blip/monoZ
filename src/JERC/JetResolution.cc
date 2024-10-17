@@ -1,15 +1,17 @@
 #define STANDALONE
 #ifndef STANDALONE
+#include <string>
+#include <iostream>
 #include <JetMETCorrections/Modules/interface/JetResolution.h>
 #include <FWCore/Framework/interface/EventSetup.h>
 #include <FWCore/Framework/interface/ESHandle.h>
-#include <ostream>
+
 #include <CondFormats/DataRecord/interface/JetResolutionRcd.h>
 #include <CondFormats/DataRecord/interface/JetResolutionScaleFactorRcd.h>
 #else
 #include "JetResolution.h"
 #endif
-using namespace std;
+#include <stdexcept>
 namespace JME {
 
     JetResolution::JetResolution(const std::string& filename) {
