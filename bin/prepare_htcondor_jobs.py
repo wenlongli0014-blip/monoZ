@@ -172,6 +172,7 @@ class JobBuilder:
             job_name = '{}_{}'.format(dataset.name, job_id)
 
         script_commands = [
+          '#!/bin/bash',
           'export INITDIR={}'.format(self.install_path),
           'cd $INITDIR',
           '. ./env.sh',
