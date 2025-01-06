@@ -76,7 +76,7 @@ The full list of options supported by prepare_jobs.py is available through its h
 - `--syst jec_up` or `--syst jec_down`  These are examples of fully specified variations. They will be propagated to the underlying executable without a change, but only datasets that are affected by those variations (as indicated in [config/syst.yaml](https://gitlab.cern.ch/hgao/hzz2l2nu/-/blob/vbs_cuts/config/syst.yaml)) will be processed.
 - You need specific sources of systematic and shift direction.
 
-##Harvesting
+## Harvesting
 When all jobs have finished (which can be checked with `condor_q`), their outputs can be merged with
 ```
 harvest.py --task-dir batch_dilepton_2018/ --config 2018-ul.yaml  $HZZ2L2NU_BASE/config/samples_dilepton_2018.txt
