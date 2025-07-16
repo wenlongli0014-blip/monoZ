@@ -1,6 +1,6 @@
 # See here [1] for available images and runners
 # [1] https://cern.service-now.com/service-portal?id=kb_article&n=KB0003690
-image: "gitlab-registry.cern.ch/ci-tools/ci-worker:cc8"
+image: "gitlab-registry.cern.ch/ci-tools/ci-worker:cc7"
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
