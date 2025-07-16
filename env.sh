@@ -6,11 +6,11 @@ if test "${release#*release 6.}" != "$release"; then
   export SCRAM_ARCH=slc6_amd64_gcc830
 else
   # CentOS 7 for iihe cluster
-  # . /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_97python3 x86_64-centos7-gcc9-opt
-  # export SCRAM_ARCH=slc7_amd64_gcc920
+  . /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_97python3 x86_64-centos7-gcc9-opt
+  export SCRAM_ARCH=slc7_amd64_gcc920
   # for lxplus cluster
-  source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_102 x86_64-centos9-gcc11-opt
-  export SCRAM_ARCH=el9_amd64_gcc11
+  #source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh LCG_102 x86_64-centos9-gcc11-opt
+  #export SCRAM_ARCH=el9_amd64_gcc11
 fi
 
 export HZZ2L2NU_BASE=$(pwd)
