@@ -51,7 +51,21 @@ JetBuilder::JetBuilder(
     pileUpIdMinPt_ = 15.;
     pileUpIdMaxPt_ = 50.;
   }
+  // Default bit ordering as in 2017+ UL NanoAOD
+  pileUpIdLooseBit_ = 2;
+  pileUpIdMediumBit_ = 1;
+  pileUpIdTightBit_ = 0;
 
+  if (auto const periodNode = options.GetConfig()["period"]; periodNode) {
+    std::string const period = periodNode.as<std::string>();
+    if (period == "2016") {
+      // In 2016 UL NanoAOD, the loose and tight bits are swapped
+      pileUpIdLooseBit_ = 0;
+      pileUpIdMediumBit_ = 1;
+      pileUpIdTightBit_ = 2;
+    }
+
+  }
   auto const ptMissConfig = Options::NodeAs<YAML::Node>(
       options.GetConfig(), {"ptmiss"});
   ptMissJer_ = Options::NodeAs<bool>(ptMissConfig, {"jer"});
@@ -275,11 +289,14 @@ bool JetBuilder::SetPileUpInfo(Jet &jet, int index) const {
     jet.pileUpId = Jet::PileUpId::PassThrough;
   } else {
     int const id = srcPileUpId_[index];
-    if (id & 1)
+    bool const passLoose = (id & (1 << pileUpIdLooseBit_)) != 0;
+    bool const passMedium = (id & (1 << pileUpIdMediumBit_)) != 0;
+    bool const passTight = (id & (1 << pileUpIdTightBit_)) != 0;
+    if (passTight)
       jet.pileUpId = Jet::PileUpId::Tight;
-    else if (id & 1 << 1)
+    else if (passMedium)
       jet.pileUpId = Jet::PileUpId::Medium;
-    else if (id & 1 << 2)
+    else if (passLoose)
       jet.pileUpId = Jet::PileUpId::Loose;
     else
       jet.pileUpId = Jet::PileUpId::None;

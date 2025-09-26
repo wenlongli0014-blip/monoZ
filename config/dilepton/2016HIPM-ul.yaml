@@ -146,7 +146,7 @@ b_tagger:
   tag_threshold_medium: 0.2598
   tag_threshold_tight: 0.6502
   min_pt: 20
-  max_abs_eta: 2.5
+  max_abs_eta: 2.4
 
 b_tag_weight:
   scale_factors: BTag/wp_deepJet_106XUL16preVFP_v2_preULformat_csvCommaWorkaround.csv
