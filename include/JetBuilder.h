@@ -200,7 +200,7 @@ class JetBuilder : public CollectionBuilder<Jet> {
 
   /// Range of pt, in GeV, where pileup ID is applicable
   double pileUpIdMinPt_, pileUpIdMaxPt_;
-
+  int pileUpIdLooseBit_, pileUpIdMediumBit_, pileUpIdTightBit_;
   /// Collection of jets
   mutable std::vector<Jet> jets_;
 
