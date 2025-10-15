@@ -1,0 +1,55 @@
+diff --git a/MELA/makefile b/MELA/makefile
+index a7d3b07..c1490c2 100644
+--- a/MELA/makefile
++++ b/MELA/makefile
+@@ -19,7 +19,8 @@ MELADIR = $(shell pwd)
+ MELASRCDIR = $(MELADIR)/src
+ MELAOBJDIR = $(MELADIR)/obj
+ # Modify MELALIBDIR for the gcc version as needed
+-MELALIBDIR = ${MELA_LIB_PATH}
++# MELALIBDIR = ${MELA_LIB_PATH}
++MELALIBDIR = "./data/el9_amd64_gcc12/"
+ # _melapkgpath_ should refer to the root compilation path just like MELADIR with an extra '/'.
+ # If environment variables need to be inserted without expansion for portability,
+ # you can use '.oODOLLAROo..oOOPEN_BRACKETOo.[YOUR_ENV_VARIABLE].oOCLOSE_BRACKETOo.',
+diff --git a/MELA/test/batch.py b/MELA/test/batch.py
+index e19b07b..f9c4e15 100755
+--- a/MELA/test/batch.py
++++ b/MELA/test/batch.py
+@@ -2,12 +2,12 @@
+ 
+ import os
+ import sys
+-import commands
++import subprocess
+ 
+ from ROOT import TFile
+ 
+ def processDirectory ( args, dirname, filenames ):
+-    print "processing " + dirname
++    print("processing " + dirname)
+     for filename in filenames:
+         fullname = dirname + "/" + filename
+         
+@@ -55,18 +55,18 @@ def processDirectory ( args, dirname, filenames ):
+             
+ 
+ 
+-        print " " * 4 + filename + " with flavor " + str(flavor) + " and sqrts = " + str(sqrts) 
++        print(" " * 4 + filename + " with flavor " + str(flavor) + " and sqrts = " + str(sqrts)) 
+ 
+         
+ 
+         if flavor!=10: # looks like a valid file, prepare string
+             command = "root -q -b  addProbtoTree.C\\(\\\"" + fullname[:-5] + "\\\","+str(flavor)+",-1,"+str(sqrts)+"\\)\n"
+             #create batch script
+-            commands.getstatusoutput("cp batchscript.csh batchscript_tmp.csh")
++            subprocess.getstatusoutput("cp batchscript.csh batchscript_tmp.csh")
+             file = open('batchscript_tmp.csh', 'a')
+             file.write(command)
+             file.close()
+-            commands.getstatusoutput("bsub -q 8nh < batchscript_tmp.csh" )
++            subprocess.getstatusoutput("bsub -q 8nh < batchscript_tmp.csh" )
+             #exit(0)
+             
+ 
