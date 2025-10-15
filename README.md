@@ -14,11 +14,14 @@ Before building this repository, the `MELA` and `MelaAnalytics` packages must ha
 
 For `MELA` package
 ```sh
-. ./env.sh
-git clone https://github.com/JHUGen/JHUGenMELA.git
+source env.sh
+git clone -b v2.4.2 https://github.com/JHUGen/JHUGenMELA.git
 cd JHUGenMELA
-git checkout 00cc82efec77a8dbc7c908f4f8203e5693e20e97
-./setup.sh -j $(nproc) standalone
+git apply ../external/JHUGen_py2to3.patch
+cd ..
+sh JHUGenMELA/MELA/setup.sh -j 8
+cd JHUGenMELA/MELA/data/el9_amd64_gcc12/
+chmod +x *.so
 cd $HZZ2L2NU_BASE
 ```
 
