@@ -3,7 +3,7 @@
 This repository uses Git submodules and hence should be cloned with
 
 ```sh
-git clone --recurse-submodules ssh://git@gitlab.cern.ch:7999/HZZ-IIHE/hzz2l2nu.git
+git clone --recurse-submodules https://gitlab.cern.ch/yujil/hzz2l2nu.git
 ```
 
 Doxygen documentation for C++ code is available [here](http://homepage.iihe.ac.be/~aapopov/hzz2l2nu/doc/). At present it is generated manually by Andrey and might not correspond to the latest version of the code.
@@ -27,10 +27,9 @@ cd $HZZ2L2NU_BASE
 
 for `MelaAnalytics` package
 ```sh
-git clone https://github.com/MELALabs/MelaAnalytics
+git clone -b v2.3 https://github.com/MELALabs/MelaAnalytics
 cd MelaAnalytics
-git checkout c81ac33828aa053228cc0ffa97a17ce6907402be
-for dir in $(ls -F | grep "/");do cd $dir; make -j $(nproc); cd -; done
+source setup.sh
 cd $HZZ2L2NU_BASE
 ```
 
