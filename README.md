@@ -65,16 +65,21 @@ It is also possible to create a program outside of the repository and link it ag
 Computationally heavy part of the analysis is carried out by program `runHZZanalysis`. Here is an example command to run it interactively:
 
 ```sh
-runHZZanalysis --config 2016.yaml \
-  --ddf /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-04-16_2016-NanoAODv6/DDF/Dilepton/ZZTo2L2Nu.yaml \
-  --analysis DileptonTrees --max-events 10000
+runHZZanalysis --config dilepton/2018-ul.yaml \
+--ddf /eos/cms/store/group/phys_smp/ZZTo2L2Nu/HZZsample/2018/YAML/DYJetsToLL_PtZ-0To50.yaml \
+--analysis DileptonTrees \
+--max-events 100000 \
+--more-vars \
+
 ```
+- The first parameter `config` is the path to the master configuration file, such as 2016.yaml. It provides global settings that affect all analyises and all datasets. The path is resolved with the help of FileInPath service. Standard configuration files are located in directory $HZZ2L2NU_BASE/config, which is checked by FileInPath automatically.
+- The second parameter `ddf` is the path to a dataset definition file (either a full one or a derived fragment). It provides paths to input files included in the dataset and all dataset-specific configuration parameters.
+- The third parameter `analysis` specify which analysis should be executed.
+- The fourth parameter `max-events` is the maximal number of events to process.
+- The fifth parameter `more-vars`is to add more variables to the processed root.
 
-The first parameter is the path to the master configuration file, such as [`2016.yaml`](config/2016.yaml). It provides global settings that affect all analyises and all datasets. The path is resolved with the help of [`FileInPath`](http://homepage.iihe.ac.be/%7Eaapopov/hzz2l2nu/doc/classFileInPath.html) service. Standard configuration files are located in directory `$HZZ2L2NU_BASE/config`, which is checked by `FileInPath` automatically.
 
-The second parameter is the path to a [dataset definition file](https://gitlab.cern.ch/HZZ-IIHE/hzz2l2nu/wikis/dataset-definitions) (either a full one or a derived fragment). It provides paths to input files included in the dataset and all dataset-specific configuration parameters.
 
-The last two parameters specify which analysis should be executed and the maximal number of events to process. A number of other command line parameters are supported, many of them also have shortcuts. The complete list can be obtained by running
 
 ```sh
 runHZZanalysis --analysis <analysis> --help
