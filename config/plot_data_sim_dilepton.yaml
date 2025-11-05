@@ -193,33 +193,33 @@ variables:
   unit: 
   tag: jet_cat
 
-- formula: "jet_size"
-  binning:
-    default:
-      range: [0, 6]
-      bins: 6
-  x_scale: linear
-  label: "njets"
-  unit: 
-  tag: njets
+#- formula: "jet_size"
+#  binning:
+#    default:
+#      range: [0, 6]
+#      bins: 6
+#  x_scale: linear
+#  label: "njets"
+#  unit: 
+#  tag: njets
 
-- formula: "lepton_pt[0]"
-  binning:
-    default:
-      range: [20., 250.]
-      bins: 20
-  x_scale: log
-  label: "$p_{\\mathrm{T}}(\\ell_1)$"
-  tag: l1_pt
+#- formula: "lepton_pt[0]"
+#  binning:
+#    default:
+#      range: [20., 250.]
+#      bins: 20
+#  x_scale: log
+#  label: "$p_{\\mathrm{T}}(\\ell_1)$"
+#  tag: l1_pt
 
-- formula: "lepton_pt[1]"
-  binning:
-    default:
-      range: [20., 250.]
-      bins: 20
-  x_scale: log
-  label: "$p_{\\mathrm{T}}(\\ell_2)$"
-  tag: l2_pt
+#- formula: "lepton_pt[1]"
+#  binning:
+#    default:
+#      range: [20., 250.]
+#      bins: 20
+#  x_scale: log
+#  label: "$p_{\\mathrm{T}}(\\ell_2)$"
+#  tag: l2_pt
 
 - formula: "dphi_visibles_ptmiss"
   binning:
