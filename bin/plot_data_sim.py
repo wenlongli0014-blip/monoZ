@@ -371,7 +371,6 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
                 th1.SetBinError(i, data_hist.errors[i])
             th1.Write()
 
-        # 保存每个 normalized MC 样本
         for hist, sample in sim_hists_infos:
 
             th1 = ROOT.TH1D(sample.tag, sample.tag,
