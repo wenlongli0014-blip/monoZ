@@ -85,6 +85,7 @@ samples:
   # several standard endings are tried.
   data:
     files: [Data]
+    tag: "Data"
 
   # Samples for simulation. Each element of the list is a mapping with the
   # following keys:
@@ -101,31 +102,39 @@ samples:
   # - label: "VBS $ZZ \\to 2\\ell 2\\nu$ \n(NLO)"
   #   files: [VBS_ZZTo2E2Nu, VBS_ZZTo2Mu2Nu]
   #   color: darkviolet
-  - label: "VVV"
+  - label: "VVV" 
+    tag: "VVV" 
     files: [WWW, WWZ, WZZ, ZZZ]
     color: mediumpurple
   - label: "$gg \\to ZZ \\to 2\\ell 2\\nu$"
+    tag: "ggZZ"
     files: [GGToZZ]
     color: crimson
   # - label: "$gg \\to WW \\to 2\\ell 2\\nu$"
   #   files: [GGToWW]
   #   color: pink
   - label: "$q\\bar q \\to ZZ$"
+    tag: "qqZZ"
     files: [ZZTo2L2Nu,ZZTo2Q2L, ZZTo4L]
     color: darkorange
   - label: "$WW$, $WZ$"
+    tag: "WW+WZ"
     files: [WWTo2L2Nu, WZTo2Q2L, WZTo3LNu]
     color: lightseagreen
   - label: "$t\\bar t$"
+    tag: "ttbar"
     files: [TTTo2L2Nu]
     color: greenyellow
   - label: "Single $t$, $tW$"
+    tag: "ST"
     files: [ST_s-channel, ST_t-channel, ST_tW]
     color: mediumblue
   - label: "Drell-Yan"
+    tag: "DY"
     files: [DYJetsToLL_PtZ]
     color: steelblue
   - label: "Other"
+    tag: "Other"
     files: [TTWJetsToLNu, TTZToLLNuNu_M-10, tZq_ll]
     color: slateblue
 

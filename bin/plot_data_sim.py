@@ -165,6 +165,7 @@ class DecoratedSample(Sample):
         super().__init__(config, path_prefix, tree_name)
         self.label = config['label']
         self.color = config['color']
+        self.tag = config['tag'] #only fixed in di-lepton tree configs
 
 
 class Configuration:
@@ -186,7 +187,6 @@ class Configuration:
 
         self.selections = [Selection(cfg) for cfg in config['selections']]
         self.variables = [Variable(cfg) for cfg in config['variables']]
-
         if not sample_path_prefix:
             sample_path_prefix = config['samples'].get('path_prefix', '')
         tree_name = config['samples'].get('tree_name', 'Vars')
@@ -316,7 +316,7 @@ class HistogramBuilder:
 
 def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
                   save_path, formats=['pdf'],
-                  entries_label='Events', info_label=''):
+                  entries_label='Events', info_label='', root_path=''):
     """Plot and compare distributions in data and simulation.
 
     Arguments:
@@ -357,7 +357,38 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
 
     binning = data_hist.binning
     widths = binning[1:] - binning[:-1]
-    bin_centres = (binning[:-1] + binning[1:]) / 2
+    bin_centres = (binning[:-1] + binning[1:]) / 2 
+
+    if root_path is not None:
+
+        rf = ROOT.TFile(root_path, "RECREATE")
+        if data_hist is not None:
+            th1 = ROOT.TH1D("data", "data",
+                            len(data_hist.binning)-1,
+                            array('d', data_hist.binning))
+            for i in range(len(data_hist.contents)):
+                th1.SetBinContent(i, data_hist.contents[i])
+                th1.SetBinError(i, data_hist.errors[i])
+            th1.Write()
+
+        # 保存每个 normalized MC 样本
+        for hist, sample in sim_hists_infos:
+
+            th1 = ROOT.TH1D(sample.tag, sample.tag,
+                            len(hist.binning)-1,
+                            array('d', hist.binning))
+
+            for i in range(len(hist.contents)):
+                
+                val = hist.contents[i]
+                err = hist.errors[i]
+                
+                th1.SetBinContent(i, val)
+                th1.SetBinError(i, err)
+
+            th1.Write()
+
+        rf.Close()
 
     # Distributions of data and total simulation
     handle_sim = axes_distributions.hist(
@@ -504,5 +535,6 @@ if __name__ == '__main__':
             entries_label=config.entries_label,
             info_label=', '.join(
                 token for token in [selection.label, args.year] if token
-            )
+            ),
+            root_path=os.path.join(args.output, selection.tag, variable.tag)+".root",
         )
