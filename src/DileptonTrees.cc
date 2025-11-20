@@ -49,6 +49,8 @@ DileptonTrees::DileptonTrees(Options const &options, Dataset &dataset)
   AddBranch("ll_mass", &llMass_);
   AddBranch("ptmiss", &missPt_);
   AddBranch("ptmiss_phi", &missPhi_);
+  AddBranch("ptmiss_significance", &missSignificance_);
+  AddBranch("ptmiss_significance_corrected", &missSignificanceCorrected_);
   AddBranch("dphi_visibles_ptmiss", &dPhiVisiblesPtmiss_);
   AddBranch("mT", &mT_);
   AddBranch("num_pv_good", &numPVGood_);
@@ -141,6 +143,8 @@ bool DileptonTrees::ProcessEvent() {
   auto const &p4Miss = ptMissBuilder_.Get().p4;
   missPt_ = p4Miss.Pt();
   missPhi_ = p4Miss.Phi();
+  missSignificance_ = ptMissBuilder_.Get().significance;
+  missSignificanceCorrected_ = ptMissBuilder_.Get().significance_corrected;
 
   if (p4Miss.Pt() < ptMissCut_)
     return false;

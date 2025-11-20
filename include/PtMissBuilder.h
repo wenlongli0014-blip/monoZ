@@ -78,6 +78,7 @@ class PtMissBuilder {
   mutable TTreeReaderValue<int> srcNumPV_;
   mutable TTreeReaderValue<float> srcPt_, srcPhi_;
   mutable TTreeReaderValue<UInt_t> srcRun_;
+  mutable TTreeReaderValue<float> srcCOVxx_, srcCOVxy_, srcCOVyy_;
   mutable std::optional<TTreeReaderValue<float>> srcSignificance_;
   mutable std::optional<TTreeReaderValue<float>> srcUnclEnergyUpDeltaX_,
       srcUnclEnergyUpDeltaY_;

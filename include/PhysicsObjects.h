@@ -129,11 +129,12 @@ struct PtMiss : public Particle {
    * NaN if not set.
    */
   double significance;
+  double significance_corrected;
 };
 
 
 inline PtMiss::PtMiss() noexcept
-    : Particle{}, significance{std::numeric_limits<double>::quiet_NaN()} {}
+    : Particle{}, significance{std::numeric_limits<double>::quiet_NaN()}, significance_corrected{std::numeric_limits<double>::quiet_NaN()} {}
 
 
 /// Reconstructed photon
