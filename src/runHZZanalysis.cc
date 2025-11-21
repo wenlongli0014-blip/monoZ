@@ -5,6 +5,7 @@
 #include <boost/program_options.hpp>
 
 #include <DileptonTrees.h>
+#include <TrileptonTrees.h>
 #include <Logger.h>
 #include <Looper.h>
 #include <NrbAnalysis.h>
@@ -21,6 +22,7 @@ namespace po = boost::program_options;
 
 enum class AnalysisType {
   DileptonTrees,
+  TrileptonTrees,
   PhotonTrees,
   NRB,
   NrbTrees,
@@ -46,7 +48,7 @@ int main(int argc, char **argv) {
   analysisTypeOptions.add_options()
     ("analysis,a", po::value<std::string>()->default_value("DileptonTrees"),
      "Analysis to run; allowed values are \"DileptonTrees\", "
-     "\"PhotonTrees\", \"NRB\", \"ZGammaTrees\", \"NrbTrees\", \"ElectronTrees\", \"EGammaFromMisid\"");
+     "\"PhotonTrees\", \"NRB\", \"ZGammaTrees\", \"TrileptonTrees\", \"NrbTrees\", \"ElectronTrees\", \"EGammaFromMisid\"");
 
   // Command line options are checked twice. At the first pass only check the
   // analysis type and update the list of expected options accordingly.
@@ -61,6 +63,8 @@ int main(int argc, char **argv) {
 
   if (analysisTypeArg == "dileptontrees")
     analysisType = AnalysisType::DileptonTrees;
+  if (analysisTypeArg == "trileptontrees")
+    analysisType = AnalysisType::TrileptonTrees;
   else if (analysisTypeArg == "photontrees")
     analysisType = AnalysisType::PhotonTrees;
   else if (analysisTypeArg == "nrb")
@@ -85,6 +89,10 @@ int main(int argc, char **argv) {
   switch (analysisType) {
     case AnalysisType::DileptonTrees:
       runAnalysis<DileptonTrees>(argc, argv, analysisTypeOptions);
+      break;
+    
+    case AnalysisType::TrileptonTrees:
+      runAnalysis<TrileptonTrees>(argc, argv, analysisTypeOptions);
       break;
 
     case AnalysisType::PhotonTrees:

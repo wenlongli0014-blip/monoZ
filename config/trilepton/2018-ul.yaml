@@ -1,0 +1,284 @@
+period: "2018"
+
+# "Golden" data from https://cms-service-dqmdc.web.cern.ch/CAF/certification/Collisions18/13TeV/Legacy_2018/Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt
+luminosity: 59832.045316
+
+dataset_stems:
+# - dataset_settings.yaml
+# - dataset_settings_VBF.yaml
+- dataset_settings_ul.yaml
+
+run_sampler:
+  luminosity: Lumi/lumi.yaml
+  range: [315252, 325273]
+
+# The choice of dilepton triggers is based on the list used by the VBS group
+trigger_filter:
+  ee:
+  - triggers: [
+      Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Ele23_Ele12_CaloIdL_TrackIdL_IsoVL, DiEle27_WPTightCaloOnly_L1DoubleEG, DoubleEle33_CaloIdL_MW, DoubleEle25_CaloIdL_MW, DoubleEle27_CaloIdL_MW, DoublePhoton70, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
+    ]
+  mumu:
+  - triggers: [
+      Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8, Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8, Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass8, IsoMu24, IsoMu27, IsoMu30, Mu50
+    ]
+  emu:
+  - triggers: [
+      Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ, Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ, Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL, IsoMu24, IsoMu27, IsoMu30, Mu50, Ele115_CaloIdVT_GsfTrkIdT, Ele27_WPTight_Gsf, Ele32_WPTight_Gsf, Ele35_WPTight_Gsf, Ele38_WPTight_Gsf, Ele40_WPTight_Gsf, Ele32_WPTight_Gsf_L1DoubleEG, Photon200
+    ]
+
+apply_trigger_weight: false
+
+trigger_efficiency:
+  ee:
+    path: TriggerSF/2018/ee.root
+  mumu:
+    path: TriggerSF/2018/mumu.root
+  emu:
+    path: TriggerSF/2018/emu.root
+
+l1t_prefiring: false
+
+pileup_weight:
+  data_profile: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2018/pileup_profiles_data.root
+  sim_profiles: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2018/pileup_profiles_sim.root
+  # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profiles_data.root
+  # default_sim_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-24_2018-NanoAODv7/pileup/pileup_profile_sim.root
+
+met_filters:
+  # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETOptionalFiltersRun2?rev=158#2018_2017_data_and_MC_UL
+  data:
+  - "Flag_goodVertices"
+  - "Flag_globalSuperTightHalo2016Filter"
+  - "Flag_HBHENoiseFilter"
+  - "Flag_HBHENoiseIsoFilter"
+  - "Flag_EcalDeadCellTriggerPrimitiveFilter"
+  - "Flag_BadPFMuonFilter"
+  - "Flag_BadPFMuonDzFilter"
+  - "Flag_eeBadScFilter"
+  - "Flag_ecalBadCalibFilter"
+  sim:
+  - "Flag_goodVertices"
+  - "Flag_globalSuperTightHalo2016Filter"
+  - "Flag_HBHENoiseFilter"
+  - "Flag_HBHENoiseIsoFilter"
+  - "Flag_EcalDeadCellTriggerPrimitiveFilter"
+  - "Flag_BadPFMuonFilter"
+  - "Flag_BadPFMuonDzFilter"
+  - "Flag_eeBadScFilter"
+  - "Flag_ecalBadCalibFilter"
+
+selection_cuts:
+  z_mass_window: 15.0
+  min_pt_ll: 30.0
+  min_dphi_ll_ptmiss: 1.0
+  min_dphi_jet_ptmiss: 0.5
+  # min_dphi_leptonsjets_ptmiss: 2.5
+
+jets:
+  # Use TightLepVeto working point for jet ID as recommended in https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVRun2018?rev=13
+  jet_id_bit: 2
+  min_pt: 30
+  max_abs_eta: 4.7
+  corrections:
+    sim:
+    - levels:
+      - JERC/Summer19UL18_V5_MC_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_V5_MC_L2L3Residual_AK4PFchs.txt
+    data:
+    - run_range: [315252, 316995]  # 2018A
+      levels:
+      - JERC/Summer19UL18_RunA_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunA_V5_DATA_L2L3Residual_AK4PFchs.txt
+    - run_range: [317080, 319310]  # 2018B
+      levels:
+      - JERC/Summer19UL18_RunB_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunB_V5_DATA_L2L3Residual_AK4PFchs.txt
+    - run_range: [319337, 320065]  # 2018C
+      levels:
+      - JERC/Summer19UL18_RunC_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunC_V5_DATA_L2L3Residual_AK4PFchs.txt
+    - run_range: [320500, 325175]  # 2018D
+      levels:
+      - JERC/Summer19UL18_RunD_V5_DATA_L1FastJet_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L2Relative_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L3Absolute_AK4PFchs.txt
+      - JERC/Summer19UL18_RunD_V5_DATA_L2L3Residual_AK4PFchs.txt
+    uncertainty: JERC/Summer19UL18_V5_MC_Uncertainty_AK4PFchs.txt
+  resolution:
+    # Taken from https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution?rev=108
+    sim_resolution: JERC/Summer19UL18_JRV2_MC_PtResolution_AK4PFchs.txt
+    scale_factors: JERC/Summer19UL18_JRV2_MC_SF_AK4PFchs.txt
+
+#jets:
+#  # Use TightLepVeto working point for jet ID as recommended in https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVRun2018?rev=13
+#  jet_id_bit: 2
+#  min_pt: 30
+#  max_abs_eta: 4.7
+#  corrections:
+#    sim:
+#    - levels:
+#      - JERC/Autumn18_V19_MC_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_V19_MC_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_V19_MC_L3Absolute_AK4PFchs.txt
+#    data:
+#    - run_range: [315252, 316995]  # 2018A
+#      levels:
+#      - JERC/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [317080, 319310]  # 2018B
+#      levels:
+#      - JERC/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [319337, 320065]  # 2018C
+#      levels:
+#      - JERC/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    - run_range: [320673, 325175]  # 2018D
+#      levels:
+#      - JERC/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt
+#      - JERC/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt
+#    uncertainty: JERC/Autumn18_V19_MC_Uncertainty_AK4PFchs.txt
+#  resolution:
+#    sim_resolution: JERC/Autumn18_V7b_MC_PtResolution_AK4PFchs.txt
+#    scale_factors: JERC/Autumn18_V7b_MC_SF_AK4PFchs.txt
+
+ptmiss:
+  jer: true
+  pog_jets: true
+  XY_corrections: 2018
+  is_ul: true
+
+b_tagger:
+  # Thresholds and SF are taken from https://twiki.cern.ch/twiki/bin/viewauth/CMS/BtagRecommendation106XUL18?rev=17#Supported_Algorithms_and_Operati
+  branch_name: Jet_btagDeepFlavB
+  tag_threshold_loose: 0.0490
+  tag_threshold_medium: 0.2783
+  tag_threshold_tight: 0.7100
+  min_pt: 20
+  max_abs_eta: 2.5
+
+b_tag_weight:
+  scale_factors: BTag/wp_deepJet_106XUL18_v2_preULformat.csv
+  efficiency: BTag/2018.root
+  bottom_hist_name: 'B Jet'
+  charm_hist_name: 'C Jet'
+  light_hist_name: 'Light Jet'
+
+pileup_id:
+  pt_range: [20., 50.]
+  abs_eta_edges: [5.]
+  working_points: [M, N]
+  scale_factors: PileupID/PUID_106XTraining_ULRun2_EffSFandUncties_v1.root
+
+# # Veto events with jets in the HEM15/16 region
+# # https://indico.cern.ch/event/885282/#174-study-on-the-hem-issue-in
+# jet_geometric_veto:
+#   run_range: [319077, 325175]
+#   lumi_fraction: 0.647
+#   eta_range: [-3.0, -1.4]
+#   phi_range: [-1.6, -0.8]
+
+apply_lepton_weight: true
+
+lepton_efficiency:
+  muon:
+    nominal:
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID.root:NUM_TightID_DEN_TrackerMuons_abseta_pt
+        schema: [abs_eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt # we use Tight WP (RelIso < 0.15) for muons. See https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideMuonSelection#Muon_Isolation
+        schema: [abs_eta, pt]
+        clip_pt: true
+    up:
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID_variations.root:NUM_LooseID_DEN_TrackerMuons_abseta_pt_up
+        schema: [abs_eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO_variations.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_up
+        schema: [abs_eta, pt]
+        clip_pt: true
+    down:
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ID_variations.root:NUM_LooseID_DEN_TrackerMuons_abseta_pt_down
+        schema: [abs_eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/Efficiencies_muon_generalTracks_Z_Run2018_UL_ISO_variations.root:NUM_TightRelIso_DEN_TightIDandIPCut_abseta_pt_down
+        schema: [abs_eta, pt]
+        clip_pt: true
+  electron:
+    nominal:
+      - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
+    up:
+      - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D_variations.root:EGamma_SF2D_up
+        schema: [eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
+    down:
+      - path: LeptonSF/2018/egammaEffi.txt_Ele_wp90iso_EGM2D_variations.root:EGamma_SF2D_down
+        schema: [eta, pt]
+        clip_pt: true
+      - path: LeptonSF/2018/electron_RecoSF_UL2018.root:EGamma_SF2D
+        schema: [eta, pt]
+        clip_pt: true
+
+roccor:
+  path: roccor/RoccoR2018UL.txt
+
+photon_efficiency:
+  # https://twiki.cern.ch/twiki/bin/view/CMS/EgammaUL2016To2018?rev=73
+  photon:
+  - PhotonSF/egammaEffi.txt_EGM2D_Pho_Tight.root_UL18.root:EGamma_SF2D
+
+photon_triggers:
+  triggers:
+    - name: HLT_Photon50_R9Id90_HE10_IsoM
+      threshold: 55.
+    - name: HLT_Photon75_R9Id90_HE10_IsoM
+      threshold: 82.5
+    - name: HLT_Photon90_R9Id90_HE10_IsoM
+      threshold: 99.
+    - name: HLT_Photon120_R9Id90_HE10_IsoM
+      threshold: 132.
+    - name: HLT_Photon165_R9Id90_HE10_IsoM
+      threshold: 181.5
+    - name: HLT_Photon200
+      threshold: 220.
+
+  photon_prescale_map: Prescales/photon_prescales_2018.yaml
+
+photon_reweighting:
+  apply_nvtx_reweighting: false
+  apply_eta_reweighting: false
+  apply_pt_reweighting: false
+  apply_mass_lineshape: false
+  apply_mean_weights: false
+  nvtx_reweighting: InstrMetReweighting/weight_nvtx_2018.root
+  eta_reweighting: InstrMetReweighting/weight_eta_2018.root
+  pt_reweighting: InstrMetReweighting/weight_pt_2018.root
+  mass_lineshape: InstrMetReweighting/lineshape_mass_2018.root
+  mean_weights: InstrMetReweighting/meanWeights_2018.root
+
+# photon_filter:
+  # file_location: /storage_mnt/storage/user/sicheng/share/data/PhotonFilter/2018
