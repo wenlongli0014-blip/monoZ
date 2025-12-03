@@ -136,6 +136,7 @@ add_library(hzz2l2nu SHARED
   src/TauBuilder.cc
   src/TriggerFilter.cc
   src/TriggerWeight.cc
+  src/TrileptonTrees.cc
   src/Utils.cc
   src/WeightCollector.cc
   src/ZGammaTrees.cc
