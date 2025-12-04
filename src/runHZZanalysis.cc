@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 
   if (analysisTypeArg == "dileptontrees")
     analysisType = AnalysisType::DileptonTrees;
-  if (analysisTypeArg == "trileptontrees")
+  else if (analysisTypeArg == "trileptontrees")
     analysisType = AnalysisType::TrileptonTrees;
   else if (analysisTypeArg == "photontrees")
     analysisType = AnalysisType::PhotonTrees;
