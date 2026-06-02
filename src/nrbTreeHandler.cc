@@ -7,8 +7,10 @@
 #include <Options.h>
 
 #include <ROOT/RDataFrame.hxx>
+#include <TBranch.h>
 #include <TFile.h>
 #include <TH1.h>
+#include <TTree.h>
 #include <TString.h>
 
 

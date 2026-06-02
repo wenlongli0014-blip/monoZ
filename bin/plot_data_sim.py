@@ -166,6 +166,10 @@ class DecoratedSample(Sample):
         self.label = config['label']
         self.color = config['color']
         self.tag = config['tag'] #only fixed in di-lepton tree configs
+        # Optional style knobs used for signal overlays.
+        self.scale = config.get('scale', 1.)
+        self.linestyle = config.get('linestyle', '-')
+        self.linewidth = config.get('linewidth', 1.5)
 
 
 class Configuration:
@@ -196,6 +200,10 @@ class Configuration:
             DecoratedSample(cfg, sample_path_prefix, tree_name)
             for cfg in config['samples']['simulation']
         ]
+        self.signal_samples = [
+            DecoratedSample(cfg, sample_path_prefix, tree_name)
+            for cfg in config['samples'].get('signal_overlay', [])
+        ]
         self.entries_label = config['samples'].get('entries_label', 'Events')
 
 
@@ -208,6 +216,7 @@ class HistogramBuilder:
         self._config = config
         self._data_hists = None
         self._sim_hists = None
+        self._signal_hists = None
 
     def build(self):
         """Fill histograms.
@@ -221,15 +230,24 @@ class HistogramBuilder:
             self._process_sample(sample)
             for sample in self._config.sim_samples
         ]
+        signal_hists = [
+            self._process_sample(sample)
+            for sample in self._config.signal_samples
+        ]
 
         # Convert sim_hists from a list of dicts to a dict of lists
         self._sim_hists = {}
+        self._signal_hists = {}
         for selection, variable in itertools.product(
             self._config.selections, self._config.variables
         ):
             self._sim_hists[selection.tag, variable.tag] = [
                 h[selection.tag, variable.tag]
                 for h in sim_hists
+            ]
+            self._signal_hists[selection.tag, variable.tag] = [
+                h[selection.tag, variable.tag]
+                for h in signal_hists
             ]
 
     def data_hist(self, selection_tag, variable_tag):
@@ -250,6 +268,17 @@ class HistogramBuilder:
         """
 
         return self._sim_hists[selection_tag, variable_tag]
+
+    def signal_hists(self, selection_tag, variable_tag):
+        """Return signal-overlay histograms.
+
+        Return a list of histograms for given selection and variable.
+        The list is sorted in the same way as signal samples in the
+        configuration.  The histograms are represented with class
+        Hist1D.
+        """
+
+        return self._signal_hists[selection_tag, variable_tag]
 
     def _process_sample(self, sample, is_sim=True):
         """Fill histograms for given sample.
@@ -279,8 +308,12 @@ class HistogramBuilder:
                 continue
 
             df_filtered = data_frame.Filter(selection.formula).Define(
+                '_weight_raw',
+                selection.weight if is_sim else selection.weight_data
+            ).Define(
                 '_weight',
-                selection.weight if is_sim else selection.weight_data)
+                '(std::isfinite(_weight_raw) ? _weight_raw : 0.)'
+            )
             for variable in self._config.variables:
                 binning = array('d', variable.binning(selection.tag))
                 proxies[selection.tag, variable.tag] = df_filtered.Define(
@@ -303,6 +336,11 @@ class HistogramBuilder:
         negative bin contents.
         """
 
+        # Protect plotting from non-finite bins caused by problematic event
+        # weights in input trees.
+        np.nan_to_num(hist.contents, copy=False, nan=0., posinf=0., neginf=0.)
+        np.nan_to_num(hist.errors, copy=False, nan=0., posinf=0., neginf=0.)
+
         hist.contents[1] += hist.contents[0]
         hist.contents[-2] += hist.contents[-1]
         hist.contents[0] = hist.contents[-1] = 0.
@@ -311,11 +349,14 @@ class HistogramBuilder:
         hist.errors[-2] = math.hypot(hist.errors[-2], hist.errors[-1])
         hist.errors[0] = hist.errors[-1] = 0.
 
+        np.nan_to_num(hist.contents, copy=False, nan=0., posinf=0., neginf=0.)
+        np.nan_to_num(hist.errors, copy=False, nan=0., posinf=0., neginf=0.)
+
         np.clip(hist.contents, 0., None, out=hist.contents)
 
 
 def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
-                  save_path, formats=['pdf'],
+                  save_path, signal_hists_infos=None, formats=['pdf'],
                   entries_label='Events', info_label='', root_path=''):
     """Plot and compare distributions in data and simulation.
 
@@ -346,6 +387,9 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
     axes_distributions = fig.add_subplot(gs[0, 0])
     axes_composition = fig.add_subplot(gs[1, 0])
     axes_residuals = fig.add_subplot(gs[2, 0])
+
+    if signal_hists_infos is None:
+        signal_hists_infos = []
 
     sim_hist_total = Hist1D()
     for hist, _ in sim_hists_infos:
@@ -387,6 +431,22 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
 
             th1.Write()
 
+        for hist, sample in signal_hists_infos:
+
+            th1 = ROOT.TH1D(sample.tag, sample.tag,
+                            len(hist.binning)-1,
+                            array('d', hist.binning))
+
+            for i in range(len(hist.contents)):
+
+                val = hist.contents[i] * sample.scale
+                err = hist.errors[i] * sample.scale
+
+                th1.SetBinContent(i, val)
+                th1.SetBinError(i, err)
+
+            th1.Write()
+
         rf.Close()
 
     # Distributions of data and total simulation
@@ -400,6 +460,20 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
         yerr=data_hist.errors[1:-1] / widths,
         marker='o', color='black', ls='none'
     )
+
+    signal_handles = []
+    for hist, info in signal_hists_infos:
+        handle_signal = axes_distributions.hist(
+            binning[:-1],
+            weights=hist.contents[1:-1] * info.scale / widths,
+            bins=binning,
+            histtype='step',
+            lw=info.linewidth,
+            ls=info.linestyle,
+            color=info.color
+        )[2][0]
+        signal_handles.append((handle_signal, info.label))
+
     axes_distributions.set_yscale(variable.y_scale)
 
     # The total expectation in not guaranteed to be positive in each
@@ -483,6 +557,9 @@ def plot_data_sim(variable, data_hist, sim_hists_infos, selection,
     for _, info in sim_hists_infos:
         handles.append(mpl.patches.Patch(color=info.color))
         labels.append(info.label)
+    for handle, label in signal_handles:
+        handles.append(handle)
+        labels.append(label)
     axes_distributions.legend(
         handles, labels,
         bbox_to_anchor=(1., 1.), loc='upper left', frameon=False
@@ -530,6 +607,10 @@ if __name__ == '__main__':
                      config.sim_samples)),
             selection,
             os.path.join(args.output, selection.tag, variable.tag),
+            signal_hists_infos=list(zip(
+                histograms.signal_hists(selection.tag, variable.tag),
+                config.signal_samples
+            )),
             formats=args.formats,
             entries_label=config.entries_label,
             info_label=', '.join(

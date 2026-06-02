@@ -1,0 +1,112 @@
+selections:
+- formula: "1"
+  weight: weight
+  tag: SR
+  label: "$SR$"
+  blind: true
+
+samples:
+  path_prefix: ""
+  tree_name: Vars
+  entries_label: Events
+  data:
+    files: [Data]
+    tag: "Data"
+
+  simulation:
+  - label: "VVV"
+    tag: "VVV"
+    files: [VVV]
+    color: mediumpurple
+  - label: "$gg \\to ZZ$"
+    tag: "ggZZ"
+    files: [ggZZ]
+    color: crimson
+  - label: "$q\\bar q \\to ZZ$"
+    tag: "qqZZ"
+    files: [qqZZ]
+    color: darkorange
+  - label: "WW"
+    tag: "WW"
+    files: [WW]
+    color: mediumseagreen
+  - label: "WZ"
+    tag: "WZ"
+    files: [WZ]
+    color: lightseagreen
+  - label: "$t\\bar t$"
+    tag: "ttbar"
+    files: [ttbar]
+    color: greenyellow
+  - label: "Single $t$, $tW$"
+    tag: "ST"
+    files: [ST]
+    color: mediumblue
+  - label: "Drell-Yan"
+    tag: "DY"
+    files: [DY]
+    color: steelblue
+  - label: "Other"
+    tag: "Other"
+    files: [Other]
+    color: slateblue
+
+  signal_overlay:
+  - label: "signal"
+    tag: "signal"
+    files: [signal]
+    color: red
+    linestyle: "--"
+    linewidth: 1.8
+    scale: 1.0
+
+variables:
+- formula: "ll_pt"
+  binning:
+    default:
+      range: [60., 450.]
+      bins: 15
+  x_scale: log
+  label: "$p_\\mathrm{T}^{\\ell\\ell}$"
+  unit: GeV
+  tag: pt_ll
+
+- formula: "ptmiss"
+  binning:
+    default:
+      range: [100., 1200.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}^\\mathrm{miss}$"
+  unit: GeV
+  tag: pt_miss
+
+- formula: "ll_mass"
+  binning:
+    default:
+      range: [70., 110.]
+      bins: 20
+  x_scale: linear
+  label: "$m_{\\ell\\ell}$"
+  unit: GeV
+  tag: z_mass
+
+- formula: "jet_cat"
+  binning:
+    default:
+      range: [0, 3]
+      bins: 3
+  x_scale: linear
+  label: "jet_cat"
+  unit:
+  tag: jet_cat
+
+- formula: "dphi_visibles_ptmiss"
+  binning:
+    default:
+      range: [-4., 4.]
+      bins: 40
+  x_scale: linear
+  label: "$\\Delta\\phi(\\ell\\ell + \\mathrm{jets}, p_\\mathrm{T}^{miss})$"
+  unit:
+  tag: dphi_visibles_ptmiss

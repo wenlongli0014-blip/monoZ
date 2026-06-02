@@ -90,7 +90,7 @@ po::options_description DileptonTrees::OptionsDescription() {
   optionsDescription.add_options()
     ("more-vars", "Store additional variables");
   optionsDescription.add_options()
-    ("ptmiss-cut", po::value<double>()->default_value(0.),
+    ("ptmiss-cut", po::value<double>()->default_value(100.),
      "Minimal missing pt");
   return optionsDescription;
 }
@@ -136,7 +136,7 @@ bool DileptonTrees::ProcessEvent() {
   if (not (std::abs(p4LL.M() - kNominalMZ_) < zMassWindow_))
     return false;
 
-  if (not (p4LL.Pt() > minPtLL_))
+  if (not (p4LL.Pt() > 90))//minPtLL_
     return false;
 
 
@@ -149,8 +149,21 @@ bool DileptonTrees::ProcessEvent() {
   if (p4Miss.Pt() < ptMissCut_)
     return false;
 
+    // ΔR(ℓℓ) < 1.8 cut
+  double deta = l1->p4.Eta() - l2->p4.Eta();
+  double dphi = l1->p4.Phi() - l2->p4.Phi();
+  while (dphi > M_PI) dphi -= 2*M_PI;
+  while (dphi < -M_PI) dphi += 2*M_PI;
+  double deltaR = std::sqrt(deta*deta + dphi*dphi);
+  if (deltaR >= 1.8)
+    return false;
+
+//   ptmiss_significance_corrected > 12 cut
+  if (missSignificanceCorrected_ <= 12)
+    return false;
+
   if (std::abs(
-        TVector2::Phi_mpi_pi(p4LL.Phi() - p4Miss.Phi())) < minDphiLLPtMiss_)
+        TVector2::Phi_mpi_pi(p4LL.Phi() - p4Miss.Phi())) < 2.4)//minDphiLLPtMiss_
     return false;
 
 
@@ -160,9 +173,9 @@ bool DileptonTrees::ProcessEvent() {
     if (bTagger_(jet))
       return false;
 
-    if (std::abs(TVector2::Phi_mpi_pi(
-            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
-      return false;
+  //  if (std::abs(TVector2::Phi_mpi_pi(
+  //          jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
+  //    return false;
   }
 
   dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_});
@@ -232,7 +245,7 @@ DileptonTrees::CheckLeptons() const {
   if (not (l1->charge * l2->charge < 0))
     return {};
 
-  if (not (l1->p4.Pt() > 25. && l2->p4.Pt() > 20.))
+  if (not (l1->p4.Pt() > 30. && l2->p4.Pt() > 20.))
     return {};
 
   return std::make_tuple(leptonCat, l1, l2);

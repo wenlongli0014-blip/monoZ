@@ -131,12 +131,24 @@ samples:
     color: mediumblue
   - label: "Drell-Yan"
     tag: "DY"
-    files: [DYJetsToLL_PtZ]
+    # files: [DYJetsToLL_PtZ]
+    files: [DYJetsToLL_M50_HT100to200, DYJetsToLL_M50_HT1200to2500, DYJetsToLL_M50_HT200to400, DYJetsToLL_M50_HT2500toInf, DYJetsToLL_M50_HT400to600, DYJetsToLL_M50_HT600to800, DYJetsToLL_M50_HT800to1200, DYJetsToLL]
     color: steelblue
   - label: "Other"
     tag: "Other"
     files: [TTWJetsToLNu, TTZToLLNuNu_M-10, tZq_ll]
     color: slateblue
+
+  # Optional signal overlays drawn as lines on top of the main distribution.
+  # These do not modify the background composition or data/exp ratio.
+  signal_overlay:
+  - label: "signal"
+    tag: "signal"
+    files: [ZH_ZToLL_HToInvisible_M125_UL17_local]
+    color: red
+    linestyle: "--"
+    linewidth: 1.8
+    scale: 1.0
 
 
 # Variables whose distributions are to be plotted. Each element of the list is a
@@ -175,7 +187,7 @@ variables:
 - formula: "ptmiss"
   binning:
     default:
-      range: [12., 1200.]
+      range: [80., 1200.]
       bins: 20
   x_scale: log
   label: "$p_\\mathrm{T}^\\mathrm{miss}$"

@@ -13,7 +13,7 @@ PtMissBuilder::PtMissBuilder(Dataset &dataset, Options const &options)
       srcPhi_{dataset.Reader(), "RawMET_phi"},
       srcRun_{dataset.Reader(), "run"},
       srcCOVxx_{dataset.Reader(), "MET_covXX"},
-      srcCOVxy_{dataset.Reader(), "MET_covXX"},
+      srcCOVxy_{dataset.Reader(), "MET_covXY"},
       srcCOVyy_{dataset.Reader(), "MET_covYY"} {
 
   auto const config = Options::NodeAs<YAML::Node>(
@@ -128,8 +128,8 @@ void PtMissBuilder::Build() const {
     ptMiss_.p4.SetPy(ptMiss_.p4.Py() - **srcUnclEnergyUpDeltaY_);
   }
   double det_cov = (*srcCOVxx_)*(*srcCOVyy_) - (*srcCOVxy_)*(*srcCOVxy_);
-  double ncov_xx = (*srcCOVxx_)/det_cov;
+  double ncov_xx = (*srcCOVyy_)/det_cov;
   double ncov_xy = -(*srcCOVxy_)/det_cov;
-  double ncov_yy = (*srcCOVyy_)/det_cov;
-  ptMiss_.significance_corrected = ptMiss_.p4.Px() * ptMiss_.p4.Px() * ncov_xx + 2 * ptMiss_.p4.Px() * ptMiss_.p4.Px() * ncov_xy + ptMiss_.p4.Px() * ptMiss_.p4.Px() * ncov_yy;
+  double ncov_yy = (*srcCOVxx_)/det_cov;
+  ptMiss_.significance_corrected = ptMiss_.p4.Px() * ptMiss_.p4.Px() * ncov_xx + 2 * ptMiss_.p4.Px() * ptMiss_.p4.Py() * ncov_xy + ptMiss_.p4.Py() * ptMiss_.p4.Py() * ncov_yy;
 }

@@ -49,12 +49,12 @@
 
 - name: GluGluToContinToZZTo2e2nu
   is_sim: true
-  cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
+  cross_section: 0.01773  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
   k_factor: ggF
 
 - name: GluGluToContinToZZTo2mu2nu
   is_sim: true
-  cross_section: 0.0171871  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
+  cross_section: 0.01773  # https://twiki.cern.ch/twiki/bin/view/CMS/HZZ2L2NuSamplesGluonFusionMCFM?rev=5#Cross_sections
   k_factor: ggF
 
 - name: GluGluToWWToENEN

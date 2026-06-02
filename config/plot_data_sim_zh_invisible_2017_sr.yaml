@@ -1,0 +1,112 @@
+selections:
+- formula: "1"
+  weight: weight
+  tag: SR
+  label: "$SR$"
+  blind: false
+
+samples:
+  path_prefix: ""
+  tree_name: Vars
+  entries_label: Events
+  data:
+    files: [/eos/user/l/liwe/monoZ_combine/SR/Data]
+    tag: "Data"
+
+  simulation:
+  - label: "VVV"
+    tag: "VVV"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/VVV]
+    color: mediumpurple
+  - label: "$gg \\to ZZ$"
+    tag: "ggZZ"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/ggZZ]
+    color: crimson
+  - label: "$q\\bar q \\to ZZ$"
+    tag: "qqZZ"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/qqZZ]
+    color: darkorange
+  - label: "WW"
+    tag: "WW"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/WW]
+    color: mediumseagreen
+  - label: "WZ"
+    tag: "WZ"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/WZ]
+    color: lightseagreen
+  - label: "$t\\bar t$"
+    tag: "ttbar"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/ttbar]
+    color: greenyellow
+  - label: "Single $t$, $tW$"
+    tag: "ST"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/ST]
+    color: mediumblue
+  - label: "Drell-Yan"
+    tag: "DY"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/DY]
+    color: steelblue
+  - label: "Other"
+    tag: "Other"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/Other]
+    color: slateblue
+
+  signal_overlay:
+  - label: "ZH(inv) signal"
+    tag: "ZHinv"
+    files: [/eos/user/l/liwe/monoZ_combine/SR/signal_v9]
+    color: red
+    linestyle: "--"
+    linewidth: 1.8
+    scale: 1.0
+
+variables:
+- formula: "ll_pt"
+  binning:
+    default:
+      range: [60., 450.]
+      bins: 15
+  x_scale: log
+  label: "$p_\\mathrm{T}^{\\ell\\ell}$"
+  unit: GeV
+  tag: pt_ll
+
+- formula: "ptmiss"
+  binning:
+    default:
+      range: [100., 1200.]
+      bins: 20
+  x_scale: log
+  label: "$p_\\mathrm{T}^\\mathrm{miss}$"
+  unit: GeV
+  tag: pt_miss
+
+- formula: "ll_mass"
+  binning:
+    default:
+      range: [70., 110.]
+      bins: 20
+  x_scale: linear
+  label: "$m_{\\ell\\ell}$"
+  unit: GeV
+  tag: z_mass
+
+- formula: "jet_cat"
+  binning:
+    default:
+      range: [0, 3]
+      bins: 3
+  x_scale: linear
+  label: "jet_cat"
+  unit:
+  tag: jet_cat
+
+- formula: "dphi_visibles_ptmiss"
+  binning:
+    default:
+      range: [-4., 4.]
+      bins: 40
+  x_scale: linear
+  label: "$\\Delta\\phi(\\ell\\ell + \\mathrm{jets}, p_\\mathrm{T}^{miss})$"
+  unit:
+  tag: dphi_visibles_ptmiss

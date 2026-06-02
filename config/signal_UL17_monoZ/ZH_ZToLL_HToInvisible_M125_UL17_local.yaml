@@ -1,0 +1,9 @@
+name: ZH_ZToLL_HToInvisible_M125_UL17_local
+is_sim: true
+cross_section: 0.07924
+num_events: 79358
+num_selected_events: 239937
+mean_weight: 1.0
+zz_2l2nu: true
+files:
+- /eos/user/l/liwe/ZH_ZToLL_HToInvisible_M125_13TeV_TuneCP5_powheg_pythia8.root

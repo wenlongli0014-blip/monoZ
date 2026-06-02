@@ -8,3 +8,34 @@ doc/
 *.pyc
 .*.swp
 
+# Local build/runtime products
+.codex
+.agents/
+__pycache__/
+bin/__pycache__/
+bin/nrbTreeHandler
+task/
+batch_*/
+
+# Local external checkouts and analysis side projects
+JHUGenMELA/
+MelaAnalytics/
+hzzreweighting/
+dnn/
+combine/
+combine_test/
+dphijet_ptmiss_significance/
+
+# Plotting and combine outputs
+data_sim*/
+plot_data_sim_*/
+plots_data_sim*/
+shape_*.root
+/*.root
+/*.pdf
+/*.log
+
+# Personal notes or scratch files
+liwe.cc
+make_summary_higgs_invisible.py
+manuscript_review_notes.md

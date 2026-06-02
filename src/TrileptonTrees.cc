@@ -95,7 +95,7 @@ po::options_description TrileptonTrees::OptionsDescription() {
   optionsDescription.add_options()
     ("more-vars", "Store additional variables");
   optionsDescription.add_options()
-    ("ptmiss-cut", po::value<double>()->default_value(0.),
+    ("ptmiss-cut", po::value<double>()->default_value(30.),
      "Minimal missing pt");
   return optionsDescription;
 }
@@ -146,8 +146,8 @@ bool TrileptonTrees::ProcessEvent() {
   if (not (std::abs(p4LL.M() - kNominalMZ_) < zMassWindow_))
     return false;
 
-  if (not (p4LL.Pt() > minPtLL_))
-    return false;
+//  if (not (p4LL.Pt() > minPtLL_))
+//    return false;
 
 
   auto const &p4Miss = ptMissBuilder_.Get().p4;
@@ -157,15 +157,19 @@ bool TrileptonTrees::ProcessEvent() {
   missSignificanceCorrected_ = ptMissBuilder_.Get().significance_corrected;
 
   mTw_ = std::sqrt(2*l3Pt_*missPt_*(1-std::cos(l3Phi_ - missPhi_)));
-  if (mTw_ < mTwCut_) //Cut value set in .h file
-    return false;
+//  if (mTw_ < mTwCut_) //Cut value set in .h file
+//    return false;
 
   if (p4Miss.Pt() < ptMissCut_)
     return false;
 
-  if (std::abs(
-        TVector2::Phi_mpi_pi(p4LL.Phi() - p4Miss.Phi())) < minDphiLLPtMiss_)
+     // ptmiss_significance_corrected > 3 cut
+  if (missSignificanceCorrected_ <= 3)
     return false;
+
+//  if (std::abs(
+//        TVector2::Phi_mpi_pi(p4LL.Phi() - p4Miss.Phi())) < minDphiLLPtMiss_)
+//    return false;
 
 
   auto const &jets = jetBuilder_.Get();
@@ -174,9 +178,9 @@ bool TrileptonTrees::ProcessEvent() {
     if (bTagger_(jet))
       return false;
 
-    if (std::abs(TVector2::Phi_mpi_pi(
-            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
-      return false;
+//    if (std::abs(TVector2::Phi_mpi_pi(
+//            jet.p4.Phi() - p4Miss.Phi())) < minDphiJetPtMiss_)
+//      return false;
   }
 
   dPhiVisiblesPtmiss_ = DPhiPtMiss({&jetBuilder_, &muonBuilder_, &electronBuilder_});
@@ -229,8 +233,8 @@ TrileptonTrees::CheckLeptons() const {
   if (tightElectrons.size() == 3) {
     leptonCat = LeptonCat::kEEE;
     Float_t M_OSSF_residual = 9999;
-    for (unsigned ei=0; ei<2; ei++){
-      for (unsigned ej=ei+1; ej<2; ej++){
+    for (unsigned ei=0; ei<3; ei++){
+      for (unsigned ej=ei+1; ej<3; ej++){
         Lepton const *tmpe1, *tmpe2;
         TLorentzVector tmpZee;
         tmpe1 = &tightElectrons[ei];
@@ -250,8 +254,8 @@ TrileptonTrees::CheckLeptons() const {
   else if(tightMuons.size() == 3){
     leptonCat = LeptonCat::kMuMuMu;
     Float_t M_OSSF_residual = 9999;
-    for (unsigned mi=0; mi<2; mi++){
-      for (unsigned mj=mi+1; mj<2; mj++){
+    for (unsigned mi=0; mi<3; mi++){
+      for (unsigned mj=mi+1; mj<3; mj++){
         Lepton const *tmpm1, *tmpm2;
         TLorentzVector tmpZmm;
         tmpm1 = &tightMuons[mi];
@@ -274,8 +278,8 @@ TrileptonTrees::CheckLeptons() const {
     l2 = &tightElectrons[1];
     l3 = &tightMuons[0];
   } 
-  else if ((tightElectrons.size() == 2) and (tightMuons.size() == 1)) {
-    leptonCat = LeptonCat::kEEMu;
+  else if ((tightElectrons.size() == 1) and (tightMuons.size() == 2)) {
+    leptonCat = LeptonCat::kMUMUE;
     l1 = &tightMuons[0];
     l2 = &tightMuons[1];
     l3 = &tightElectrons[0];
@@ -289,7 +293,7 @@ TrileptonTrees::CheckLeptons() const {
   if (l1->p4.Pt() < l2->p4.Pt())
     std::swap(l1, l2);
 
-  if (not (l1->p4.Pt() > 25. && l2->p4.Pt() > 20. && l3->p4.Pt() > 20. ))
+  if (not (l1->p4.Pt() > 30. && l2->p4.Pt() > 20. && l3->p4.Pt() > 20. ))
     return {};
 
   return std::make_tuple(leptonCat, l1, l2, l3);

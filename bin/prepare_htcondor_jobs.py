@@ -175,7 +175,11 @@ class JobBuilder:
           '#!/bin/bash',
           'export INITDIR={}'.format(self.install_path),
           'cd $INITDIR',
-          '. ./env.sh',
+                    'export HZZ2L2NU_BASE=$INITDIR',
+                    'export PYTHONPATH="${HZZ2L2NU_BASE}/python:${PYTHONPATH}"',
+                    'export PATH="${HZZ2L2NU_BASE}/bin:${PATH}"',
+                    # Clear inherited library paths to avoid mixing incompatible ROOT builds.
+                    'unset LD_LIBRARY_PATH',
           'cd -',
           'if [ -d $TMPDIR ] ; then cd $TMPDIR ; fi',
           'hostname',
@@ -205,10 +209,9 @@ class JobBuilder:
         script_commands.append('echo ' + run_application_command)
         script_commands.append(run_application_command + ' || exit $?')
 
-        script_commands.append('cp {}{}.root {}/output'.format(self.output_prefix, job_name,"/eos/user/h/hgao/batch_dilepton_2018"))
-        # script_commands.append('cp {}{}.root {}/output'.format(
-        #     self.output_prefix, job_name, self.task_dir
-        # ))
+        script_commands.append('cp {}{}.root {}/output'.format(
+            self.output_prefix, job_name, self.task_dir
+        ))
 
         script_path = '{}/jobs/scripts/runOnBatch_{}{}.sh'.format(
             self.task_dir, self.output_prefix, job_name

@@ -1,0 +1,269 @@
+# Configuration for plotting trilepton control-region trees with plot_data_sim.py
+
+selections:
+- formula: "ptmiss >= 0."
+  weight: weight
+  tag: baseline
+  label: "$3\\ell$, inclusive"
+
+- formula: "jet_cat == 0"
+  weight: weight
+  tag: eq0jet
+  label: "$3\\ell$, 0j"
+
+- formula: "jet_cat == 1"
+  weight: weight
+  tag: eq1jet
+  label: "$3\\ell$, 1j"
+
+- formula: "jet_cat == 2"
+  weight: weight
+  tag: geq2jet
+  label: "$3\\ell$, $\\geq 2$j"
+
+- formula: "lepton_cat == 0"
+  weight: weight
+  tag: eee
+  label: "$eee$"
+
+- formula: "lepton_cat == 1"
+  weight: weight
+  tag: mumumu
+  label: "$\\mu\\mu\\mu$"
+
+- formula: "lepton_cat == 2"
+  weight: weight
+  tag: ee_mu
+  label: "$ee\\mu$"
+
+- formula: "lepton_cat == 3"
+  weight: weight
+  tag: mumu_e
+  label: "$\\mu\\mu e$"
+
+samples:
+  path_prefix: ""
+  tree_name: Vars
+  entries_label: Events
+
+  data:
+    files: [Data]
+    tag: Data
+
+  simulation:
+  - label: "VVV"
+    tag: VVV
+    files: [WWW, WWZ, WZZ, ZZZ]
+    color: mediumpurple
+
+  - label: "$gg \\to ZZ \\to 2\\ell 2\\nu$"
+    tag: ggZZ
+    files: [GGToZZ]
+    color: crimson
+
+  - label: "$q\\bar q \\to ZZ$"
+    tag: qqZZ
+    files: [ZZTo2L2Nu, ZZTo2Q2L, ZZTo4L]
+    color: darkorange
+
+  - label: "WZ"
+    tag: WZ
+    files: [WZTo3LNu, WZTo2Q2L]
+    color: lightseagreen
+
+  - label: "WW"
+    tag: WW
+    files: [WWTo2L2Nu, WWTo1L1Nu2Q, GGToWW]
+    color: palevioletred
+
+  - label: "$t\\bar t$"
+    tag: ttbar
+    files: [TTTo2L2Nu]
+    color: greenyellow
+
+  - label: "Single $t$, $tW$"
+    tag: ST
+    files: [ST_s-channel, ST_t-channel, ST_t-channel_antitop_4f, ST_t-channel_top_4f, ST_tW]
+    color: mediumblue
+
+  - label: "Drell-Yan"
+    tag: DY
+    files: [DYJetsToLL, DYJetsToLL_M50_HT100to200, DYJetsToLL_M50_HT200to400, DYJetsToLL_M50_HT400to600, DYJetsToLL_M50_HT600to800, DYJetsToLL_M50_HT800to1200, DYJetsToLL_M50_HT1200to2500, DYJetsToLL_M50_HT2500toInf]
+    color: steelblue
+
+  - label: "Other"
+    tag: Other
+    files: [TTWJetsToLNu, TTZToLLNuNu_M-10, tZq_ll]
+    color: slateblue
+
+variables:
+- formula: "ll_mass"
+  binning:
+    default:
+      range: [70., 110.]
+      bins: 20
+  x_scale: linear
+  label: "$m_{\\ell\\ell}$"
+  unit: GeV
+  tag: z_mass
+
+- formula: "ll_pt"
+  binning:
+    default:
+      range: [0., 600.]
+      bins: 24
+  x_scale: linear
+  label: "$p_\\mathrm{T}^{\\ell\\ell}$"
+  unit: GeV
+  tag: pt_ll
+
+- formula: "ptmiss"
+  binning:
+    default:
+      range: [30., 500.]
+      bins: 24
+  x_scale: linear
+  label: "$p_\\mathrm{T}^{miss}$"
+  unit: GeV
+  tag: pt_miss
+
+- formula: "mTw"
+  binning:
+    default:
+      range: [0., 300.]
+      bins: 24
+  x_scale: linear
+  label: "$m_\\mathrm{T}(\\ell_3, p_\\mathrm{T}^{miss})$"
+  unit: GeV
+  tag: mtw_l3_ptmiss
+
+- formula: "mT"
+  binning:
+    default:
+      range: [150., 800.]
+      bins: 26
+  x_scale: linear
+  label: "$m_\\mathrm{T}(Z, p_\\mathrm{T}^{miss})$"
+  unit: GeV
+  tag: mt_z_ptmiss
+
+- formula: "dphi_visibles_ptmiss"
+  binning:
+    default:
+      range: [0., 3.2]
+      bins: 32
+  x_scale: linear
+  label: "$\\Delta\\phi(\\ell\\ell\\ell+\\mathrm{jets}, p_\\mathrm{T}^{miss})$"
+  tag: dphi_visibles_ptmiss
+
+- formula: "jet_cat"
+  binning:
+    default:
+      bins: [0., 1., 2., 3.]
+  x_scale: linear
+  label: "jet category"
+  tag: jet_cat
+
+- formula: "jet_size"
+  binning:
+    default:
+      range: [0., 8.]
+      bins: 8
+  x_scale: linear
+  label: "$N_\\mathrm{jets}$"
+  tag: njets
+
+# Third-lepton information (explicit and complete)
+- formula: "l3_pt"
+  binning:
+    default:
+      range: [20., 300.]
+      bins: 28
+  x_scale: linear
+  label: "$p_\\mathrm{T}(\\ell_3)$"
+  unit: GeV
+  tag: l3_pt
+
+- formula: "l3_eta"
+  binning:
+    default:
+      range: [-2.6, 2.6]
+      bins: 26
+  x_scale: linear
+  label: "$\\eta(\\ell_3)$"
+  tag: l3_eta
+
+- formula: "l3_phi"
+  binning:
+    default:
+      range: [-3.2, 3.2]
+      bins: 32
+  x_scale: linear
+  label: "$\\phi(\\ell_3)$"
+  tag: l3_phi
+
+- formula: "l3_mass"
+  binning:
+    default:
+      range: [0., 0.25]
+      bins: 25
+  x_scale: linear
+  label: "$m(\\ell_3)$"
+  unit: GeV
+  tag: l3_mass
+
+- formula: "lepton_charge[2]"
+  binning:
+    default:
+      bins: [-1.5, -0.5, 0.5, 1.5]
+  x_scale: linear
+  label: "$q(\\ell_3)$"
+  tag: l3_charge
+
+- formula: "lepton_pt[0]"
+  binning:
+    default:
+      range: [20., 400.]
+      bins: 24
+  x_scale: linear
+  label: "$p_\\mathrm{T}(\\ell_1)$"
+  unit: GeV
+  tag: l1_pt
+
+- formula: "lepton_pt[1]"
+  binning:
+    default:
+      range: [20., 300.]
+      bins: 20
+  x_scale: linear
+  label: "$p_\\mathrm{T}(\\ell_2)$"
+  unit: GeV
+  tag: l2_pt
+
+- formula: "lepton_pt[2]"
+  binning:
+    default:
+      range: [20., 300.]
+      bins: 20
+  x_scale: linear
+  label: "$p_\\mathrm{T}(\\ell_3)$"
+  unit: GeV
+  tag: l3_pt_from_array
+
+- formula: "lepton_eta[2]"
+  binning:
+    default:
+      range: [-2.6, 2.6]
+      bins: 26
+  x_scale: linear
+  label: "$\\eta(\\ell_3)$"
+  tag: l3_eta_from_array
+
+- formula: "lepton_phi[2]"
+  binning:
+    default:
+      range: [-3.2, 3.2]
+      bins: 32
+  x_scale: linear
+  label: "$\\phi(\\ell_3)$"
+  tag: l3_phi_from_array
