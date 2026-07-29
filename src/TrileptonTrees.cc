@@ -160,11 +160,11 @@ bool TrileptonTrees::ProcessEvent() {
 //  if (mTw_ < mTwCut_) //Cut value set in .h file
 //    return false;
 
-  if (p4Miss.Pt() < ptMissCut_)
+  if (p4Miss.Pt() < ptMissCut_) 
     return false;
 
      // ptmiss_significance_corrected > 3 cut
-  if (missSignificanceCorrected_ <= 3)
+  if (missSignificanceCorrected_ <= 3) 
     return false;
 
 //  if (std::abs(

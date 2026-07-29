@@ -1,0 +1,9 @@
+name: ZH_ZToLL_HToInvisible_M125_UL18_shears_skim
+is_sim: true
+cross_section: 0.07924
+num_events: 78840
+num_selected_events: 222865
+mean_weight: 1.0
+zz_2l2nu: true
+files:
+- /eos/user/l/liwe/zh_invisible_skim/ZH_ZToLL_HToInvisible_M125_2018_local.root
