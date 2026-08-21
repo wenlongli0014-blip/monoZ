@@ -1,0 +1,22 @@
+# Keep the DNN source, configurations, datacards, compact metadata, and
+# trained model checkpoints.  Large/reproducible training products stay local.
+__pycache__/
+*.pyc
+old/
+*.root
+*.pdf
+*.png
+*.csv
+*.log
+*.out
+*.npz
+
+# Local reports and derived numerical summaries
+DNN_*.md
+*/output/basic_sanity.json
+*/output/feature_significance.json
+*/output/training_sample_summary.txt
+pearson/REPORT.md
+pearson/run_summary.json
+pearson/*/summary.json
+three_panel_results/

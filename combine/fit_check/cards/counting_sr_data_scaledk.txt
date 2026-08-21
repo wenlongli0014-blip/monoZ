@@ -1,0 +1,18 @@
+# Fit-check datacard: counting_sr_data_scaledk
+# No flat lnN uncertainties, no manual shape uncertainties, no autoMCStats.
+# Channels: SR
+# Floating k-factors: none
+imax 1
+jmax *
+kmax *
+------------
+shapes * SR /afs/cern.ch/user/l/liwe/hzz2l2nu/combine/fit_check/shapes/counting_onebin_sr_scaled_by_counting_cr.root SR/$PROCESS
+------------
+bin SR
+observation -1
+------------
+bin SR SR SR SR SR SR SR SR SR SR
+process signal DY Other ST VVV WW WZ ggZZ qqZZ ttbar
+process 0 1 2 3 4 5 6 7 8 9
+rate -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+------------

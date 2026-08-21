@@ -13,7 +13,7 @@ from hzz import SystDatasetSelector, parse_datasets_file
 class JobBuilder:
     def __init__(
         self, task_dir, config_path, prog, prog_args=[], output_prefix='',
-        events_per_job=500000
+        events_per_job=500000, output_dir=None
     ):
         """Initialize the builder.
 
@@ -30,6 +30,9 @@ class JobBuilder:
         # Make sure task_dir is an absolute path because it is used to
         # define the output path for jobs
         self.task_dir = os.path.abspath(task_dir)
+        if output_dir is None:
+            output_dir = os.path.join(self.task_dir, 'output')
+        self.output_dir = os.path.abspath(output_dir)
 
         self.config_path = config_path
         self.prog = prog
@@ -115,10 +118,28 @@ class JobBuilder:
             'log                     = {}/jobs/logs/runOnBatch_{}$(Job_name).$(Cluster).log'.format(self.task_dir, self.output_prefix),
             'output                  = {}/jobs/logs/runOnBatch_{}$(Job_name).outfile.$(Cluster).txt'.format(self.task_dir, self.output_prefix),
             'error                   = {}/jobs/logs/runOnBatch_{}$(Job_name).errors.$(Cluster).txt'.format(self.task_dir, self.output_prefix),
+            'request_disk            = 2000000',
             'should_transfer_files   = Yes',
-            'when_to_transfer_output = ON_EXIT',
-            'queue Job_name from {}'.format(job_names_file_path)
+            'when_to_transfer_output = ON_EXIT'
         ]
+        x509_proxy = os.environ.get('X509_USER_PROXY')
+        if x509_proxy:
+            submit_file_content.extend([
+                'use_x509userproxy       = True',
+                'x509userproxy           = {}'.format(x509_proxy)
+            ])
+        if self.output_dir.startswith('/eos/'):
+            submit_file_content.extend([
+                'transfer_output_files   = {}$(Job_name).root'.format(
+                    self.output_prefix
+                ),
+                'output_destination      = root://eosuser.cern.ch/{}'.format(
+                    self.output_dir.rstrip('/') + '/'
+                )
+            ])
+        submit_file_content.append(
+            'queue Job_name from {}'.format(job_names_file_path)
+        )
 
         with open(submit_file_path, 'w') as f:
             for line in submit_file_content:
@@ -137,13 +158,18 @@ class JobBuilder:
                   '"{}"\033[0;m'.format(self.task_dir))
             os.makedirs(self.task_dir)
 
-        sub_dirs = ['output', 'jobs', 'jobs/scripts', 'jobs/logs']
+        sub_dirs = ['jobs', 'jobs/scripts', 'jobs/logs']
 
         for sub_dir in sub_dirs:
             try:
                 os.makedirs(os.path.join(self.task_dir, sub_dir))
             except OSError:
                 pass
+
+        try:
+            os.makedirs(self.output_dir)
+        except OSError:
+            pass
 
     def _prepare_job_script(
         self, dataset, syst, job_id=0, skip_files=0, max_files=-1
@@ -175,13 +201,8 @@ class JobBuilder:
           '#!/bin/bash',
           'export INITDIR={}'.format(self.install_path),
           'cd $INITDIR',
-                    'export HZZ2L2NU_BASE=$INITDIR',
-                    'export PYTHONPATH="${HZZ2L2NU_BASE}/python:${PYTHONPATH}"',
-                    'export PATH="${HZZ2L2NU_BASE}/bin:${PATH}"',
-                    # Clear inherited library paths to avoid mixing incompatible ROOT builds.
-                    'unset LD_LIBRARY_PATH',
+          'source ./env.sh',
           'cd -',
-          'if [ -d $TMPDIR ] ; then cd $TMPDIR ; fi',
           'hostname',
           'date'
         ]
@@ -209,9 +230,12 @@ class JobBuilder:
         script_commands.append('echo ' + run_application_command)
         script_commands.append(run_application_command + ' || exit $?')
 
-        script_commands.append('cp {}{}.root {}/output'.format(
-            self.output_prefix, job_name, self.task_dir
-        ))
+        output_name = '{}{}.root'.format(self.output_prefix, job_name)
+        output_path = os.path.join(self.output_dir, output_name)
+        if not output_path.startswith('/eos/'):
+            script_commands.append(
+                'cp {} {} || exit $?'.format(output_name, output_path)
+            )
 
         script_path = '{}/jobs/scripts/runOnBatch_{}{}.sh'.format(
             self.task_dir, self.output_prefix, job_name
@@ -241,6 +265,10 @@ if __name__ == '__main__':
     arg_parser.add_argument(
         '-d', '--task-dir', default='task',
         help='Directory for scripts and results of this task.'
+    )
+    arg_parser.add_argument(
+        '--output-dir',
+        help='Output ROOT directory. Defaults to TASK_DIR/output.'
     )
     arg_parser.add_argument(
         '--config', default='2016.yaml',
@@ -275,7 +303,8 @@ if __name__ == '__main__':
 
     job_builder = JobBuilder(
         args.task_dir, args.config, args.prog, prog_args=args.prog_args,
-        output_prefix=args.prefix, events_per_job=args.events_perjob
+        output_prefix=args.prefix, events_per_job=args.events_perjob,
+        output_dir=args.output_dir
     )
     datasets = parse_datasets_file(args.datasets, args.config)
 

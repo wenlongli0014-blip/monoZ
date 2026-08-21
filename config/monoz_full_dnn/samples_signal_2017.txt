@@ -1,0 +1,2 @@
+catalogPath = /afs/cern.ch/user/l/liwe/hzz2l2nu/config/monoz_full_dnn
+signal_2017.yaml

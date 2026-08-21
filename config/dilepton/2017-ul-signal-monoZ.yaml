@@ -238,7 +238,7 @@ lepton_efficiency:
       - path: LeptonSF/2017/electron_RecoSF_UL2017.root:EGamma_SF2D
         schema: [eta, pt]
         clip_pt: true
-  
+
 roccor:
   path: roccor/RoccoR2017UL.txt
 

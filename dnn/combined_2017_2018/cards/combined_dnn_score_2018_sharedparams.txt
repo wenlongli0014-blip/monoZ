@@ -1,0 +1,27 @@
+Combination of SR=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/cards/dnn_score_2018/SR.txt  DYCR=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/cards/dnn_score_2018/DYCR.txt  EMUCR=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/cards/dnn_score_2018/EMUCR.txt  CR3L=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/cards/dnn_score_2018/CR3L.txt
+imax 4 number of bins
+jmax 9 number of processes minus 1
+kmax * number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *      CR3L   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root CR3L/$PROCESS
+shapes *      DYCR   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root DYCR/$PROCESS
+shapes *      EMUCR  /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root EMUCR/$PROCESS
+shapes *      SR     /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root SR/$PROCESS
+----------------------------------------------------------------------------------------------------------------------------------
+bin          SR     DYCR   EMUCR  CR3L
+observation  -1     -1     -1     -1
+----------------------------------------------------------------------------------------------------------------------------------
+bin          SR      SR      SR      SR      SR      SR      SR      SR      SR      SR      DYCR    DYCR    DYCR    DYCR    DYCR    DYCR    DYCR    DYCR    DYCR    EMUCR   EMUCR   EMUCR   EMUCR   EMUCR   EMUCR   EMUCR   EMUCR   EMUCR   CR3L    CR3L    CR3L    CR3L    CR3L    CR3L    CR3L    CR3L    CR3L
+process      signal  DY      Other   ST      VVV     WW      WZ      ggZZ    qqZZ    ttbar   DY      Other   ST      VVV     WW      WZ      ggZZ    qqZZ    ttbar   DY      Other   ST      VVV     WW      WZ      ggZZ    qqZZ    ttbar   DY      Other   ST      VVV     WW      WZ      ggZZ    qqZZ    ttbar
+process      0       1       2       3       4       5       6       7       8       9       1       2       3       4       5       6       7       8       9       1       2       3       4       5       6       7       8       9       1       2       3       4       5       6       7       8       9
+rate         -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1      -1
+----------------------------------------------------------------------------------------------------------------------------------
+
+# Shared control-region normalization parameters.
+k_Zjet  rateParam *     DY    1 [0,5]
+
+k_WZ    rateParam *     WZ    1 [0,5]
+
+k_emu   rateParam *     ttbar 1 [0,5]
+k_emu   rateParam *     WW    1 [0,5]
+k_emu   rateParam *     ST    1 [0,5]

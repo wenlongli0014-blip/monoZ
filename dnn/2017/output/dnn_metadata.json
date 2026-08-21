@@ -1,0 +1,685 @@
+{
+  "candidate_feature_names": [
+    "lepton_cat",
+    "jet_cat",
+    "ll_pt",
+    "ll_eta",
+    "ll_mass",
+    "ptmiss",
+    "ptmiss_significance_corrected",
+    "lepton_pt_0",
+    "lepton_pt_1",
+    "lepton_eta_0",
+    "lepton_eta_1",
+    "jet_size",
+    "jet_pt_0",
+    "jet_pt_1",
+    "jet_eta_0",
+    "jet_eta_1",
+    "jet_mass_0",
+    "jet_mass_1",
+    "dphi_ll_ptmiss",
+    "mt_ll_ptmiss",
+    "ptmiss_over_ll_pt",
+    "pt_balance_ll_ptmiss",
+    "deta_leptons",
+    "dphi_leptons",
+    "dr_leptons",
+    "lepton_pt_ratio",
+    "dphi_lepton0_ptmiss",
+    "dphi_lepton1_ptmiss",
+    "lepton_ht",
+    "deta_jets",
+    "dphi_jets",
+    "dr_jets",
+    "dijet_mass",
+    "dijet_pt",
+    "jet_ht",
+    "min_dphi_jet_ptmiss"
+  ],
+  "candidate_feature_specs": [
+    {
+      "branch": "lepton_cat",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_cat"
+    },
+    {
+      "branch": "jet_cat",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "jet_cat"
+    },
+    {
+      "branch": "ll_pt",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ll_pt"
+    },
+    {
+      "branch": "ll_eta",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ll_eta"
+    },
+    {
+      "branch": "ll_mass",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ll_mass"
+    },
+    {
+      "branch": "ptmiss",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss"
+    },
+    {
+      "branch": "ptmiss_significance_corrected",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss_significance_corrected"
+    },
+    {
+      "branch": "lepton_pt",
+      "index": 0,
+      "kind": "fixed_index",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_pt_0"
+    },
+    {
+      "branch": "lepton_pt",
+      "index": 1,
+      "kind": "fixed_index",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_pt_1"
+    },
+    {
+      "branch": "lepton_eta",
+      "index": 0,
+      "kind": "fixed_index",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_eta_0"
+    },
+    {
+      "branch": "lepton_eta",
+      "index": 1,
+      "kind": "fixed_index",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_eta_1"
+    },
+    {
+      "branch": "jet_size",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "jet_size"
+    },
+    {
+      "branch": "jet_pt",
+      "index": 0,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_pt_0"
+    },
+    {
+      "branch": "jet_pt",
+      "index": 1,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_pt_1"
+    },
+    {
+      "branch": "jet_eta",
+      "index": 0,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_eta_0"
+    },
+    {
+      "branch": "jet_eta",
+      "index": 1,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_eta_1"
+    },
+    {
+      "branch": "jet_mass",
+      "index": 0,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_mass_0"
+    },
+    {
+      "branch": "jet_mass",
+      "index": 1,
+      "kind": "jagged_index",
+      "missing_sentinel": -9999.0,
+      "name": "jet_mass_1"
+    },
+    {
+      "branches": [
+        "ll_phi",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_ll_ptmiss",
+      "source": "derived(ll_phi,ptmiss_phi)"
+    },
+    {
+      "branches": [
+        "ll_pt",
+        "ll_mass",
+        "ll_phi",
+        "ptmiss",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "mt_ll_ptmiss",
+      "source": "derived(ll_pt,ll_mass,ll_phi,ptmiss,ptmiss_phi)"
+    },
+    {
+      "branches": [
+        "ptmiss",
+        "ll_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss_over_ll_pt",
+      "source": "derived(ptmiss,ll_pt)"
+    },
+    {
+      "branches": [
+        "ptmiss",
+        "ll_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "pt_balance_ll_ptmiss",
+      "source": "derived(ptmiss,ll_pt)"
+    },
+    {
+      "branches": [
+        "lepton_eta"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "deta_leptons",
+      "source": "derived(lepton_eta)"
+    },
+    {
+      "branches": [
+        "lepton_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_leptons",
+      "source": "derived(lepton_phi)"
+    },
+    {
+      "branches": [
+        "lepton_eta",
+        "lepton_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dr_leptons",
+      "source": "derived(lepton_eta,lepton_phi)"
+    },
+    {
+      "branches": [
+        "lepton_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_pt_ratio",
+      "source": "derived(lepton_pt)"
+    },
+    {
+      "branches": [
+        "lepton_phi",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_lepton0_ptmiss",
+      "source": "derived(lepton_phi,ptmiss_phi)"
+    },
+    {
+      "branches": [
+        "lepton_phi",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_lepton1_ptmiss",
+      "source": "derived(lepton_phi,ptmiss_phi)"
+    },
+    {
+      "branches": [
+        "lepton_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_ht",
+      "source": "derived(lepton_pt)"
+    },
+    {
+      "branches": [
+        "jet_eta"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "deta_jets",
+      "source": "derived(jet_eta)"
+    },
+    {
+      "branches": [
+        "jet_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_jets",
+      "source": "derived(jet_phi)"
+    },
+    {
+      "branches": [
+        "jet_eta",
+        "jet_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dr_jets",
+      "source": "derived(jet_eta,jet_phi)"
+    },
+    {
+      "branches": [
+        "jet_pt",
+        "jet_eta",
+        "jet_phi",
+        "jet_mass"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dijet_mass",
+      "source": "derived(jet_pt,jet_eta,jet_phi,jet_mass)"
+    },
+    {
+      "branches": [
+        "jet_pt",
+        "jet_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dijet_pt",
+      "source": "derived(jet_pt,jet_phi)"
+    },
+    {
+      "branches": [
+        "jet_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "jet_ht",
+      "source": "derived(jet_pt)"
+    },
+    {
+      "branches": [
+        "jet_phi",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "min_dphi_jet_ptmiss",
+      "source": "derived(jet_phi,ptmiss_phi)"
+    }
+  ],
+  "config": {
+    "batch_size": 8192,
+    "binning": {
+      "CR3L": [
+        0.0,
+        0.15,
+        0.3,
+        0.45,
+        0.6,
+        0.75,
+        1.0
+      ],
+      "DYCR": [
+        0.0,
+        0.15,
+        0.3,
+        1.0
+      ],
+      "EMUCR": [
+        0.0,
+        0.15,
+        0.3,
+        0.45,
+        0.6,
+        0.75,
+        1.0
+      ],
+      "SR": [
+        0.0,
+        0.15,
+        0.3,
+        0.45,
+        0.6,
+        0.75,
+        0.875,
+        1.0
+      ]
+    },
+    "dropout": 0.2,
+    "epochs": 50,
+    "excluded_branch_patterns": [
+      "^njet_"
+    ],
+    "excluded_branches": [
+      "weight",
+      "ptmiss_significance",
+      "num_pv_good",
+      "run",
+      "lumi",
+      "event",
+      "gen_mzz",
+      "dnn_score"
+    ],
+    "feature_names": [
+      "lepton_cat",
+      "jet_cat",
+      "ll_pt",
+      "ll_eta",
+      "ll_mass",
+      "ptmiss",
+      "ptmiss_significance_corrected",
+      "lepton_pt_0",
+      "lepton_pt_1",
+      "lepton_eta_0",
+      "lepton_eta_1",
+      "jet_size",
+      "jet_pt_0",
+      "jet_pt_1",
+      "jet_eta_0",
+      "jet_eta_1",
+      "jet_mass_0",
+      "jet_mass_1",
+      "dphi_ll_ptmiss",
+      "mt_ll_ptmiss",
+      "ptmiss_over_ll_pt",
+      "pt_balance_ll_ptmiss",
+      "deta_leptons",
+      "dphi_leptons",
+      "dr_leptons",
+      "lepton_pt_ratio",
+      "dphi_lepton0_ptmiss",
+      "dphi_lepton1_ptmiss",
+      "lepton_ht",
+      "deta_jets",
+      "dphi_jets",
+      "dr_jets",
+      "dijet_mass",
+      "dijet_pt",
+      "jet_ht",
+      "min_dphi_jet_ptmiss"
+    ],
+    "feature_selection_known_issue": "test-set leakage by explicit user choice; revisit later",
+    "feature_selection_scope": "full_dataset_before_split",
+    "feature_significance_background_syst": 0.2,
+    "feature_significance_bins": 40,
+    "hidden_layers": [
+      128,
+      64,
+      32
+    ],
+    "input_base": "/eos/user/l/liwe/monoZ_combine_17_18_dnn/2017",
+    "input_bases": [
+      "/eos/user/l/liwe/monoZ_combine_17_18_dnn/2017"
+    ],
+    "learning_rate": 0.001,
+    "loss_function": "weighted BCEWithLogitsLoss over two one-hot output targets",
+    "max_jets": 4,
+    "min_delta": 1e-06,
+    "missing_sentinel": -9999.0,
+    "notes": [
+      "2017 DNN training config.",
+      "Use the explicit HZZ2l2nu feature allowlist above, including derived angular, balance, and dijet quantities.",
+      "Data.root is scored but never used for supervised training.",
+      "weight is used only as event weight, not as a DNN input feature.",
+      "ptmiss_significance and num_pv_good are explicitly excluded by analysis choice."
+    ],
+    "patience": 10,
+    "preprocessing": "standardize_nonmissing_then_map_missing_to_zero",
+    "rate_parameters": {
+      "k_WZ": [
+        "WZ"
+      ],
+      "k_Zjet": [
+        "DY"
+      ],
+      "k_emu": [
+        "ttbar",
+        "WW",
+        "ST"
+      ]
+    },
+    "score_activation": "sigmoid of signal logit; outputs are not softmax-normalized",
+    "scored_output_base": "/eos/user/l/liwe/monoZ_combine_17_18_dnn/2017_dnn",
+    "signal_file": "signal.root",
+    "split": {
+      "test": 0.3,
+      "train": 0.5,
+      "validation": 0.2
+    },
+    "template_weight": "original signed ROOT weight remains unchanged for Combine templates",
+    "top_k_significance": 10,
+    "training_region": "SR",
+    "training_selection": "lepton_cat != 2 && ptmiss >= 100",
+    "tree_name": "Vars",
+    "weight_clip": 100.0
+  },
+  "feature_names": [
+    "ptmiss_significance_corrected",
+    "ptmiss",
+    "mt_ll_ptmiss",
+    "lepton_pt_ratio",
+    "ptmiss_over_ll_pt",
+    "dr_leptons",
+    "dphi_leptons",
+    "deta_leptons",
+    "lepton_eta_1",
+    "ll_eta"
+  ],
+  "feature_specs": [
+    {
+      "branch": "ptmiss_significance_corrected",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss_significance_corrected"
+    },
+    {
+      "branch": "ptmiss",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss"
+    },
+    {
+      "branches": [
+        "ll_pt",
+        "ll_mass",
+        "ll_phi",
+        "ptmiss",
+        "ptmiss_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "mt_ll_ptmiss",
+      "source": "derived(ll_pt,ll_mass,ll_phi,ptmiss,ptmiss_phi)"
+    },
+    {
+      "branches": [
+        "lepton_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_pt_ratio",
+      "source": "derived(lepton_pt)"
+    },
+    {
+      "branches": [
+        "ptmiss",
+        "ll_pt"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "ptmiss_over_ll_pt",
+      "source": "derived(ptmiss,ll_pt)"
+    },
+    {
+      "branches": [
+        "lepton_eta",
+        "lepton_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dr_leptons",
+      "source": "derived(lepton_eta,lepton_phi)"
+    },
+    {
+      "branches": [
+        "lepton_phi"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "dphi_leptons",
+      "source": "derived(lepton_phi)"
+    },
+    {
+      "branches": [
+        "lepton_eta"
+      ],
+      "kind": "derived",
+      "missing_sentinel": -9999.0,
+      "name": "deta_leptons",
+      "source": "derived(lepton_eta)"
+    },
+    {
+      "branch": "lepton_eta",
+      "index": 1,
+      "kind": "fixed_index",
+      "missing_sentinel": -9999.0,
+      "name": "lepton_eta_1"
+    },
+    {
+      "branch": "ll_eta",
+      "kind": "scalar",
+      "missing_sentinel": -9999.0,
+      "name": "ll_eta"
+    }
+  ],
+  "mean": [
+    67.88056182861328,
+    176.0734100341797,
+    397.97955322265625,
+    0.493539035320282,
+    1.0543341636657715,
+    1.2134826183319092,
+    0.88631671667099,
+    0.6508268713951111,
+    -0.005931458435952663,
+    -0.005951195023953915
+  ],
+  "missing_sentinel": -9999.0,
+  "preprocessing": "standardize nonmissing values using train-only mean/std; map missing to zero",
+  "scale": [
+    108.1802749633789,
+    80.53885650634766,
+    145.6813201904297,
+    0.24591058492660522,
+    0.3359430134296417,
+    0.3484078347682953,
+    0.452472060918808,
+    0.42433956265449524,
+    1.1884815692901611,
+    1.2356114387512207
+  ],
+  "skipped_branches": [],
+  "training_summary": {
+    "best_val_auc": 0.806202480264909,
+    "candidate_features": 36,
+    "candidate_missing_fractions": {
+      "deta_jets": 0.8126785053083337,
+      "deta_leptons": 0.0,
+      "dijet_mass": 0.8126785053083337,
+      "dijet_pt": 0.8126785053083337,
+      "dphi_jets": 0.8126785053083337,
+      "dphi_lepton0_ptmiss": 0.0,
+      "dphi_lepton1_ptmiss": 0.0,
+      "dphi_leptons": 0.0,
+      "dphi_ll_ptmiss": 0.0,
+      "dr_jets": 0.8126785053083337,
+      "dr_leptons": 0.0,
+      "jet_cat": 0.0,
+      "jet_eta_0": 0.5334263708233277,
+      "jet_eta_1": 0.8126785053083337,
+      "jet_ht": 0.5334263708233277,
+      "jet_mass_0": 0.5334263708233277,
+      "jet_mass_1": 0.8126785053083337,
+      "jet_pt_0": 0.5334263708233277,
+      "jet_pt_1": 0.8126785053083337,
+      "jet_size": 0.0,
+      "lepton_cat": 0.0,
+      "lepton_eta_0": 0.0,
+      "lepton_eta_1": 0.0,
+      "lepton_ht": 0.0,
+      "lepton_pt_0": 0.0,
+      "lepton_pt_1": 0.0,
+      "lepton_pt_ratio": 0.0,
+      "ll_eta": 0.0,
+      "ll_mass": 0.0,
+      "ll_pt": 0.0,
+      "min_dphi_jet_ptmiss": 0.5334263708233277,
+      "mt_ll_ptmiss": 0.0,
+      "pt_balance_ll_ptmiss": 0.0,
+      "ptmiss": 0.0,
+      "ptmiss_over_ll_pt": 0.0,
+      "ptmiss_significance_corrected": 0.0
+    },
+    "class_balance_factors_train_only": {
+      "background": 0.540711528848454,
+      "signal": 6.640766683820909
+    },
+    "early_stopped": false,
+    "epochs_completed": 50,
+    "feature_selection_known_test_leakage": true,
+    "feature_selection_scope": "full_dataset_before_split",
+    "max_events_per_process": null,
+    "n_test": 277093,
+    "n_train": 461821,
+    "n_validation": 184728,
+    "negative_weight_events_ignored_for_training": 17989,
+    "num_training_candidates": 923642,
+    "selected_feature_names": [
+      "ptmiss_significance_corrected",
+      "ptmiss",
+      "mt_ll_ptmiss",
+      "lepton_pt_ratio",
+      "ptmiss_over_ll_pt",
+      "dr_leptons",
+      "dphi_leptons",
+      "deta_leptons",
+      "lepton_eta_1",
+      "ll_eta"
+    ],
+    "selected_features": 10,
+    "test_auc": 0.8009810550131585,
+    "test_loss": 0.5363404733293197,
+    "train_auc": 0.8098575569568839,
+    "validation_auc": 0.806202480264909,
+    "weight_clip": 100.0,
+    "weights_clipped_at_max": 0
+  }
+}

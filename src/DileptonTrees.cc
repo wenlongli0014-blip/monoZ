@@ -90,7 +90,7 @@ po::options_description DileptonTrees::OptionsDescription() {
   optionsDescription.add_options()
     ("more-vars", "Store additional variables");
   optionsDescription.add_options()
-    ("ptmiss-cut", po::value<double>()->default_value(100.),
+    ("ptmiss-cut", po::value<double>()->default_value(30.),
      "Minimal missing pt");
   return optionsDescription;
 }
@@ -136,7 +136,7 @@ bool DileptonTrees::ProcessEvent() {
   if (not (std::abs(p4LL.M() - kNominalMZ_) < zMassWindow_))
     return false;
 
-  if (not (p4LL.Pt() > 90))//minPtLL_ 
+  if (not (p4LL.Pt() > 90))//minPtLL_
     return false;
 
 
@@ -146,7 +146,7 @@ bool DileptonTrees::ProcessEvent() {
   missSignificance_ = ptMissBuilder_.Get().significance;
   missSignificanceCorrected_ = ptMissBuilder_.Get().significance_corrected;
 
-  if (p4Miss.Pt() < ptMissCut_) 
+  if (p4Miss.Pt() < ptMissCut_)
     return false;
 
     // ΔR(ℓℓ) < 1.8 cut
@@ -155,14 +155,14 @@ bool DileptonTrees::ProcessEvent() {
   while (dphi > M_PI) dphi -= 2*M_PI;
   while (dphi < -M_PI) dphi += 2*M_PI;
   double deltaR = std::sqrt(deta*deta + dphi*dphi);
-  if (deltaR >= 1.8) 
+  if (deltaR >= 1.8)
     return false;
 
 //   ptmiss_significance_corrected > 12 cut
-  if (missSignificanceCorrected_ <= 12) 
+  if (missSignificanceCorrected_ <= 12)
     return false;
 
-  if (std::abs( 
+  if (std::abs(
         TVector2::Phi_mpi_pi(p4LL.Phi() - p4Miss.Phi())) < 2.4)//minDphiLLPtMiss_
     return false;
 

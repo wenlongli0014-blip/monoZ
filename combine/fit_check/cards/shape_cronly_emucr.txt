@@ -1,0 +1,22 @@
+# Fit-check datacard: shape_cronly_emucr
+# No flat lnN uncertainties, no manual shape uncertainties, no autoMCStats.
+# Channels: EMUCR
+# Floating k-factors: k_emu
+imax 1
+jmax *
+kmax *
+------------
+shapes * EMUCR /afs/cern.ch/user/l/liwe/hzz2l2nu/combine/fit_check/shapes/shape_ptmiss.root EMUCR/$PROCESS
+------------
+bin EMUCR
+observation -1
+------------
+bin EMUCR EMUCR EMUCR EMUCR EMUCR EMUCR EMUCR EMUCR EMUCR EMUCR
+process signal DY Other ST VVV WW WZ ggZZ qqZZ ttbar
+process 0 1 2 3 4 5 6 7 8 9
+rate -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+------------
+# Floating normalization parameters. They act on the named processes in every selected channel.
+k_emu    rateParam * ttbar 1 [0,5]
+k_emu    rateParam * WW    1 [0,5]
+k_emu    rateParam * ST    1 [0,5]

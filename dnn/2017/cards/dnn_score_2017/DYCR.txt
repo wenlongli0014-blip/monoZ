@@ -1,0 +1,14 @@
+imax 1
+jmax *
+kmax *
+------------
+shapes * DYCR /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2017/shapes_dnn_score_2017_sr_asimov.root DYCR/$PROCESS
+------------
+bin DYCR
+observation -1
+------------
+bin DYCR DYCR DYCR DYCR DYCR DYCR DYCR DYCR DYCR
+process DY Other ST VVV WW WZ ggZZ qqZZ ttbar
+process 1 2 3 4 5 6 7 8 9
+rate -1 -1 -1 -1 -1 -1 -1 -1 -1
+------------

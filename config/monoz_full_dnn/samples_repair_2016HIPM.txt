@@ -1,0 +1,4 @@
+catalogPath = /afs/cern.ch/user/l/liwe/hzz2l2nu/config/monoz_full_dnn/ddf_2016HIPM
+DYJetsToLL_PtZ-50To100.yaml
+catalogPath = /afs/cern.ch/user/l/liwe/hzz2l2nu/config/monoz_full_dnn
+DYJetsToLL_PtZ-250To400_UL16APV_raw.yaml

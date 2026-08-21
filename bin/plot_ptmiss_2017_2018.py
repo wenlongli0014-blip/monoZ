@@ -11,7 +11,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import uproot
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+BIN_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_DIR = os.path.dirname(BIN_DIR)
+sys.path.insert(0, BIN_DIR)
+sys.path.insert(0, os.path.join(REPO_DIR, "python"))
 
 from hzz import Hist1D, mpl_style
 from plot_data_sim import (
@@ -204,12 +207,30 @@ def main():
         default=["png", "pdf"],
         help="Plot formats to write.",
     )
+    parser.add_argument(
+        "--regions",
+        nargs="+",
+        choices=sorted(REGIONS),
+        default=list(REGIONS),
+        help="Regions to plot (default: all regions).",
+    )
+    parser.add_argument(
+        "--output-tag",
+        default="",
+        help="Suffix appended to each output filename, for example _tau_medium.",
+    )
+    parser.add_argument(
+        "--info-suffix",
+        default="",
+        help="Additional text shown in the plot information label.",
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output, exist_ok=True)
     plt.style.use(mpl_style)
 
-    for region, region_info in REGIONS.items():
+    for region in args.regions:
+        region_info = REGIONS[region]
         config = build_configuration(args.input, region)
 
         selection = config.selections[0]
@@ -230,7 +251,13 @@ def main():
             fill_histogram(sample, binning, weighted=True)
             for sample in config.signal_samples
         ]
-        output_stem = os.path.join(args.output, f"{region}_ptmiss_2017_2018")
+        output_stem = os.path.join(
+            args.output,
+            f"{region}_ptmiss_2017_2018{args.output_tag}",
+        )
+        info_label = f"{region_info['label']}, 2017+2018"
+        if args.info_suffix:
+            info_label += f", {args.info_suffix}"
         plot_data_sim(
             variable,
             data_hist,
@@ -243,7 +270,7 @@ def main():
             )),
             formats=args.formats,
             entries_label=config.entries_label,
-            info_label=f"{region_info['label']}, 2017+2018",
+            info_label=info_label,
             root_path=f"{output_stem}.root",
         )
         print(f"Wrote {output_stem}")

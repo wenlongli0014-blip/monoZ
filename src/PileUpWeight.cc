@@ -173,6 +173,7 @@ void PileUpWeight::Update() const {
     LOG_WARN << "Got pileup probability in simulation of " << probSim <<
       " for true pileup of " << *mu_ << ". Set pileup weights to 1.";
     std::fill(weights_.begin(), weights_.end(), 1.);
+    return;
   }
 
   auto const run = runSampler_->Get();

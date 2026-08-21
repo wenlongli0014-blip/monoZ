@@ -160,11 +160,11 @@ bool TrileptonTrees::ProcessEvent() {
 //  if (mTw_ < mTwCut_) //Cut value set in .h file
 //    return false;
 
-  if (p4Miss.Pt() < ptMissCut_) 
+  if (p4Miss.Pt() < ptMissCut_)
     return false;
 
      // ptmiss_significance_corrected > 3 cut
-  if (missSignificanceCorrected_ <= 3) 
+  if (missSignificanceCorrected_ <= 3)
     return false;
 
 //  if (std::abs(
@@ -246,11 +246,11 @@ TrileptonTrees::CheckLeptons() const {
           l1 = &tightElectrons[ei];
           l2 = &tightElectrons[ej];
           l3 = &tightElectrons[3-ei-ej];
-        }        
+        }
       }
     }
     if(M_OSSF_residual == 9999) return {};
-  } 
+  }
   else if(tightMuons.size() == 3){
     leptonCat = LeptonCat::kMuMuMu;
     Float_t M_OSSF_residual = 9999;
@@ -267,7 +267,7 @@ TrileptonTrees::CheckLeptons() const {
           l1 = &tightMuons[mi];
           l2 = &tightMuons[mj];
           l3 = &tightMuons[3-mi-mj];
-        }        
+        }
       }
     }
     if(M_OSSF_residual == 9999) return {};
@@ -277,7 +277,7 @@ TrileptonTrees::CheckLeptons() const {
     l1 = &tightElectrons[0];
     l2 = &tightElectrons[1];
     l3 = &tightMuons[0];
-  } 
+  }
   else if ((tightElectrons.size() == 1) and (tightMuons.size() == 2)) {
     leptonCat = LeptonCat::kMUMUE;
     l1 = &tightMuons[0];
@@ -289,7 +289,7 @@ TrileptonTrees::CheckLeptons() const {
   if (not (l1->charge * l2->charge < 0))
     return {};
 
-    
+
   if (l1->p4.Pt() < l2->p4.Pt())
     std::swap(l1, l2);
 

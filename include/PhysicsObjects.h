@@ -256,6 +256,5 @@ struct Tau : public Lepton {
 
 
 inline Tau::Tau() noexcept
-    : Lepton{Lepton::Flavour::Muon} {}
+    : Lepton{Lepton::Flavour::Tau} {}
 #endif  // HZZ2L2NU_INCLUDE_PHYSICSOBJECTS_H_
-

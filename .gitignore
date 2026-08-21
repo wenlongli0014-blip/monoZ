@@ -21,19 +21,29 @@ batch_*/
 JHUGenMELA/
 MelaAnalytics/
 hzzreweighting/
-dnn/
-combine/
 combine_test/
 dphijet_ptmiss_significance/
 
 # Plotting and combine outputs
 data_sim*/
+plot/
 plot_data_sim_*/
 plots_data_sim*/
+plots_genmet_*/
 shape_*.root
 /*.root
 /*.pdf
 /*.log
+
+# Batch task material is reproducible and can contain thousands of files
+tasks/
+
+# Personal documents are not part of the analysis framework
+*.docx
+
+# Unpublished analysis notes and reports stay local
+HADRONIC_TAU_VETO_STUDY.md
+reports/
 
 # Personal notes or scratch files
 liwe.cc

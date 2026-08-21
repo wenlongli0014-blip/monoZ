@@ -1,0 +1,31 @@
+# Keep the statistical-analysis source, documentation, and hand-written cards.
+# The directories below are generated scans/fits and can be reproduced.
+__pycache__/
+*.pyc
+*.root
+*.pdf
+*.png
+*.log
+*.out
+
+monoZ_combine_asimov_checks/
+monoZ_combine_derived_asimov_limits/
+monoZ_combine_manualshape_results/
+monoZ_combine_results/
+monoZ_combine_srAsimov_crData_2x2/
+monoz_full_dnn_ptmiss_2016_2018_previous_logic_temp/
+monoz_full_dnn_ptmiss_2017_2018_temp/
+ptmiss_2017_2018_blinded/
+ptmiss_2017_2018_crcorrected/
+ptmiss_binning_scan_run2_previous_logic/
+
+# Unpublished thesis text and numerical result summaries stay local
+MONOZ_CURRENT_BR_LIMIT_WORKFLOW.md
+THESIS_*.md
+final/THESIS_*.md
+final/*/README.md
+final/*/json/
+final/*/tables/
+fit_check/FIT_CHECK_*.md
+fit_check/tables/
+fit_check/workspaces_root626/

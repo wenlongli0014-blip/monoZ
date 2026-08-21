@@ -76,6 +76,7 @@ l1t_prefiring: true
 pileup_weight:
   data_profile: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2017/pileup_profiles_data.root
   sim_profiles: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2017/pileup_profiles_sim.root
+  default_sim_profile: /eos/user/l/liwe/monoz_full_dnn/metadata/pileup_signal_2017.root
   # sim_profiles: /pnfs/iihe/cms/store/user/yunyangl/ULsamples/photon/2023-04-28_2017-NanoAODv9/pileup/pileup_profiles_sim.root
   # data_profile: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_data.root
   # sim_profiles: /pnfs/iihe/cms/store/group/HZZ2l2nu/Production/2020-11-26_2017-NanoAODv7/pileup/pileup_profiles_sim_dilepton.root # pileup_profiles_sim_instrmet.root
@@ -239,7 +240,7 @@ lepton_efficiency:
       - path: LeptonSF/2017/electron_RecoSF_UL2017.root:EGamma_SF2D
         schema: [eta, pt]
         clip_pt: true
-  
+
 roccor:
   path: roccor/RoccoR2017UL.txt
 

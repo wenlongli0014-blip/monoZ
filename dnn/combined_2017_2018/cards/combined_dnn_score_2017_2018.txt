@@ -1,0 +1,62 @@
+Combination of y2017=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/combined_2017_2018/cards/combined_dnn_score_2017_sharedparams.txt  y2018=/afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/combined_2017_2018/cards/combined_dnn_score_2018_sharedparams.txt
+imax 8 number of bins
+jmax 9 number of processes minus 1
+kmax * number of nuisance parameters
+----------------------------------------------------------------------------------------------------------------------------------
+shapes *            y2017_CR3L   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2017/shapes_dnn_score_2017_sr_asimov.root CR3L/$PROCESS
+shapes *            y2017_DYCR   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2017/shapes_dnn_score_2017_sr_asimov.root DYCR/$PROCESS
+shapes *            y2017_EMUCR  /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2017/shapes_dnn_score_2017_sr_asimov.root EMUCR/$PROCESS
+shapes *            y2017_SR     /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2017/shapes_dnn_score_2017_sr_asimov.root SR/$PROCESS
+shapes *            y2018_CR3L   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root CR3L/$PROCESS
+shapes *            y2018_DYCR   /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root DYCR/$PROCESS
+shapes *            y2018_EMUCR  /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root EMUCR/$PROCESS
+shapes *            y2018_SR     /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root SR/$PROCESS
+----------------------------------------------------------------------------------------------------------------------------------
+bin          y2017_SR     y2017_DYCR   y2017_EMUCR  y2017_CR3L   y2018_SR     y2018_DYCR   y2018_EMUCR  y2018_CR3L
+observation  -1           -1           -1           -1           -1           -1           -1           -1
+----------------------------------------------------------------------------------------------------------------------------------
+bin          y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_SR     y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_DYCR   y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_EMUCR  y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2017_CR3L   y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_SR     y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_DYCR   y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_EMUCR  y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L   y2018_CR3L
+process      signal       DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        signal       DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar        DY           Other        ST           VVV          WW           WZ           ggZZ         qqZZ         ttbar
+process      0            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9            0            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9            1            2            3            4            5            6            7            8            9
+rate         -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1           -1
+----------------------------------------------------------------------------------------------------------------------------------
+k_Zjet        rateParam y2017_CR3L DY 1 [0,5]
+k_emu         rateParam y2017_CR3L ST 1 [0,5]
+k_emu         rateParam y2017_CR3L WW 1 [0,5]
+k_WZ          rateParam y2017_CR3L WZ 1 [0,5]
+k_emu         rateParam y2017_CR3L ttbar 1 [0,5]
+k_Zjet        rateParam y2017_DYCR DY 1 [0,5]
+k_emu         rateParam y2017_DYCR ST 1 [0,5]
+k_emu         rateParam y2017_DYCR WW 1 [0,5]
+k_WZ          rateParam y2017_DYCR WZ 1 [0,5]
+k_emu         rateParam y2017_DYCR ttbar 1 [0,5]
+k_Zjet        rateParam y2017_EMUCR DY 1 [0,5]
+k_emu         rateParam y2017_EMUCR ST 1 [0,5]
+k_emu         rateParam y2017_EMUCR WW 1 [0,5]
+k_WZ          rateParam y2017_EMUCR WZ 1 [0,5]
+k_emu         rateParam y2017_EMUCR ttbar 1 [0,5]
+k_Zjet        rateParam y2017_SR DY 1 [0,5]
+k_emu         rateParam y2017_SR ST 1 [0,5]
+k_emu         rateParam y2017_SR WW 1 [0,5]
+k_WZ          rateParam y2017_SR WZ 1 [0,5]
+k_emu         rateParam y2017_SR ttbar 1 [0,5]
+k_Zjet        rateParam y2018_CR3L DY 1 [0,5]
+k_emu         rateParam y2018_CR3L ST 1 [0,5]
+k_emu         rateParam y2018_CR3L WW 1 [0,5]
+k_WZ          rateParam y2018_CR3L WZ 1 [0,5]
+k_emu         rateParam y2018_CR3L ttbar 1 [0,5]
+k_Zjet        rateParam y2018_DYCR DY 1 [0,5]
+k_emu         rateParam y2018_DYCR ST 1 [0,5]
+k_emu         rateParam y2018_DYCR WW 1 [0,5]
+k_WZ          rateParam y2018_DYCR WZ 1 [0,5]
+k_emu         rateParam y2018_DYCR ttbar 1 [0,5]
+k_Zjet        rateParam y2018_EMUCR DY 1 [0,5]
+k_emu         rateParam y2018_EMUCR ST 1 [0,5]
+k_emu         rateParam y2018_EMUCR WW 1 [0,5]
+k_WZ          rateParam y2018_EMUCR WZ 1 [0,5]
+k_emu         rateParam y2018_EMUCR ttbar 1 [0,5]
+k_Zjet        rateParam y2018_SR DY 1 [0,5]
+k_emu         rateParam y2018_SR ST 1 [0,5]
+k_emu         rateParam y2018_SR WW 1 [0,5]
+k_WZ          rateParam y2018_SR WZ 1 [0,5]
+k_emu         rateParam y2018_SR ttbar 1 [0,5]

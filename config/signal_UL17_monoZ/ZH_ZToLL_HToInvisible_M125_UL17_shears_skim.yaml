@@ -4,6 +4,6 @@ cross_section: 0.07924
 num_events: 78532
 num_selected_events: 223232
 mean_weight: 1.0
-zz_2l2nu: true
+zz_2l2nu: false
 files:
 - /eos/user/l/liwe/zh_invisible_skim/ZH_ZToLL_HToInvisible_M125_2017_local.root

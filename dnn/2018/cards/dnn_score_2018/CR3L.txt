@@ -1,0 +1,14 @@
+imax 1
+jmax *
+kmax *
+------------
+shapes * CR3L /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/2018/shapes_dnn_score_2018_sr_asimov.root CR3L/$PROCESS
+------------
+bin CR3L
+observation -1
+------------
+bin CR3L CR3L CR3L CR3L CR3L CR3L CR3L CR3L CR3L
+process DY Other ST VVV WW WZ ggZZ qqZZ ttbar
+process 1 2 3 4 5 6 7 8 9
+rate -1 -1 -1 -1 -1 -1 -1 -1 -1
+------------

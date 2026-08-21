@@ -148,10 +148,9 @@ def parse_datasets_file(path, config_path=''):
         if match:
             directory = match.group(1)
         else:
-            ddfs.append(line.strip())
+            ddfs.append(os.path.join(directory, line.strip()))
 
     datasets_file.close()
-    ddfs = [os.path.join(directory, ddf) for ddf in ddfs]
 
     # Read stem dataset definitions if available
     stems = {}

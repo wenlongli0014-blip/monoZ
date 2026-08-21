@@ -54,6 +54,7 @@ l1t_prefiring: true
 pileup_weight:
   data_profile: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2016APV/pileup_profiles_data.root
   sim_profiles: /eos/cms/store/group/phys_smp/ZZTo2L2Nu/pileup/2016APV/pileup_profiles_sim.root
+  default_sim_profile: /eos/user/l/liwe/monoz_full_dnn/metadata/pileup_signal_2016HIPM.root
 
 met_filters:
   # https://twiki.cern.ch/twiki/bin/view/CMS/MissingETOptionalFiltersRun2?rev=158#2016_data_and_MC_UL

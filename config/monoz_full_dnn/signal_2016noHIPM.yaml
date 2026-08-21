@@ -1,0 +1,17 @@
+name: ZH_ZToLL_HToInvisible_M125_UL16_full
+is_sim: true
+cross_section: 0.07924
+num_events: 488994
+num_selected_events: 488994
+mean_weight: 0.079364466377910572
+zz_2l2nu: false
+files:
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/08C32234-9C74-C947-B3EE-C43711CB1340.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/2BC090A4-B6A7-C04E-ACD2-B136D44010B5.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/3C8F9693-D946-0C4F-9E43-8016096A572D.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/636576CC-B4BE-6242-AECC-A40968B96F72.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/6C6E6DAF-829D-3948-9D71-3B47B49A0E98.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/951646BE-D8BE-2C40-B06E-8D46B690C77F.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/9FDA65F3-7A9D-E140-8AB7-B8240851151F.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/ACF44D48-2CB6-B74E-87E8-88514EBF10AB.root
+- /eos/user/l/liwe/monoz_full_dnn/inputs/signal_nanoaod/2016noHIPM/BE23FB9A-FBBF-E447-9FD1-FCEB47DB941D.root

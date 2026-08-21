@@ -1,0 +1,16 @@
+universe = vanilla
+executable = /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/run_year_train_score.sh
+arguments = $(YEAR) $(INPUT_BASE) $(OUTPUT_BASE)
+
+output = /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/condor_logs/$(YEAR).out
+error = /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/condor_logs/$(YEAR).err
+log = /afs/cern.ch/user/l/liwe/hzz2l2nu/dnn/condor_logs/$(YEAR).log
+
+request_cpus = 4
+request_memory = 8 GB
++JobFlavour = "workday"
+
+queue YEAR, INPUT_BASE, OUTPUT_BASE from (
+2017 /eos/user/l/liwe/monoZ_combine_17_18_dnn/2017 /eos/user/l/liwe/monoZ_combine_17_18_dnn/2017_dnn
+2018 /eos/user/l/liwe/monoZ_combine_17_18_dnn/2018 /eos/user/l/liwe/monoZ_combine_17_18_dnn/2018_dnn
+)

@@ -1,10 +1,37 @@
-# H&rarr;ZZ&rarr;2&ell;2&nu; analysis
+# mono-Z / H&rarr;ZZ&rarr;2&ell;2&nu; analysis
 
-This repository uses Git submodules and hence should be cloned with
+This repository preserves the basic structure of the upstream
+[`yujil/hzz2l2nu`](https://gitlab.cern.ch/yujil/hzz2l2nu) framework and adds
+the mono-Z analysis selections, signal configurations, DNN workflow, and CMS
+Combine statistical workflow used in this analysis.
+
+The GitHub and CERN GitLab repositories are mirrors of the same source state.
+This repository uses Git submodules and should be cloned with one of
 
 ```sh
-git clone --recurse-submodules https://gitlab.cern.ch/yujil/hzz2l2nu.git
+git clone --recurse-submodules https://github.com/wenlongli0014-blip/monoZ.git
+# CERN mirror and development branch:
+git clone --branch offshellH --recurse-submodules \
+  https://gitlab.cern.ch/liwe/hzz2l2nu.git monoZ
 ```
+
+## mono-Z extensions
+
+Relative to the upstream framework, this repository includes:
+
+- corrected MET covariance handling and corrected missing-momentum
+  significance;
+- mono-Z dilepton and trilepton event selections and lepton-pairing fixes;
+- corrected tau flavour construction and robust pileup-weight handling;
+- Run-2 mono-Z signal, control-region, pileup, and dataset configurations;
+- signal-overlay and combined 2017+2018 plotting utilities;
+- HTCondor production helpers with configurable local or EOS output;
+- `dnn/` training, scoring, validation, and datacard workflows; and
+- `combine/` template, fit-diagnostic, limit, and plotting workflows.
+
+Generated ROOT files, plots, logs, caches, Condor task directories, DNN score
+arrays, and Combine fit outputs are intentionally not versioned.  The trained
+DNN model checkpoints and compact metadata needed for inference are retained.
 
 Doxygen documentation for C++ code is available [here](http://homepage.iihe.ac.be/~aapopov/hzz2l2nu/doc/). At present it is generated manually by Andrey and might not correspond to the latest version of the code.
 
@@ -33,6 +60,20 @@ source setup.sh
 cd $HZZ2L2NU_BASE
 ```
 
+The versions above intentionally follow the upstream `yujil/hzz2l2nu`
+installation.  `JHUGenMELA/` and `MelaAnalytics/` are external checkouts and
+are not copied into this repository.
+
+The framework environment is pinned by `env.sh` to `LCG_105` on
+`x86_64-el9-gcc12-opt`.  The `pyroothist` dependency is kept as the upstream
+Git submodule at `python/hzz/pyroothist` rather than copied into the source
+tree.
+
+The DNN utilities additionally use Python 3 with `numpy`, `awkward`, `uproot`,
+`matplotlib`, `scikit-learn`, and `torch`.  The statistical workflow in
+`combine/` requires a CMSSW environment with the CMS Combine tool installed;
+see the [official Combine setup documentation](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/).
+
 
 ## Computing environment and building
 
@@ -47,15 +88,12 @@ This script also stores the path to the base directory in environment variable `
 Build the package with the following commands:
 
 ```sh
-rm -rf python/hzz/pyroothist/
-git clone https://github.com/andrey-popov/pyroothist.git python/hzz/pyroothist
-mkdir build
-cd build
-cmake ..
-make -j $(nproc)
+git submodule update --init --recursive
+cmake -S . -B build
+cmake --build build -j "$(nproc)"
 ```
 
-The warning from CMake about the new version of Boost can be safely ignored. Executable `runHZZanalysis` is put into `$HZZ2L2NU_BASE/bin`, and it is accessible from `$PATH`. To rebuild the package after a change has been introduced to the code, repeat `make`. To start the build from scratch, remove the directory `build` and repeat the commands above.
+The warning from CMake about the new version of Boost can be safely ignored. Executable `runHZZanalysis` is put into `$HZZ2L2NU_BASE/bin`, and it is accessible from `$PATH`. To rebuild the package after a change has been introduced to the code, repeat `cmake --build build`. To start the build from scratch, remove the directory `build` and repeat the commands above.
 
 It is also possible to create a program outside of the repository and link it against the shared library of the framework. See [here](https://gitlab.cern.ch/HZZ-IIHE/hzz2l2nu/-/wikis/shared-library) for documentation.
 

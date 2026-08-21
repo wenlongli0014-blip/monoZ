@@ -1,0 +1,128 @@
+{
+  "feature_names": [
+    "lepton_cat",
+    "jet_cat",
+    "ll_pt",
+    "ll_eta",
+    "ll_mass",
+    "ptmiss",
+    "ptmiss_significance_corrected",
+    "lepton_pt_0",
+    "lepton_pt_1",
+    "lepton_eta_0",
+    "lepton_eta_1",
+    "jet_size",
+    "jet_pt_0",
+    "jet_pt_1",
+    "jet_eta_0",
+    "jet_eta_1",
+    "jet_mass_0",
+    "jet_mass_1",
+    "dphi_ll_ptmiss",
+    "mt_ll_ptmiss",
+    "ptmiss_over_ll_pt",
+    "pt_balance_ll_ptmiss",
+    "deta_leptons",
+    "dphi_leptons",
+    "dr_leptons",
+    "lepton_pt_ratio",
+    "dphi_lepton0_ptmiss",
+    "dphi_lepton1_ptmiss",
+    "lepton_ht",
+    "deta_jets",
+    "dphi_jets",
+    "dr_jets",
+    "dijet_mass",
+    "dijet_pt",
+    "jet_ht",
+    "min_dphi_jet_ptmiss"
+  ],
+  "missing_sentinel": -9999.0,
+  "top_k_significance": 10,
+  "feature_significance_bins": 40,
+  "feature_significance_background_syst": 0.2,
+  "feature_selection_scope": "full_dataset_before_split",
+  "feature_selection_known_issue": "test-set leakage by explicit user choice; revisit later",
+  "weight_clip": 100.0,
+  "split": {
+    "train": 0.5,
+    "validation": 0.2,
+    "test": 0.3
+  },
+  "binning": {
+    "CR3L": [
+      0.0,
+      0.15,
+      0.3,
+      0.45,
+      0.6,
+      0.75,
+      1.0
+    ],
+    "DYCR": [
+      0.0,
+      0.15,
+      0.3,
+      1.0
+    ],
+    "EMUCR": [
+      0.0,
+      0.15,
+      0.3,
+      0.45,
+      0.6,
+      0.75,
+      1.0
+    ],
+    "SR": [
+      0.0,
+      0.15,
+      0.3,
+      0.45,
+      0.6,
+      0.75,
+      0.875,
+      1.0
+    ]
+  },
+  "excluded_branch_patterns": [
+    "^njet_"
+  ],
+  "excluded_branches": [
+    "weight",
+    "ptmiss_significance",
+    "run",
+    "lumi",
+    "event",
+    "gen_mzz",
+    "dnn_score"
+  ],
+  "input_base": "/eos/user/l/liwe/monoZ_combine",
+  "max_jets": 4,
+  "notes": [
+    "Use the explicit HZZ2l2nu feature allowlist above, including derived angular, balance, and dijet quantities.",
+    "Data.root is scored but never used for supervised training.",
+    "weight is used only as event weight, not as a DNN input feature.",
+    "ptmiss_significance is explicitly excluded by analysis choice.",
+    "run/lumi/event and gen_mzz are excluded as bookkeeping or generator-truth quantities."
+  ],
+  "preprocessing": "standardize_nonmissing_then_map_missing_to_zero",
+  "rate_parameters": {
+    "k_WZ": [
+      "WZ"
+    ],
+    "k_Zjet": [
+      "DY"
+    ],
+    "k_emu": [
+      "ttbar",
+      "WW",
+      "ST"
+    ]
+  },
+  "scored_output_base": "/eos/user/l/liwe/monoZ_combine_dnn",
+  "signal_file": "signal.root",
+  "training_region": "SR",
+  "training_selection": "lepton_cat != 2 && ptmiss >= 100",
+  "tree_name": "Vars"
+}

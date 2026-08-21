@@ -112,7 +112,7 @@ void PtMissBuilder::Build() const {
 
   // Apply MET XY corrections, if the corresponding option has been set.
   if (applyXYCorrections_){
-    std::pair<double, double> corrected_met_metPhi = 
+    std::pair<double, double> corrected_met_metPhi =
         metXYCorrections::METXYCorr_Met_MetPhi(ptMiss_.p4.Pt(),
         ptMiss_.p4.Phi(), *srcRun_, metXYCorrectionYear_, isSim_,
         *srcNumPV_, isUL_, false);
